@@ -1,0 +1,2659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Company Simulator | Experience the Future Workplace</title>
+    <meta name="description"
+        content="Virtual Company Simulator (VCS) is an AI-powered workplace simulation platform that allows students and professionals to experience real corporate environments through interactive learning, AI mentors, and realistic business workflows.">
+    <meta name="keywords"
+        content="Virtual Company Simulator, VCS, AI Learning Platform, Gemini AI, Virtual Internship, Workplace Simulation, Corporate Training">
+    <meta name="author" content="Virtual Company Simulator">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #050505;
+            --bg-primary: #070707;
+            --bg-secondary: #0a0a0a;
+            --bg-surface: #0d0d0d;
+            --bg-card: #111111;
+            --bg-card-hover: #151515;
+            --bg-elevated: #181818;
+            --bg-nav: rgba(7, 7, 7, 0.82);
+            --border-subtle: #1a1a1a;
+            --border-default: #222222;
+            --border-strong: #2a2a2a;
+            --border-glow: #333333;
+            --text-primary: #f0f0f0;
+            --text-secondary: #b8b8b8;
+            --text-tertiary: #808080;
+            --text-muted: #5c5c5c;
+            --accent: #c49b3f;
+            --accent-light: #d4af6a;
+            --accent-dark: #a07828;
+            --accent-glow: rgba(196, 155, 63, 0.14);
+            --accent-subtle: rgba(196, 155, 63, 0.05);
+            --accent-soft: rgba(196, 155, 63, 0.08);
+            --white-soft: rgba(255, 255, 255, 0.03);
+            --white-glow: rgba(255, 255, 255, 0.05);
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+            --shadow-md: 0 2px 16px rgba(0, 0, 0, 0.6);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.7);
+            --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.6), 0 4px 16px rgba(0, 0, 0, 0.4);
+            --shadow-card-hover: 0 1px 3px rgba(0, 0, 0, 0.7), 0 12px 36px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.03);
+            --radius-xs: 4px;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --radius-xl: 22px;
+            --radius-full: 9999px;
+            --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-spring: 0.45s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+            --max-width: 1120px;
+            --nav-height: 64px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--nav-height);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            background-color: var(--bg-deep);
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-secondary);
+            line-height: 1.68;
+            font-size: 15px;
+            font-weight: 400;
+            overflow-x: hidden;
+            letter-spacing: -0.008em;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: var(--text-primary);
+            font-weight: 650;
+            line-height: 1.2;
+            letter-spacing: -0.022em;
+        }
+
+        h1 {
+            font-size: clamp(2.3rem, 4.2vw, 3.4rem);
+            font-weight: 750;
+            letter-spacing: -0.032em;
+            line-height: 1.12;
+        }
+
+        h2 {
+            font-size: clamp(1.65rem, 2.8vw, 2.2rem);
+            font-weight: 650;
+            letter-spacing: -0.024em;
+            line-height: 1.18;
+        }
+
+        h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: -0.014em;
+            color: #e0e0e0;
+        }
+
+        h5 {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-light);
+            margin-bottom: 0.4rem;
+            display: inline-block;
+            position: relative;
+        }
+
+        h5::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent-glow), transparent);
+            border-radius: 1px;
+        }
+
+        p {
+            color: var(--text-tertiary);
+            margin-bottom: 0.6rem;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color var(--transition-fast);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        section {
+            padding: 80px 24px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            position: relative;
+        }
+
+        section>div:first-child {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        section>div:first-child h2 {
+            margin-top: 4px;
+            color: #f4f4f4;
+        }
+
+        section>div:first-child>p {
+            max-width: 520px;
+            margin: 10px auto 0;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        /* ── NAVIGATION ── */
+        header#home {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--bg-nav);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            transition: all var(--transition-smooth);
+        }
+
+        header#home nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            height: var(--nav-height);
+        }
+
+        .logo h2 {
+            font-size: 1.35rem;
+            font-weight: 750;
+            letter-spacing: -0.035em;
+            color: #f8f8f8;
+            cursor: pointer;
+            position: relative;
+            transition: color var(--transition-fast);
+        }
+
+        .logo h2:hover {
+            color: #fff;
+        }
+
+        .logo h2::after {
+            content: '';
+            position: absolute;
+            bottom: 1px;
+            left: 0;
+            width: 16px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: var(--radius-full);
+            transition: width var(--transition-smooth);
+        }
+
+        .logo h2:hover::after {
+            width: 100%;
+        }
+
+        header#home nav ul {
+            display: flex;
+            gap: 2px;
+            align-items: center;
+        }
+
+        header#home nav ul li a {
+            padding: 8px 15px;
+            border-radius: var(--radius-full);
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text-tertiary);
+            transition: all var(--transition-fast);
+            position: relative;
+            white-space: nowrap;
+            letter-spacing: 0.01em;
+        }
+
+        header#home nav ul li a:hover {
+            color: #eaeaea;
+            background: var(--white-soft);
+        }
+
+        /* ── HERO ── */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 48px;
+            align-items: center;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+            min-height: calc(85vh - var(--nav-height));
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -100px;
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 55% 40%, rgba(196, 155, 63, 0.05) 0%, rgba(196, 155, 63, 0.01) 35%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 580px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 7px 16px;
+            background: var(--accent-subtle);
+            color: var(--accent-light);
+            border-radius: var(--radius-full);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.07em;
+            margin-bottom: 22px;
+            border: 1px solid rgba(196, 155, 63, 0.12);
+        }
+
+        .hero-content h1 {
+            margin-bottom: 16px;
+            color: #fafafa;
+            line-height: 1.1;
+        }
+
+        .hero-content>p {
+            font-size: 0.98rem;
+            color: #8a8a8a;
+            margin-bottom: 30px;
+            line-height: 1.7;
+            max-width: 490px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .hero-buttons a {
+            display: inline-block;
+            padding: 13px 28px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.88rem;
+            letter-spacing: 0.01em;
+            transition: all var(--transition-smooth);
+            cursor: pointer;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-buttons a:first-child {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: #141414;
+            border: none;
+            box-shadow: 0 2px 18px rgba(196, 155, 63, 0.22);
+            font-weight: 650;
+        }
+
+        .hero-buttons a:first-child:hover {
+            box-shadow: 0 6px 28px rgba(196, 155, 63, 0.35);
+            transform: translateY(-1px);
+            color: #0a0a0a;
+        }
+
+        .hero-buttons a:last-child {
+            background: transparent;
+            color: #c8c8c8;
+            border: 1.5px solid var(--border-default);
+        }
+
+        .hero-buttons a:last-child:hover {
+            border-color: var(--border-glow);
+            background: var(--white-soft);
+            transform: translateY(-1px);
+            color: #ececec;
+        }
+
+        .hero-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── VCS Workspace Card ── */
+        .vcs-card {
+            width: 100%;
+            max-width: 370px;
+            background: linear-gradient(155deg, #111111 0%, #0c0c0c 55%, #090909 100%);
+            border: 1px solid #1c1c1c;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 28px 70px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(196, 155, 63, 0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .vcs-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(196, 155, 63, 0.2);
+            box-shadow: 0 36px 90px rgba(0, 0, 0, 0.8), 0 0 40px rgba(196, 155, 63, 0.05), 0 0 0 1px rgba(196, 155, 63, 0.1);
+        }
+
+        .vcs-card-chrome {
+            background: #0e0e0e;
+            border-bottom: 1px solid #181818;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .vcs-card-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .vcs-card-dots span {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+        }
+
+        .vcs-card-dots span:nth-child(1) {
+            background: #3a3a3a;
+        }
+
+        .vcs-card-dots span:nth-child(2) {
+            background: #3a3a3a;
+        }
+
+        .vcs-card-dots span:nth-child(3) {
+            background: #c49b3f;
+            opacity: 0.6;
+        }
+
+        .vcs-card-title {
+            flex: 1;
+            text-align: center;
+            font-size: 0.66rem;
+            font-weight: 600;
+            color: #4a4a4a;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+
+        .vcs-card-status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #c49b3f;
+            box-shadow: 0 0 6px rgba(196, 155, 63, 0.5);
+        }
+
+        .vcs-avatar-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px 8px;
+            border-bottom: 1px solid #121212;
+        }
+
+        .vcs-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #c49b3f 0%, #a07828 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 750;
+            color: #0d0d0d;
+            flex-shrink: 0;
+        }
+
+        .vcs-avatar-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .vcs-avatar-name {
+            font-size: 0.76rem;
+            font-weight: 650;
+            color: #d4d4d4;
+            line-height: 1.1;
+        }
+
+        .vcs-avatar-role {
+            font-size: 0.64rem;
+            color: #c49b3f;
+            font-weight: 500;
+        }
+
+        .vcs-online-badge {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 0.62rem;
+            font-weight: 600;
+            color: #5cba5c;
+            background: rgba(92, 186, 92, 0.06);
+            padding: 2px 7px;
+            border-radius: 99px;
+            border: 1px solid rgba(92, 186, 92, 0.15);
+        }
+
+        .vcs-online-badge::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #5cba5c;
+            display: block;
+        }
+
+        .vcs-tasks {
+            padding: 8px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .vcs-task-label {
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: #3e3e3e;
+            text-transform: uppercase;
+            letter-spacing: 0.11em;
+            padding: 3px 0 5px;
+        }
+
+        .vcs-task {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 0;
+            border-bottom: 1px solid #0f0f0f;
+            transition: all 0.2s ease;
+        }
+
+        .vcs-task:last-child {
+            border-bottom: none;
+        }
+
+        .vcs-task:hover {
+            padding-left: 3px;
+        }
+
+        .vcs-task-check {
+            width: 14px;
+            height: 14px;
+            border-radius: 3px;
+            border: 1.5px solid #282828;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 7px;
+            color: transparent;
+        }
+
+        .vcs-task-check.done {
+            background: linear-gradient(135deg, #c49b3f 0%, #a07828 100%);
+            border-color: transparent;
+            color: #0d0d0d;
+        }
+
+        .vcs-task-text {
+            font-size: 0.72rem;
+            color: #888;
+            flex: 1;
+            line-height: 1.3;
+        }
+
+        .vcs-task-text.done-text {
+            text-decoration: line-through;
+            color: #444;
+        }
+
+        .vcs-task-tag {
+            font-size: 0.58rem;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 99px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            flex-shrink: 0;
+        }
+
+        .tag-ai {
+            background: rgba(196, 155, 63, 0.08);
+            color: #c49b3f;
+            border: 1px solid rgba(196, 155, 63, 0.15);
+        }
+
+        .tag-meeting {
+            background: rgba(130, 130, 240, 0.06);
+            color: #9090f0;
+            border: 1px solid rgba(130, 130, 240, 0.12);
+        }
+
+        .tag-report {
+            background: rgba(110, 200, 110, 0.06);
+            color: #88cc88;
+            border: 1px solid rgba(110, 200, 110, 0.12);
+        }
+
+        .tag-live {
+            background: rgba(240, 110, 110, 0.06);
+            color: #f08888;
+            border: 1px solid rgba(240, 110, 110, 0.12);
+        }
+
+        .vcs-ai-chat {
+            margin: 4px 14px 12px;
+            background: rgba(196, 155, 63, 0.04);
+            border: 1px solid rgba(196, 155, 63, 0.1);
+            border-radius: 10px;
+            padding: 8px 10px;
+            display: flex;
+            gap: 7px;
+            align-items: flex-start;
+        }
+
+        .vcs-ai-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 5px;
+            background: linear-gradient(135deg, #c49b3f, #a07828);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.58rem;
+            color: #0d0d0d;
+            font-weight: 750;
+            flex-shrink: 0;
+        }
+
+        .vcs-ai-text {
+            font-size: 0.68rem;
+            color: #888;
+            line-height: 1.5;
+        }
+
+        .vcs-ai-text strong {
+            color: #c49b3f;
+            font-weight: 600;
+        }
+
+        .vcs-card-footer {
+            background: #090909;
+            border-top: 1px solid #121212;
+            padding: 7px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .vcs-footer-label {
+            font-size: 0.6rem;
+            color: #333;
+            font-family: 'Courier New', monospace;
+        }
+
+        .vcs-footer-users {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.6rem;
+            color: #555;
+        }
+
+        .vcs-footer-avatars {
+            display: flex;
+        }
+
+        .vcs-footer-avatars span {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 1.5px solid #090909;
+            margin-left: -4px;
+            display: block;
+        }
+
+        .vcs-footer-avatars span:nth-child(1) {
+            background: #c49b3f;
+        }
+
+        .vcs-footer-avatars span:nth-child(2) {
+            background: #5a8acc;
+        }
+
+        .vcs-footer-avatars span:nth-child(3) {
+            background: #cc7070;
+        }
+
+        .vcs-footer-avatars span:first-child {
+            margin-left: 0;
+        }
+
+        /* ── STATS ── */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            max-width: var(--max-width);
+            margin: -50px auto 0;
+            padding: 0 24px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .stats>div {
+            text-align: center;
+            padding: 28px 18px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-right: none;
+            position: relative;
+            transition: all var(--transition-smooth);
+        }
+
+        .stats>div:first-child {
+            border-radius: var(--radius-md) 0 0 var(--radius-md);
+        }
+
+        .stats>div:last-child {
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            border-right: 1px solid var(--border-subtle);
+        }
+
+        .stats>div:hover {
+            background: var(--bg-card);
+        }
+
+        .stats>div::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity var(--transition-smooth);
+        }
+
+        .stats>div:hover::after {
+            opacity: 1;
+        }
+
+        .stats h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.03em;
+            margin-bottom: 2px;
+        }
+
+        .stats p {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin: 0;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        /* ── ARTICLE / CARD ── */
+        article {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px 22px;
+            transition: all var(--transition-smooth);
+            position: relative;
+            box-shadow: var(--shadow-card);
+            cursor: default;
+            overflow: hidden;
+        }
+
+        article::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            left: -60px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, transparent 70%);
+            transition: all var(--transition-smooth);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        article:hover {
+            box-shadow: var(--shadow-card-hover);
+            transform: translateY(-2px);
+            border-color: var(--border-default);
+            background: var(--bg-card-hover);
+        }
+
+        article:hover::before {
+            top: -10px;
+            left: -10px;
+            width: 150px;
+            height: 150px;
+            opacity: 1;
+        }
+
+        article h3 {
+            margin-bottom: 6px;
+            font-size: 0.98rem;
+            color: #e4e4e4;
+            position: relative;
+            z-index: 2;
+        }
+
+        article p {
+            font-size: 0.85rem;
+            color: #868686;
+            line-height: 1.6;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        article .card-accent {
+            position: absolute;
+            left: 0;
+            top: 20px;
+            width: 2px;
+            height: 22px;
+            background: var(--accent);
+            border-radius: 0 2px 2px 0;
+            opacity: 0;
+            transition: all var(--transition-smooth);
+            z-index: 2;
+        }
+
+        article:hover .card-accent {
+            opacity: 1;
+        }
+
+        /* ── ABOUT ── */
+        #about {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 72px;
+            align-items: start;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 90px 24px;
+        }
+
+        #about>div:first-child {
+            text-align: left;
+            margin-bottom: 0;
+            position: sticky;
+            top: 84px;
+        }
+
+        #about>div:first-child h2 {
+            color: #f4f4f4;
+            margin-top: 6px;
+        }
+
+        #about>div:nth-child(2) p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 14px;
+            color: #909090;
+        }
+
+        /* ── PROBLEM ── */
+        #problem {
+            padding: 90px 24px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        #problem>div:first-child {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        #problem>div:first-child h2 {
+            color: #f4f4f4;
+        }
+
+        #problem>div:nth-child(2) {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+        }
+
+        /* ── SOLUTION ── */
+        #solution {
+            padding: 90px 24px;
+            max-width: 680px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #solution>div:first-child {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        #solution>div:first-child h2 {
+            color: #f4f4f4;
+        }
+
+        #solution>div:nth-child(2) p {
+            font-size: 0.95rem;
+            color: #909090;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        /* ── VISION ── */
+        #vision {
+            padding: 90px 24px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        #vision>div:first-child {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        #vision>div:first-child h2 {
+            color: #f4f4f4;
+        }
+
+        #vision>div:first-child p {
+            max-width: 520px;
+            margin: 10px auto 0;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+
+        #vision>div:nth-child(2) {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 10px;
+        }
+
+        /* ── WHY ── */
+        #why {
+            padding: 90px 24px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        #why>div:first-child {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        #why>div:first-child h2 {
+            color: #f4f4f4;
+        }
+
+        #why>div:nth-child(2) {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+        }
+
+        /* ── AI MODULES ── */
+        #ai-modules {
+            padding: 90px 24px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        #ai-modules>div:first-child {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        #ai-modules>div:first-child h2 {
+            color: #f4f4f4;
+        }
+
+        #ai-modules>div:first-child p {
+            max-width: 520px;
+            margin: 10px auto 0;
+            color: var(--text-muted);
+        }
+
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2px;
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .module-grid article {
+            border-radius: 0;
+            border: none;
+            border-right: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            box-shadow: none;
+        }
+
+        .module-grid article:hover {
+            box-shadow: none;
+            background: var(--bg-card-hover);
+        }
+
+        /* ── GEMINI ── */
+        #gemini {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 0;
+            max-width: 100%;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #gemini::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 8%;
+            transform: translate(0, -50%);
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(196, 155, 63, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        #gemini>div:first-child {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 70px 24px 20px;
+            text-align: left;
+            margin-bottom: 0;
+        }
+
+        #gemini>div:first-child h2 {
+            color: #f4f4f4;
+            font-size: clamp(1.6rem, 2.6vw, 2rem);
+        }
+
+        #gemini>div:nth-child(2) {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px 70px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        #gemini>div:nth-child(2) p {
+            font-size: 0.93rem;
+            color: #888;
+            line-height: 1.75;
+            margin-bottom: 0;
+        }
+
+        /* ── DASHBOARD ── */
+        #dashboard {
+            padding: 90px 24px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        #dashboard>div:first-child {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        #dashboard>div:first-child h2 {
+            color: #f4f4f4;
+        }
+
+        #dashboard>div:nth-child(2) {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+        }
+
+        /* ── ANALYTICS ── */
+        #analytics {
+            padding: 90px 24px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        #analytics>div:first-child {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        #analytics>div:first-child h2 {
+            color: #f4f4f4;
+        }
+
+        #analytics>div:nth-child(2) {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 10px;
+        }
+
+        /* ── GAMIFICATION ── */
+        #gamification {
+            padding: 90px 24px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        #gamification>div:first-child {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        #gamification>div:first-child h2 {
+            color: #f4f4f4;
+        }
+
+        #gamification>div:nth-child(2) {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 10px;
+        }
+
+        /* ── TECHNOLOGY ── */
+        #technology {
+            padding: 90px 24px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        #technology>div:first-child {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        #technology>div:first-child h2 {
+            color: #f4f4f4;
+        }
+
+        #technology>div:nth-child(2) {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 8px;
+        }
+
+        #technology article {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 20px 18px;
+        }
+
+        #technology article h3 {
+            font-size: 0.9rem;
+            margin-bottom: 2px;
+            flex-shrink: 0;
+            min-width: 70px;
+        }
+
+        #technology article p {
+            font-size: 0.8rem;
+            font-family: 'Courier New', monospace;
+            color: #666;
+        }
+
+        /* ── ARCHITECTURE ── */
+        #architecture {
+            padding: 90px 24px;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        #architecture>div:first-child {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        #architecture>div:first-child h2 {
+            color: #f4f4f4;
+        }
+
+        #architecture>div:nth-child(2) ol {
+            list-style: none;
+            counter-reset: arch-step;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        #architecture>div:nth-child(2) ol li {
+            counter-increment: arch-step;
+            padding: 16px 22px;
+            border-bottom: 1px solid var(--border-subtle);
+            font-size: 0.9rem;
+            color: #c0c0c0;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--bg-card);
+        }
+
+        #architecture>div:nth-child(2) ol li:last-child {
+            border-bottom: none;
+        }
+
+        #architecture>div:nth-child(2) ol li:hover {
+            background: var(--bg-card-hover);
+            padding-left: 30px;
+            color: #e8e8e8;
+        }
+
+        #architecture>div:nth-child(2) ol li::before {
+            content: counter(arch-step);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-default);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            flex-shrink: 0;
+            transition: all var(--transition-fast);
+        }
+
+        #architecture>div:nth-child(2) ol li:hover::before {
+            background: var(--accent);
+            color: #111;
+            border-color: var(--accent);
+        }
+
+        /* ── BENEFITS ── */
+        #benefits {
+            padding: 90px 24px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        #benefits>div:first-child {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        #benefits>div:first-child h2 {
+            color: #f4f4f4;
+        }
+
+        #benefits>div:nth-child(2) {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        #benefits>div:nth-child(2) article {
+            flex: 0 0 auto;
+            padding: 12px 20px;
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            font-weight: 550;
+            color: #c8c8c8;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: none;
+        }
+
+        #benefits>div:nth-child(2) article::before {
+            display: none;
+        }
+
+        #benefits>div:nth-child(2) article:hover {
+            background: var(--accent-subtle);
+            border-color: rgba(196, 155, 63, 0.3);
+            color: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        #benefits>div:nth-child(2) article .card-accent {
+            display: none;
+        }
+
+        #benefits>div:nth-child(2) article h3 {
+            margin: 0;
+            font-size: 0.85rem;
+            color: inherit;
+            font-weight: 550;
+        }
+
+        /* ── ROADMAP ── */
+        #roadmap {
+            padding: 90px 24px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        #roadmap>div:first-child {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        #roadmap>div:first-child h2 {
+            color: #f4f4f4;
+        }
+
+        #roadmap>div:nth-child(2) {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2px;
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        #roadmap>div:nth-child(2) article {
+            border-radius: 0;
+            border: none;
+            border-right: 1px solid var(--border-subtle);
+            box-shadow: none;
+            padding: 28px 22px;
+        }
+
+        #roadmap>div:nth-child(2) article:last-child {
+            border-right: none;
+        }
+
+        #roadmap>div:nth-child(2) article:hover {
+            box-shadow: none;
+            background: var(--bg-card-hover);
+        }
+
+        /* ── SIMULATION TIMELINE ── */
+        #simulation {
+            padding: 90px 24px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        #simulation>div:first-child {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        #simulation>div:first-child h2 {
+            color: #f4f4f4;
+        }
+
+        #simulation>div:first-child p {
+            max-width: 520px;
+            margin: 10px auto 0;
+            color: var(--text-muted);
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            max-width: 620px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 4px;
+            bottom: 4px;
+            width: 1.5px;
+            background: var(--border-default);
+            border-radius: 1px;
+        }
+
+        .timeline article {
+            position: relative;
+            margin-bottom: 3px;
+            padding: 16px 20px;
+            border: none;
+            box-shadow: none;
+            background: transparent;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+            cursor: default;
+        }
+
+        .timeline article::after {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 19px;
+            width: 8px;
+            height: 8px;
+            background: var(--bg-card);
+            border-radius: 50%;
+            border: 2px solid var(--border-strong);
+            transition: all var(--transition-smooth);
+            z-index: 1;
+        }
+
+        .timeline article:hover {
+            background: var(--white-soft);
+            transform: translateX(3px);
+            box-shadow: none;
+        }
+
+        .timeline article:hover::after {
+            border-color: var(--accent);
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .timeline article::before {
+            display: none;
+        }
+
+        .timeline article h3 {
+            font-size: 0.85rem;
+            color: #c0c0c0;
+            margin-bottom: 2px;
+            font-weight: 600;
+        }
+
+        .timeline article p {
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        /* ── USE CASES ── */
+        #usecases {
+            padding: 90px 24px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        #usecases>div:first-child {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        #usecases>div:first-child h2 {
+            color: #f4f4f4;
+        }
+
+        #usecases>div:nth-child(2) {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 10px;
+        }
+
+        /* ── FAQ ── */
+        #faq {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 90px 24px;
+        }
+
+        #faq>div:first-child {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        #faq>div:first-child h2 {
+            color: #f4f4f4;
+        }
+
+        #faq details {
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            margin-bottom: 6px;
+            overflow: hidden;
+            transition: all var(--transition-smooth);
+            background: var(--bg-card);
+        }
+
+        #faq details:hover {
+            border-color: var(--border-default);
+        }
+
+        #faq details[open] {
+            border-color: rgba(196, 155, 63, 0.18);
+            background: var(--bg-card-hover);
+        }
+
+        #faq summary {
+            padding: 17px 44px 17px 18px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #c8c8c8;
+            cursor: pointer;
+            list-style: none;
+            position: relative;
+            transition: color var(--transition-fast);
+        }
+
+        #faq summary::-webkit-details-marker {
+            display: none;
+        }
+
+        #faq summary::after {
+            content: '+';
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #555;
+            transition: all var(--transition-spring);
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--white-soft);
+        }
+
+        #faq details[open] summary::after {
+            content: '−';
+            color: var(--accent-light);
+            background: var(--accent-subtle);
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        #faq details[open] summary {
+            color: #f0f0f0;
+        }
+
+        #faq details p {
+            padding: 14px 18px 18px;
+            color: #777;
+            font-size: 0.88rem;
+            line-height: 1.7;
+            margin: 0;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        /* ── CTA ── */
+        #cta {
+            text-align: center;
+            background: linear-gradient(135deg, #090909 0%, #0f0f0f 40%, #0b0b0b 100%);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 0;
+            max-width: 100%;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 250px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse, rgba(196, 155, 63, 0.04) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        #cta>div {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 80px 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        #cta h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 750;
+            color: #f4f4f4;
+            margin-bottom: 16px;
+            letter-spacing: -0.028em;
+            line-height: 1.15;
+        }
+
+        #cta>div>p {
+            color: #888;
+            max-width: 480px;
+            margin: 0 auto 32px;
+            font-size: 0.95rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-buttons a {
+            padding: 14px 32px;
+            border-radius: var(--radius-full);
+            font-weight: 650;
+            font-size: 0.9rem;
+            transition: all var(--transition-smooth);
+            cursor: pointer;
+            letter-spacing: 0.02em;
+        }
+
+        .cta-buttons a:first-child {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: #111;
+            box-shadow: 0 2px 20px rgba(196, 155, 63, 0.25);
+        }
+
+        .cta-buttons a:first-child:hover {
+            box-shadow: 0 6px 32px rgba(196, 155, 63, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .cta-buttons a:last-child {
+            background: transparent;
+            color: #bbb;
+            border: 1.5px solid var(--border-strong);
+        }
+
+        .cta-buttons a:last-child:hover {
+            border-color: rgba(196, 155, 63, 0.35);
+            color: var(--accent-light);
+            background: var(--accent-subtle);
+            transform: translateY(-2px);
+        }
+
+        /* ── CONTACT ── */
+        #contact {
+            max-width: 580px;
+            margin: 0 auto;
+            padding: 90px 24px;
+        }
+
+        #contact>div:first-child {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        #contact>div:first-child h2 {
+            color: #f4f4f4;
+        }
+
+        #contact form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        #contact input,
+        #contact textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--border-default);
+            border-radius: var(--radius-sm);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            color: #e0e0e0;
+            background: var(--bg-surface);
+            transition: all var(--transition-fast);
+            resize: vertical;
+            outline: none;
+        }
+
+        #contact input:focus,
+        #contact textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-subtle);
+            background: var(--bg-card);
+        }
+
+        #contact input::placeholder,
+        #contact textarea::placeholder {
+            color: #444;
+        }
+
+        #contact button {
+            padding: 14px 30px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: #111;
+            border: none;
+            border-radius: var(--radius-full);
+            font-weight: 650;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: all var(--transition-smooth);
+            align-self: flex-start;
+            box-shadow: 0 2px 16px rgba(196, 155, 63, 0.18);
+        }
+
+        #contact button:hover {
+            box-shadow: 0 6px 26px rgba(196, 155, 63, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--bg-primary);
+            color: #999;
+            padding: 56px 24px 24px;
+            margin-top: 30px;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        footer>div:first-of-type {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 36px;
+            max-width: var(--max-width);
+            margin: 0 auto 36px;
+        }
+
+        footer h2 {
+            color: #f4f4f4;
+            font-size: 1.15rem;
+            font-weight: 650;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        footer h3 {
+            color: #e0e0e0;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        footer p {
+            color: #777;
+            font-size: 0.84rem;
+            line-height: 1.7;
+        }
+
+        footer ul li {
+            padding: 3px 0;
+            font-size: 0.82rem;
+            color: #777;
+            transition: color var(--transition-fast);
+            cursor: pointer;
+        }
+
+        footer ul li:hover {
+            color: #e0e0e0;
+        }
+
+        footer a {
+            color: #777;
+            transition: color var(--transition-fast);
+        }
+
+        footer a:hover {
+            color: #e0e0e0;
+        }
+
+        footer hr {
+            border: none;
+            border-top: 1px solid var(--border-subtle);
+            max-width: var(--max-width);
+            margin: 0 auto 20px;
+        }
+
+        footer>div:last-child {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        footer>div:last-child p {
+            font-size: 0.76rem;
+            color: #666;
+            margin-bottom: 2px;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 30px 24px 50px;
+                min-height: auto;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero-content>p {
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image {
+                display: none;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                margin: -30px 16px 0;
+                gap: 0;
+            }
+
+            .stats div:nth-child(2) {
+                border-right: 1px solid var(--border-subtle);
+                border-radius: 0 var(--radius-md) 0 0;
+            }
+
+            .stats div:nth-child(3) {
+                border-radius: 0 0 0 var(--radius-md);
+            }
+
+            .stats div:nth-child(4) {
+                border-radius: 0 0 var(--radius-md) 0;
+            }
+
+            #about {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            #about>div:first-child {
+                position: static;
+                text-align: center;
+            }
+
+            footer>div:first-of-type {
+                grid-template-columns: 1fr 1fr;
+                gap: 28px;
+            }
+
+            .module-grid {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            header#home nav {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 10px 14px;
+                gap: 6px;
+            }
+
+            header#home nav ul {
+                flex-wrap: wrap;
+                gap: 2px;
+                justify-content: center;
+            }
+
+            header#home nav ul li a {
+                padding: 6px 10px;
+                font-size: 0.74rem;
+            }
+
+            section {
+                padding: 60px 14px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 0;
+                padding: 14px 6px;
+                margin: -20px 10px 0;
+            }
+
+            .stats h2 {
+                font-size: 1.5rem;
+            }
+
+            .stats p {
+                font-size: 0.66rem;
+            }
+
+            .timeline {
+                padding-left: 24px;
+            }
+
+            .timeline::before {
+                left: 7px;
+            }
+
+            .timeline article::after {
+                left: -20px;
+                width: 7px;
+                height: 7px;
+            }
+
+            footer>div:first-of-type {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            #cta>div {
+                padding: 50px 18px;
+            }
+
+            #cta h2 {
+                font-size: 1.5rem;
+            }
+
+            #gemini>div:first-child {
+                padding: 50px 18px 16px;
+            }
+
+            #gemini>div:nth-child(2) {
+                padding: 0 18px 50px;
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            #contact {
+                padding: 60px 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.55rem;
+            }
+
+            .hero-content>p {
+                font-size: 0.85rem;
+            }
+
+            .hero-buttons a {
+                padding: 11px 18px;
+                font-size: 0.8rem;
+            }
+
+            .stats h2 {
+                font-size: 1.25rem;
+            }
+
+            .stats p {
+                font-size: 0.62rem;
+            }
+
+            article {
+                padding: 18px 14px;
+            }
+
+            h5 {
+                font-size: 0.64rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="home">
+        <nav>
+            <div class="logo">
+                <h2>VCS</h2>
+            </div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#vision">Vision</a></li>
+                <li><a href="#ai-modules">AI Modules</a></li>
+                <li><a href="#simulation">Workflow</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge">AI Powered Corporate Learning Platform</span>
+            <h1>Experience Working Inside A Real Company Before You Join One.</h1>
+            <p>
+                Virtual Company Simulator (VCS) transforms education into an immersive workplace experience where
+                students and professionals collaborate with Artificial Intelligence, complete real business tasks,
+                attend meetings, communicate with virtual employees, solve company challenges, and develop
+                industry-ready skills in a realistic digital organization.
+            </p>
+            <div class="hero-buttons">
+                <a href="#about">Explore Platform</a>
+                <a href="#ai-modules">Discover Features</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="vcs-card">
+                <div class="vcs-card-chrome">
+                    <div class="vcs-card-dots"><span></span><span></span><span></span></div>
+                    <span class="vcs-card-title">VCS Workspace</span>
+                    <span class="vcs-card-status-dot"></span>
+                </div>
+                <div class="vcs-avatar-row">
+                    <div class="vcs-avatar">RV</div>
+                    <div class="vcs-avatar-info">
+                        <span class="vcs-avatar-name">Raj Verma</span>
+                        <span class="vcs-avatar-role">Junior Product Manager · Sprint 4</span>
+                    </div>
+                    <span class="vcs-online-badge">Online</span>
+                </div>
+                <div class="vcs-tasks">
+                    <div class="vcs-task-label">Today's Tasks</div>
+                    <div class="vcs-task">
+                        <div class="vcs-task-check done">✓</div>
+                        <span class="vcs-task-text done-text">Review Q3 market analysis report</span>
+                        <span class="vcs-task-tag tag-report">Done</span>
+                    </div>
+                    <div class="vcs-task">
+                        <div class="vcs-task-check done">✓</div>
+                        <span class="vcs-task-text done-text">Standup with AI project mentor</span>
+                        <span class="vcs-task-tag tag-ai">AI</span>
+                    </div>
+                    <div class="vcs-task">
+                        <div class="vcs-task-check"></div>
+                        <span class="vcs-task-text">Client presentation — 3:00 PM</span>
+                        <span class="vcs-task-tag tag-meeting">Meeting</span>
+                    </div>
+                    <div class="vcs-task">
+                        <div class="vcs-task-check"></div>
+                        <span class="vcs-task-text">Submit Sprint 4 performance review</span>
+                        <span class="vcs-task-tag tag-live">Live</span>
+                    </div>
+                </div>
+                <div class="vcs-ai-chat">
+                    <div class="vcs-ai-icon">AI</div>
+                    <div class="vcs-ai-text">
+                        <strong>Gemini Mentor:</strong> Great progress today, Raj. Your presentation deck is strong —
+                        focus on the ROI slide for the 3 PM client call.
+                    </div>
+                </div>
+                <div class="vcs-card-footer">
+                    <span class="vcs-footer-label">vcs.app · session#4829</span>
+                    <div class="vcs-footer-users">
+                        <div class="vcs-footer-avatars"><span></span><span></span><span></span></div>
+                        3 colleagues online
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div>
+            <h2>100+</h2>
+            <p>AI Generated Corporate Tasks</p>
+        </div>
+        <div>
+            <h2>15+</h2>
+            <p>Business Departments</p>
+        </div>
+        <div>
+            <h2>24/7</h2>
+            <p>Intelligent AI Mentors</p>
+        </div>
+        <div>
+            <h2>Unlimited</h2>
+            <p>Learning Possibilities</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <div>
+            <h5>About VCS</h5>
+            <h2>A New Generation of Professional Learning</h2>
+        </div>
+        <div>
+            <p>Traditional education provides theoretical knowledge, while industries expect practical experience. This
+                gap often becomes the biggest challenge for students entering the professional world.</p>
+            <p>Virtual Company Simulator bridges this gap by recreating an intelligent corporate environment where every
+                learner becomes an employee inside a fully functional virtual company.</p>
+            <p>Instead of watching tutorials or completing isolated exercises, users actively participate in projects,
+                attend meetings, solve workplace problems, communicate with colleagues, manage deadlines, and receive
+                continuous AI-driven feedback.</p>
+            <p>Every interaction inside the simulator reflects realistic corporate practices, enabling users to build
+                confidence, technical knowledge, communication skills, leadership qualities, and professional
+                decision-making abilities before entering the real workforce.</p>
+        </div>
+    </section>
+
+    <section id="problem">
+        <div>
+            <h5>The Problem</h5>
+            <h2>Why Students Struggle During Their First Job</h2>
+        </div>
+        <div>
+            <article><span class="card-accent"></span>
+                <h3>Lack of Industry Exposure</h3>
+                <p>Most students graduate without understanding how companies actually operate on a daily basis.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Limited Practical Experience</h3>
+                <p>Classroom assignments rarely replicate real business challenges, teamwork, or project
+                    responsibilities.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Communication Gap</h3>
+                <p>Many learners never experience meetings, reporting, presentations, or workplace communication before
+                    employment.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Fear of Real Projects</h3>
+                <p>Fresh graduates often lack confidence because they have never managed realistic deadlines or
+                    collaborative workflows.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="solution">
+        <div>
+            <h5>Our Solution</h5>
+            <h2>Learn By Working, Not By Watching</h2>
+        </div>
+        <div>
+            <p>Virtual Company Simulator replaces passive learning with active workplace participation.</p>
+            <p>Every learner joins an AI-powered organization, receives a professional role, collaborates with
+                intelligent coworkers, completes business assignments, participates in meetings, solves unexpected
+                workplace scenarios, and continuously improves through personalized AI mentorship.</p>
+            <p>Rather than preparing students for interviews alone, VCS prepares them for the entire professional
+                journey inside an organization.</p>
+        </div>
+    </section>
+
+    <section id="vision">
+        <div>
+            <h5>Our Mission</h5>
+            <h2>Redefining Professional Education Through Artificial Intelligence</h2>
+            <p>Our mission is to transform every learner into an industry-ready professional by providing practical
+                corporate experience powered by Artificial Intelligence.</p>
+        </div>
+        <div>
+            <article><span class="card-accent"></span>
+                <h3>Innovation</h3>
+                <p>Continuously improving workplace simulations using advanced AI technologies.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Accessibility</h3>
+                <p>Making quality corporate experience available to every student regardless of location.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Practical Learning</h3>
+                <p>Encouraging learning through real tasks instead of passive observation.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Career Growth</h3>
+                <p>Building confidence that helps learners transition smoothly into professional careers.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="why">
+        <div>
+            <h5>Why VCS</h5>
+            <h2>More Than An Internship. More Than A Learning Platform.</h2>
+        </div>
+        <div>
+            <article><span class="card-accent"></span>
+                <h3>Realistic Corporate Environment</h3>
+                <p>Experience company culture, workflows, reporting structures, deadlines, and collaborative teamwork
+                    exactly as they exist in professional organizations.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>AI Driven Decision Making</h3>
+                <p>Intelligent AI managers evaluate your decisions, generate new challenges, and personalize every
+                    learning experience.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Continuous Skill Development</h3>
+                <p>Improve technical knowledge, communication, analytical thinking, leadership, teamwork, and time
+                    management through practical experience.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="ai-modules">
+        <div>
+            <h5>AI Powered Modules</h5>
+            <h2>Intelligent Systems That Drive The Virtual Company</h2>
+            <p>Every interaction inside VCS is powered by Artificial Intelligence, making each employee's journey
+                unique, adaptive, and realistic.</p>
+        </div>
+        <div class="module-grid">
+            <article><span class="card-accent"></span>
+                <h3>AI Manager</h3>
+                <p>Assigns work, approves submissions, reviews employee performance, provides promotions, and guides
+                    career growth.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>AI HR Executive</h3>
+                <p>Conducts onboarding, interviews, attendance management, employee evaluations, and HR communications.
+                </p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>AI Team Members</h3>
+                <p>Collaborate with users during projects by suggesting ideas, assigning subtasks, and participating in
+                    discussions.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>AI Client</h3>
+                <p>Provides business requirements, requests project revisions, asks questions, and evaluates final
+                    deliverables.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>AI Mentor</h3>
+                <p>Continuously recommends learning materials, career guidance, certifications, and skill improvement
+                    suggestions.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>AI Performance Engine</h3>
+                <p>Monitors communication, productivity, leadership, collaboration, technical skills, and consistency.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <section id="gemini">
+        <div>
+            <h5>Google Gemini AI</h5>
+            <h2>Intelligence Behind Every Decision</h2>
+        </div>
+        <div>
+            <p>VCS integrates Google's Gemini AI to create an adaptive workplace where every employee receives unique
+                experiences based on their performance, decisions, communication style, and learning pace.</p>
+            <p>Gemini AI generates workplace conversations, project requirements, client meetings, coding challenges, HR
+                interactions, documentation tasks, emails, and personalized learning paths.</p>
+            <p>Instead of following predefined scripts, the simulator evolves dynamically, ensuring that every session
+                feels like working in a real organization.</p>
+        </div>
+    </section>
+
+    <section id="dashboard">
+        <div>
+            <h5>Employee Dashboard</h5>
+            <h2>Everything At One Place</h2>
+        </div>
+        <div>
+            <article><span class="card-accent"></span>
+                <h3>Employee Profile</h3>
+                <p>Personal information, department, designation, experience, achievements, and performance history.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Today's Tasks</h3>
+                <p>View assigned work, deadlines, priorities, and project updates in real time.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Meeting Schedule</h3>
+                <p>Access upcoming stand-ups, client discussions, interviews, and department meetings.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Notifications</h3>
+                <p>Promotions, announcements, AI feedback, company news, and important reminders.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Project Progress</h3>
+                <p>Track completion percentage, pending tasks, milestones, and team activities.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Learning Center</h3>
+                <p>Access AI recommendations, tutorials, documentation, and personalized career guidance.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="analytics">
+        <div>
+            <h5>Performance Analytics</h5>
+            <h2>Measure Growth Through Data</h2>
+        </div>
+        <div>
+            <article><span class="card-accent"></span>
+                <h3>Task Completion</h3>
+                <p>Analyze productivity based on completed assignments and project delivery.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Communication Score</h3>
+                <p>Evaluate professional communication during meetings, discussions, and reports.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Leadership Index</h3>
+                <p>Measure initiative, decision making, and team management capabilities.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Technical Skills</h3>
+                <p>Assess coding, documentation, debugging, planning, and analytical abilities.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Learning Progress</h3>
+                <p>Monitor overall career development and continuous improvement.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Department Ranking</h3>
+                <p>Compare performance with other virtual employees inside the organization.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="gamification">
+        <div>
+            <h5>Gamification</h5>
+            <h2>Stay Motivated While Learning</h2>
+        </div>
+        <div>
+            <article><span class="card-accent"></span>
+                <h3>Experience Points (XP)</h3>
+                <p>Earn XP by completing projects, solving problems, and participating in company activities.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Achievements</h3>
+                <p>Unlock special badges for consistency, innovation, leadership, teamwork, and creativity.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Promotions</h3>
+                <p>Climb the corporate ladder through outstanding performance and continuous learning.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Leaderboards</h3>
+                <p>Compete with other employees and showcase your professional achievements.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="technology">
+        <div>
+            <h5>Technology Stack</h5>
+            <h2>Built Using Modern Technologies</h2>
+        </div>
+        <div>
+            <article><span class="card-accent"></span>
+                <h3>Frontend</h3>
+                <p>HTML5, CSS3, JavaScript, React, TypeScript</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Backend</h3>
+                <p>Node.js, Express.js, REST API</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Database</h3>
+                <p>PostgreSQL</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>AI</h3>
+                <p>Google Gemini API</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Auth</h3>
+                <p>JWT Authentication & Secure Login</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Deployment</h3>
+                <p>Cloud Hosting with scalable architecture</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="architecture">
+        <div>
+            <h5>System Architecture</h5>
+            <h2>End-to-End Platform Workflow</h2>
+        </div>
+        <div>
+            <ol>
+                <li>User Login & Authentication</li>
+                <li>Employee Dashboard Initialization</li>
+                <li>Department Assignment</li>
+                <li>AI Task Generation</li>
+                <li>Project Execution</li>
+                <li>AI Evaluation & Feedback</li>
+                <li>Performance Analytics</li>
+                <li>Promotion & Skill Enhancement</li>
+            </ol>
+        </div>
+    </section>
+
+    <section id="benefits">
+        <div>
+            <h5>Benefits</h5>
+            <h2>Why Choose Virtual Company Simulator?</h2>
+        </div>
+        <div>
+            <article><span class="card-accent"></span>
+                <h3>Real Corporate Experience</h3>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>AI Guided Learning</h3>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Practical Skill Development</h3>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Improved Communication</h3>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Leadership Training</h3>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Project Based Learning</h3>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Industry Ready Professionals</h3>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Continuous Performance Tracking</h3>
+            </article>
+        </div>
+    </section>
+
+    <section id="roadmap">
+        <div>
+            <h5>Future Roadmap</h5>
+            <h2>Building The Future Workplace</h2>
+        </div>
+        <div>
+            <article><span class="card-accent"></span>
+                <h3>Phase 1</h3>
+                <p>Core AI workplace simulation, departments, task management, analytics, and employee progression.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Phase 2</h3>
+                <p>Multiplayer collaboration, company competitions, and team projects with shared objectives.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Phase 3</h3>
+                <p>Voice-enabled AI employees, virtual office environments, immersive communication, and real-time
+                    collaboration.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Phase 4</h3>
+                <p>Enterprise adoption for universities, training centers, and organizations with customizable virtual
+                    companies.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="simulation">
+        <div>
+            <h5>Live Company Experience</h5>
+            <h2>A Typical Day Inside The Virtual Company</h2>
+            <p>Every working day inside VCS is designed to simulate an actual corporate environment. Employees receive
+                tasks, attend meetings, collaborate with AI teammates, solve business problems, and continuously improve
+                their professional skills.</p>
+        </div>
+        <div class="timeline">
+            <article>
+                <h3>09:00 AM • Employee Login</h3>
+                <p>Employees log into the company dashboard, review company announcements, check notifications, and
+                    prepare for the day.</p>
+            </article>
+            <article>
+                <h3>09:30 AM • Daily Stand-up Meeting</h3>
+                <p>Join AI managers and teammates to discuss yesterday's work, today's objectives, blockers, and
+                    upcoming deadlines.</p>
+            </article>
+            <article>
+                <h3>10:00 AM • Task Allocation</h3>
+                <p>AI assigns personalized work based on department, skill level, previous performance, and business
+                    priorities.</p>
+            </article>
+            <article>
+                <h3>11:30 AM • Team Collaboration</h3>
+                <p>Communicate with AI coworkers, exchange ideas, solve problems, and work together on shared
+                    objectives.</p>
+            </article>
+            <article>
+                <h3>02:00 PM • Client Interaction</h3>
+                <p>Present progress, answer client questions, gather requirements, and implement requested improvements.
+                </p>
+            </article>
+            <article>
+                <h3>04:00 PM • Project Submission</h3>
+                <p>Submit completed work for AI review and quality assessment.</p>
+            </article>
+            <article>
+                <h3>05:30 PM • Performance Review</h3>
+                <p>Receive detailed analytics, productivity scores, AI feedback, recommendations, and promotion
+                    eligibility.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="usecases">
+        <div>
+            <h5>Who Can Use VCS?</h5>
+            <h2>Built For Every Future Professional</h2>
+        </div>
+        <div>
+            <article><span class="card-accent"></span>
+                <h3>Students</h3>
+                <p>Experience workplace culture before graduation and build confidence for placements and internships.
+                </p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Fresh Graduates</h3>
+                <p>Develop practical experience that bridges the gap between college education and industry
+                    expectations.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Educational Institutions</h3>
+                <p>Provide students with interactive corporate learning, practical assessments, and AI-powered training.
+                </p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Training Organizations</h3>
+                <p>Deliver industry-focused learning programs using realistic company simulations and intelligent
+                    evaluations.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Professionals</h3>
+                <p>Practice leadership, management, communication, and department-specific responsibilities.</p>
+            </article>
+            <article><span class="card-accent"></span>
+                <h3>Corporate Organizations</h3>
+                <p>Train new employees using customized virtual companies, workflows, and AI-powered onboarding
+                    experiences.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div>
+            <h5>Frequently Asked Questions</h5>
+            <h2>Got Questions? We've Got Answers.</h2>
+        </div>
+        <details>
+            <summary>What is Virtual Company Simulator?</summary>
+            <p>Virtual Company Simulator is an AI-powered learning platform where users work inside a virtual
+                organization and gain professional experience through realistic business simulations.</p>
+        </details>
+        <details>
+            <summary>Does VCS replace internships?</summary>
+            <p>No. VCS complements internships by preparing learners with practical workplace knowledge before entering
+                real companies.</p>
+        </details>
+        <details>
+            <summary>How does Artificial Intelligence help?</summary>
+            <p>AI creates dynamic tasks, simulates managers and coworkers, evaluates performance, provides personalized
+                feedback, and continuously adapts the learning experience.</p>
+        </details>
+        <details>
+            <summary>Which departments are available?</summary>
+            <p>Software Development, Human Resources, Marketing, Finance, Operations, UI/UX, Cyber Security, Business
+                Analytics, Customer Support, Project Management, and many more.</p>
+        </details>
+        <details>
+            <summary>Can colleges integrate VCS?</summary>
+            <p>Yes. VCS is designed to support educational institutions, universities, training centers, and corporate
+                organizations.</p>
+        </details>
+        <details>
+            <summary>Is coding knowledge mandatory?</summary>
+            <p>No. Technical and non-technical departments are available, allowing learners from different backgrounds
+                to participate.</p>
+        </details>
+    </section>
+
+    <section id="cta">
+        <div>
+            <h2>The Future Of Professional Learning Starts Here.</h2>
+            <p>Step into an intelligent workplace where every task teaches, every decision matters, and every
+                achievement brings you closer to becoming an industry-ready professional.</p>
+            <div class="cta-buttons">
+                <a href="#">Start Your Journey</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div>
+            <h5>Contact</h5>
+            <h2>Let's Build The Future Together</h2>
+            <p>Interested in Virtual Company Simulator? We'd love to hear from students, educators, developers,
+                organizations, and industry partners.</p>
+        </div>
+        <div>
+            <form>
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="text" placeholder="Organization / College">
+                <textarea rows="5" placeholder="Write your message..."></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div>
+            <div>
+                <h2>Virtual Company Simulator</h2>
+                <p>Experience Before Employment.</p>
+                <p>An AI-powered workplace simulation platform designed to bridge the gap between education and industry
+                    by providing immersive, practical, and intelligent corporate experiences.</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#ai-modules">Features</a></li>
+                    <li><a href="#simulation">Workflow</a></li>
+                    <li><a href="#technology">Technology</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Platform</h3>
+                <ul>
+                    <li>AI Workplace</li>
+                    <li>Corporate Training</li>
+                    <li>Virtual Internship</li>
+                    <li>Skill Development</li>
+                    <li>Career Analytics</li>
+                    <li>Performance Evaluation</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Technologies</h3>
+                <ul>
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>JavaScript</li>
+                    <li>React</li>
+                    <li>Node.js</li>
+                    <li>PostgreSQL</li>
+                    <li>Google Gemini AI</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <p>© 2026 Virtual Company Simulator (VCS). All Rights Reserved.</p>
+            <p>Designed to redefine professional learning through Artificial Intelligence, immersive simulations, and
+                real-world workplace experiences.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

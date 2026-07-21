@@ -1066,7 +1066,7 @@
                 <div class="project-tags">
                     <span>AI</span><span>Python</span><span>Web</span>
                 </div>
-                <a href="#" class="project-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                <a href="https://sep.kwscloud.in/#/login" class="project-link">Learn more <i class="fas fa-arrow-right"></i></a>
             </div>
 
             <div class="project-card reveal reveal-delay-2">
@@ -1426,16 +1426,10 @@
                 }, 4000);
             }, 1500);
         });
-
-        // ===============================
-        // FOOTER YEAR
-        // ===============================
+        
         const footerText = document.querySelector('footer p');
         footerText.innerHTML = `© ${new Date().getFullYear()} Vishal. All Rights Reserved.`;
 
-        // ===============================
-        // SMOOTH SCROLL FOR ALL ANCHOR LINKS
-        // ===============================
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const targetId = this.getAttribute('href');
