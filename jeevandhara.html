@@ -68,8 +68,64 @@
             --radius-organic: 20px 6px 20px 6px;
             --radius-soft: 14px;
             --radius-pill: 50px;
-            --transition-fast: 0.25s cubic-bezier(0.25, 1, 0.5, 1);
-            --transition-smooth: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            --transition-fast: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-smooth: 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Dynamic Pointer Cursor Dark Bloom Effect (Subtle Forest Green & Ultra Smooth) */
+        #cursor-bloom {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 700px;
+            height: 700px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99999;
+            background: radial-gradient(circle at center, rgba(45, 90, 30, 0.08) 0%, rgba(20, 50, 15, 0.03) 45%, rgba(8, 20, 5, 0.008) 75%, transparent 100%);
+            filter: blur(80px);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), width 0.6s cubic-bezier(0.16, 1, 0.3, 1), height 0.6s cubic-bezier(0.16, 1, 0.3, 1), background 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+
+        #cursor-bloom.active {
+            opacity: 1;
+        }
+
+        #cursor-bloom.hovered {
+            width: 900px;
+            height: 900px;
+            background: radial-gradient(circle at center, rgba(65, 120, 40, 0.11) 0%, rgba(30, 70, 20, 0.045) 45%, rgba(10, 30, 8, 0.01) 75%, transparent 100%);
+        }
+
+        /* Full Page Background Starfield (Appears Across All Sections) */
+        #global-starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        #global-starfield .g-star {
+            position: absolute;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: gStarTwinkle 4s infinite cubic-bezier(0.4, 0, 0.2, 1) alternate;
+            pointer-events: none;
+            box-shadow: 0 0 6px rgba(220, 255, 210, 0.4);
+            will-change: transform, opacity;
+        }
+
+        @keyframes gStarTwinkle {
+            0% { opacity: 0.12; transform: scale(0.7); }
+            50% { opacity: 0.85; transform: scale(1.4); }
+            100% { opacity: 0.12; transform: scale(0.7); }
         }
 
         *,
@@ -2565,7 +2621,7 @@
 
         /* Footer */
         #footer {
-            background: #030700;
+            background: #03070080;
             border-top: 2px solid var(--border-mid);
             padding: 3.5rem 3rem 1.8rem;
             position: relative;
@@ -3979,6 +4035,64 @@
         });
         const mImg = document.querySelector('.member-image img');
         if (mImg) { mImg.addEventListener('error', function () { this.parentElement.innerHTML = '<span style="font-size:3rem">🧑‍💻</span>'; }); }
+
+        // Dynamic Pointer Cursor Dark Bloom Tracking & Interpolation
+        const cursorBloom = document.createElement('div');
+        cursorBloom.id = 'cursor-bloom';
+        document.body.appendChild(cursorBloom);
+
+        let mouseX = -500, mouseY = -500;
+        let bloomX = -500, bloomY = -500;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            if (!cursorBloom.classList.contains('active')) {
+                cursorBloom.classList.add('active');
+            }
+        });
+
+        document.addEventListener('mouseleave', () => {
+            cursorBloom.classList.remove('active');
+        });
+
+        function animateBloom() {
+            bloomX += (mouseX - bloomX) * 0.065;
+            bloomY += (mouseY - bloomY) * 0.065;
+            cursorBloom.style.transform = `translate3d(${bloomX}px, ${bloomY}px, 0) translate(-50%, -50%)`;
+            requestAnimationFrame(animateBloom);
+        }
+        animateBloom();
+
+        const interactives = document.querySelectorAll('a, button, .card, .stat-card, .feature-card, .module-card, .tech-card, .gallery-item');
+        interactives.forEach(el => {
+            el.style.willChange = 'transform';
+            el.addEventListener('mouseenter', () => cursorBloom.classList.add('hovered'));
+            el.addEventListener('mouseleave', () => cursorBloom.classList.remove('hovered'));
+        });
+
+        // Full Page Dynamic Starfield Generator (Forest/Lime Tints Across All Sections)
+        (function initGlobalStarfield() {
+            const starfield = document.createElement('div');
+            starfield.id = 'global-starfield';
+            document.body.appendChild(starfield);
+
+            const starCount = 140;
+            const colors = ['#ffffff', '#d4f0d0', '#a8e0a0', '#80c878'];
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star g-star';
+                const size = Math.random() * 2.5 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.top = (Math.random() * 100) + '%';
+                star.style.left = (Math.random() * 100) + '%';
+                star.style.background = colors[Math.floor(Math.random() * colors.length)];
+                star.style.animationDuration = (Math.random() * 4 + 3) + 's';
+                star.style.animationDelay = (Math.random() * 5) + 's';
+                starfield.appendChild(star);
+            }
+        })();
     </script>
 </body>
 

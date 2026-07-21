@@ -30,8 +30,8 @@
             --radius-sm: 10px;
             --radius-md: 16px;
             --radius-lg: 24px;
-            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-smooth: 0.3s ease;
+            --transition: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-smooth: 0.45s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -66,6 +66,62 @@
             z-index: -1;
             background: radial-gradient(circle at 30% 40%, rgba(72,0,255,0.03) 0%, transparent 50%),
                         radial-gradient(circle at 80% 70%, rgba(108, 58, 255,0.02) 0%, transparent 50%);
+        }
+
+        /* Pointer Cursor Dynamic Dark Bloom Effect (Ultra Smooth & Subtle) */
+        #cursor-bloom {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 700px;
+            height: 700px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99999;
+            background: radial-gradient(circle at center, rgba(50, 0, 160, 0.075) 0%, rgba(35, 0, 110, 0.03) 45%, rgba(20, 0, 60, 0.008) 75%, transparent 100%);
+            filter: blur(80px);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), width 0.6s cubic-bezier(0.16, 1, 0.3, 1), height 0.6s cubic-bezier(0.16, 1, 0.3, 1), background 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+
+        #cursor-bloom.active {
+            opacity: 1;
+        }
+
+        #cursor-bloom.hovered {
+            width: 900px;
+            height: 900px;
+            background: radial-gradient(circle at center, rgba(65, 10, 190, 0.095) 0%, rgba(45, 5, 130, 0.04) 45%, rgba(25, 0, 80, 0.01) 75%, transparent 100%);
+        }
+
+        /* Full Page Background Starfield (Appears Across All Sections) */
+        #global-starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        #global-starfield .g-star {
+            position: absolute;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: gStarTwinkle 4s infinite cubic-bezier(0.4, 0, 0.2, 1) alternate;
+            pointer-events: none;
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+            will-change: transform, opacity;
+        }
+
+        @keyframes gStarTwinkle {
+            0% { opacity: 0.12; transform: scale(0.7); }
+            50% { opacity: 0.85; transform: scale(1.4); }
+            100% { opacity: 0.12; transform: scale(0.7); }
         }
 
         ::-webkit-scrollbar {
@@ -464,27 +520,20 @@
             100% { transform: translate(0, 0) scale(1); opacity: 0.06; }
         }
 
-        /* Minimal stars */
+        /* Twinkling Starfield */
         .star {
             position: absolute;
             width: 2px;
             height: 2px;
             background: white;
             border-radius: 50%;
-            animation: twinkle 3s infinite ease-in-out;
+            animation: twinkle 3.5s infinite ease-in-out;
             opacity: 0;
         }
-        .star:nth-child(4) { top: 8%; left: 20%; animation-delay: 0.5s; }
-        .star:nth-child(5) { top: 25%; right: 15%; animation-delay: 1.2s; width: 1px; height: 1px; }
-        .star:nth-child(6) { bottom: 20%; left: 12%; animation-delay: 2s; }
-        .star:nth-child(7) { top: 70%; right: 25%; animation-delay: 0.8s; width: 3px; height: 3px; }
-        .star:nth-child(8) { bottom: 40%; left: 60%; animation-delay: 1.8s; width: 1px; height: 1px; }
-        .star:nth-child(9) { top: 45%; left: 80%; animation-delay: 0.2s; }
-        .star:nth-child(10) { bottom: 10%; right: 40%; animation-delay: 2.5s; width: 2px; height: 2px; }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 0; transform: scale(0.8); }
-            50% { opacity: 0.7; transform: scale(1.4); }
+            0%, 100% { opacity: 0; transform: scale(0.6); }
+            50% { opacity: 0.85; transform: scale(1.5); }
         }
 
         .timeline {
@@ -982,6 +1031,65 @@
             });
         }, {threshold:0.2});
         fadeElements.forEach(el => fadeObserver.observe(el));
+
+        // Dynamic Cursor Bloom Effect Tracking & Interpolation
+        const cursorBloom = document.createElement('div');
+        cursorBloom.id = 'cursor-bloom';
+        document.body.appendChild(cursorBloom);
+
+        let mouseX = -500, mouseY = -500;
+        let bloomX = -500, bloomY = -500;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            if (!cursorBloom.classList.contains('active')) {
+                cursorBloom.classList.add('active');
+            }
+        });
+
+        document.addEventListener('mouseleave', () => {
+            cursorBloom.classList.remove('active');
+        });
+
+        function animateBloom() {
+            bloomX += (mouseX - bloomX) * 0.065;
+            bloomY += (mouseY - bloomY) * 0.065;
+            cursorBloom.style.transform = `translate3d(${bloomX}px, ${bloomY}px, 0) translate(-50%, -50%)`;
+            requestAnimationFrame(animateBloom);
+        }
+        animateBloom();
+
+        // Expand Bloom Effect on Interactive Element Hover
+        const interactiveSelector = 'a, button, .card, .dashboard-card, .stat-card, .timeline-content, .developer-card, .contact-card';
+        document.querySelectorAll(interactiveSelector).forEach(el => {
+            el.style.willChange = 'transform';
+            el.addEventListener('mouseenter', () => cursorBloom.classList.add('hovered'));
+            el.addEventListener('mouseleave', () => cursorBloom.classList.remove('hovered'));
+        });
+
+        // Full Page Dynamic Starfield Generator (Appears Everywhere Across All Sections)
+        (function initGlobalStarfield() {
+            const starfield = document.createElement('div');
+            starfield.id = 'global-starfield';
+            document.body.appendChild(starfield);
+
+            const starCount = 140;
+            const colors = ['#ffffff', '#e2d4ff', '#c4b5fd', '#f3e8ff'];
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star g-star';
+                const size = Math.random() * 2.5 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.top = (Math.random() * 100) + '%';
+                star.style.left = (Math.random() * 100) + '%';
+                star.style.background = colors[Math.floor(Math.random() * colors.length)];
+                star.style.animationDuration = (Math.random() * 4 + 3) + 's';
+                star.style.animationDelay = (Math.random() * 5) + 's';
+                starfield.appendChild(star);
+            }
+        })();
     </script>
 </body>
 </html>
