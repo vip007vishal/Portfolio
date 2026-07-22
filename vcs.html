@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtual Company Simulator | Experience the Future Workplace</title>
+    <title>Virtual Company Simulator (VCS) | Experience the Future Workplace</title>
     <meta name="description"
         content="Virtual Company Simulator (VCS) is an AI-powered workplace simulation platform that allows students and professionals to experience real corporate environments through interactive learning, AI mentors, and realistic business workflows.">
     <meta name="keywords"
@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
@@ -35,13 +35,13 @@
             --ochre-mid: #ab822e;
             --ochre-dark: #846019;
 
-            /* Soft Muted Text (No Bright White/Light Grey) */
+            /* Soft Muted Text */
             --text-primary: #e8e3d5;
             --text-secondary: #b0aa99;
             --text-tertiary: #7d786b;
             --text-muted: #524e44;
 
-            /* Classy Subtle Glass Borders (Minimal Glows) */
+            /* Classy Subtle Glass Borders */
             --border-subtle: rgba(196, 155, 63, 0.08);
             --border-default: rgba(196, 155, 63, 0.18);
             --border-strong: rgba(196, 155, 63, 0.32);
@@ -51,10 +51,10 @@
             --radius-md: 10px;
             --radius-lg: 16px;
             --radius-full: 9999px;
-            --max-width: 1140px;
+            --max-width: 1400px;
             --nav-height: 64px;
 
-            /* Fast & Subtle Transitions (Ultra Smooth Easing) */
+            /* Fast & Subtle Transitions */
             --transition-fast: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
             --transition-smooth: 0.45s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -112,7 +112,7 @@
             pointer-events: none;
         }
 
-        /* Dynamic Pointer Cursor Dark Bloom Effect (Subtle & Ultra Smooth) */
+        /* Dynamic Pointer Cursor Dark Bloom Effect */
         #cursor-bloom {
             position: fixed;
             top: 0;
@@ -122,7 +122,7 @@
             border-radius: 50%;
             pointer-events: none;
             z-index: 99999;
-            background: radial-gradient(circle at center, rgba(160, 120, 30, 0.05) 0%, rgba(120, 85, 20, 0.02) 45%, rgba(60, 40, 10, 0.005) 75%, transparent 100%);
+            background: radial-gradient(circle at center, rgba(196, 155, 63, 0.09) 0%, rgba(196, 155, 63, 0.03) 45%, rgba(196, 155, 63, 0.008) 75%, transparent 100%);
             filter: blur(80px);
             transform: translate(-50%, -50%);
             opacity: 0;
@@ -137,38 +137,15 @@
         #cursor-bloom.hovered {
             width: 900px;
             height: 900px;
-            background: radial-gradient(circle at center, rgba(196, 155, 63, 0.075) 0%, rgba(150, 110, 30, 0.03) 45%, rgba(80, 55, 15, 0.008) 75%, transparent 100%);
+            background: radial-gradient(circle at center, rgba(196, 155, 63, 0.13) 0%, rgba(196, 155, 63, 0.05) 45%, rgba(196, 155, 63, 0.015) 75%, transparent 100%);
         }
 
-        /* Full Page Background Starfield (Appears Across All Sections) */
-        #global-starfield {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        #global-starfield .g-star {
-            position: absolute;
-            background: #ffffff;
-            border-radius: 50%;
-            animation: gStarTwinkle 4s infinite cubic-bezier(0.4, 0, 0.2, 1) alternate;
-            pointer-events: none;
-            box-shadow: 0 0 6px rgba(245, 235, 210, 0.4);
-            will-change: transform, opacity;
-        }
-
-        @keyframes gStarTwinkle {
-            0% { opacity: 0.12; transform: scale(0.7); }
-            50% { opacity: 0.85; transform: scale(1.4); }
-            100% { opacity: 0.12; transform: scale(0.7); }
-        }
-
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             color: var(--text-primary);
             font-weight: 700;
             line-height: 1.2;
@@ -240,21 +217,60 @@
             background: transparent !important;
         }
 
-        section > div:first-child {
+        section>div:first-child {
             text-align: center;
             margin-bottom: 46px;
         }
 
-        section > div:first-child h2 {
+        section>div:first-child h2 {
             margin-top: 6px;
         }
 
-        section > div:first-child > p {
-            max-width: 540px;
+        section>div:first-child>p {
+            max-width: 720px;
             margin: 10px auto 0;
             color: var(--text-tertiary);
             font-size: 0.92rem;
             line-height: 1.65;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 26px;
+            border-radius: var(--radius-full);
+            font-weight: 650;
+            font-size: 0.88rem;
+            transition: all var(--transition-fast);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--ochre-main);
+            color: #030303;
+            border: 1px solid var(--ochre-main);
+            font-weight: 750;
+        }
+
+        .btn-primary:hover {
+            background: var(--ochre-light);
+            border-color: var(--ochre-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(196, 155, 63, 0.05);
+            color: var(--ochre-bright);
+            border: 1px solid var(--border-default);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--border-strong);
+            background: rgba(196, 155, 63, 0.1);
+            transform: translateY(-2px);
         }
 
         /* ── SECTION 1: HEADER & NAVIGATION ── */
@@ -318,18 +334,22 @@
         /* ── SECTION 2: HERO ── */
         .hero {
             display: grid;
-            grid-template-columns: 1.05fr 0.95fr;
-            gap: 46px;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
             align-items: center;
             max-width: var(--max-width);
             margin: 0 auto;
-            padding: 45px 24px 80px;
+            padding: 60px 24px 80px;
             min-height: calc(85vh - var(--nav-height));
             position: relative;
         }
 
         .hero-content {
-            max-width: 580px;
+            max-width: 680px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
         }
 
         .badge {
@@ -358,67 +378,37 @@
             color: var(--ochre-main);
         }
 
-        .hero-content > p {
+        .hero-content>p {
             font-size: 0.98rem;
             color: var(--text-secondary);
             margin-bottom: 30px;
             line-height: 1.7;
-            max-width: 500px;
+            max-width: 620px;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 12px;
+            align-items: center;
+            gap: 14px;
             flex-wrap: wrap;
         }
 
-        .btn {
-            display: inline-flex;
+        .hero-image {
+            display: flex;
+            justify-content: flex-end;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 12px 26px;
-            border-radius: var(--radius-full);
-            font-weight: 650;
-            font-size: 0.88rem;
-            transition: all var(--transition-fast);
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: var(--ochre-main);
-            color: #030303;
-            border: 1px solid var(--ochre-main);
-            font-weight: 750;
-        }
-
-        .btn-primary:hover {
-            background: var(--ochre-light);
-            border-color: var(--ochre-light);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: rgba(196, 155, 63, 0.05);
-            color: var(--ochre-bright);
-            border: 1px solid var(--border-default);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--border-strong);
-            background: rgba(196, 155, 63, 0.1);
-            transform: translateY(-2px);
+            width: 100%;
         }
 
         /* Hero VCS Card Mockup */
         .vcs-card {
             width: 100%;
-            max-width: 380px;
+            max-width: 450px;
             background: #0a0a0a;
             border: 1px solid var(--border-default);
             border-radius: var(--radius-lg);
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
             transition: border-color var(--transition-fast);
         }
 
@@ -460,8 +450,8 @@
         .vcs-avatar-row {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 12px 14px 10px;
+            gap: 12px;
+            padding: 14px 16px;
             border-bottom: 1px solid var(--border-subtle);
         }
 
@@ -478,15 +468,24 @@
             color: #030303;
         }
 
+        .vcs-avatar-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+
         .vcs-avatar-name {
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             font-weight: 700;
             color: var(--text-primary);
+            line-height: 1.2;
         }
 
         .vcs-avatar-role {
-            font-size: 0.64rem;
+            font-size: 0.66rem;
             color: var(--ochre-light);
+            line-height: 1.2;
         }
 
         .vcs-tasks {
@@ -541,7 +540,7 @@
             color: var(--text-secondary);
         }
 
-        /* ── SECTION 3: STATS BAR (DISTINCT: HORIZONTAL MINIMAL DIVIDERS) ── */
+        /* ── SECTION 3: STATS BAR (DISTINCT: HORIZONTAL TELEMETRY STRIP) ── */
         .stats-section {
             padding: 0 24px 75px;
             max-width: var(--max-width);
@@ -584,7 +583,7 @@
             margin: 0;
         }
 
-        /* ── SECTION 4: ABOUT (DISTINCT: EDITORIAL LEFT BORDER QUOTE) ── */
+        /* ── SECTION 4: ABOUT (DISTINCT: EDITORIAL SPLIT STREAM - NO CARDS) ── */
         #about {
             border-top: 1px solid var(--border-subtle);
         }
@@ -592,76 +591,66 @@
         .about-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 36px;
+            gap: 46px;
             align-items: center;
         }
 
         .about-quote-box {
-            background: #0a0a0a;
-            border: 1px solid var(--border-default);
             border-left: 3px solid var(--ochre-main);
-            padding: 34px 28px;
-            border-radius: var(--radius-lg);
+            padding-left: 28px;
         }
 
         .about-quote-box h3 {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.35rem;
+            font-size: 1.45rem;
             font-style: italic;
             color: var(--text-primary);
-            line-height: 1.48;
+            line-height: 1.5;
             margin-bottom: 16px;
         }
 
-        .about-card {
-            background: #0a0a0a;
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md);
-            padding: 18px 22px;
-            margin-bottom: 12px;
-            transition: border-color var(--transition-fast);
-        }
-
-        .about-card:hover {
-            border-color: var(--border-default);
-        }
-
-        .about-card p {
-            margin: 0;
-            font-size: 0.9rem;
+        .about-paragraphs p {
+            font-size: 0.96rem;
             color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.72;
         }
 
-        /* ── SECTION 5: PROBLEM (DISTINCT: TOP ACCENT STRIPES & NUMBERING) ── */
+        .about-paragraphs p span.gold-highlight {
+            color: var(--ochre-bright);
+            font-weight: 600;
+        }
+
+        /* ── SECTION 5: THE PROBLEM (DISTINCT: DIAGNOSTIC ALERT MATRIX) ── */
         #problem {
             border-top: 1px solid var(--border-subtle);
         }
 
         .problem-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 18px;
         }
 
         .problem-card {
-            background: #0a0a0a;
+            background: #080808;
             border: 1px solid var(--border-subtle);
-            border-top: 2px solid var(--ochre-mid);
+            border-left: 3px solid var(--ochre-mid);
             border-radius: var(--radius-md);
             padding: 24px 20px;
-            position: relative;
             transition: transform var(--transition-fast);
         }
 
         .problem-card:hover {
             transform: translateY(-3px);
             border-color: var(--border-default);
-            border-top-color: var(--ochre-bright);
+            border-left-color: var(--ochre-bright);
         }
 
         .problem-number {
+            font-family: 'JetBrains Mono', monospace;
             font-size: 0.72rem;
-            font-weight: 800;
+            font-weight: 700;
             color: var(--ochre-light);
             margin-bottom: 10px;
             display: block;
@@ -679,7 +668,7 @@
             margin: 0;
         }
 
-        /* ── SECTION 6: SOLUTION (DISTINCT: CENTERED SPOTLIGHT BOX) ── */
+        /* ── SECTION 6: OUR SOLUTION (DISTINCT: CONNECTED WORKPLACE FLOW) ── */
         #solution {
             border-top: 1px solid var(--border-subtle);
         }
@@ -693,8 +682,8 @@
 
         .solution-pillars {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
             margin-top: 28px;
         }
 
@@ -702,22 +691,22 @@
             background: rgba(196, 155, 63, 0.03);
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md);
-            padding: 18px 16px;
+            padding: 20px 18px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
         }
 
         .solution-pillar-icon {
-            width: 32px;
-            height: 32px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             background: var(--ochre-main);
             color: #030303;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.82rem;
+            font-size: 0.9rem;
             font-weight: 800;
             flex-shrink: 0;
         }
@@ -728,22 +717,23 @@
             color: var(--text-secondary);
         }
 
-        /* ── SECTION 7: VISION & MISSION (DISTINCT: 2x2 QUAD GRID) ── */
+        /* ── SECTION 7: OUR MISSION & VISION (DISTINCT: DUAL SPOTLIGHT) ── */
         #vision {
             border-top: 1px solid var(--border-subtle);
         }
 
         .vision-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 18px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
         }
 
         .vision-card {
             background: #0a0a0a;
             border: 1px solid var(--border-subtle);
+            border-top: 3px solid var(--ochre-main);
             border-radius: var(--radius-md);
-            padding: 26px 20px;
+            padding: 28px 22px;
             text-align: center;
             transition: border-color var(--transition-fast);
         }
@@ -777,7 +767,7 @@
             margin: 0;
         }
 
-        /* ── SECTION 8: WHY VCS (DISTINCT: WIDE HORIZONTAL ROWS) ── */
+        /* ── SECTION 8: WHY VCS (DISTINCT: TIMELINE STREAM) ── */
         #why {
             border-top: 1px solid var(--border-subtle);
         }
@@ -785,7 +775,7 @@
         .why-list {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 16px;
         }
 
         .why-card {
@@ -804,13 +794,13 @@
         }
 
         .why-num {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 800;
             color: var(--ochre-bright);
             background: rgba(196, 155, 63, 0.08);
             border: 1px solid var(--border-default);
-            width: 46px;
-            height: 46px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -830,7 +820,7 @@
             color: var(--text-tertiary);
         }
 
-        /* ── SECTION 9: AI MODULES (DISTINCT: INTEGRATED BENTO MATRIX) ── */
+        /* ── SECTION 9: AI MODULES ── */
         #ai-modules {
             border-top: 1px solid var(--border-subtle);
         }
@@ -838,7 +828,7 @@
         .module-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 16px;
+            gap: 18px;
         }
 
         .module-card {
@@ -884,7 +874,7 @@
             margin: 0;
         }
 
-        /* ── SECTION 10: GEMINI AI (DISTINCT: TERMINAL SPOTLIGHT BOX) ── */
+        /* ── SECTION 10: GEMINI AI (TERMINAL CONSOLE) ── */
         #gemini {
             border-top: 1px solid var(--border-subtle);
         }
@@ -921,7 +911,7 @@
 
         .gemini-terminal-body {
             padding: 16px;
-            font-family: monospace;
+            font-family: 'JetBrains Mono', monospace;
             font-size: 0.78rem;
             color: var(--text-secondary);
             line-height: 1.6;
@@ -940,7 +930,7 @@
             border-left: 2px solid var(--ochre-main);
         }
 
-        /* ── SECTION 11: DASHBOARD (DISTINCT: BENTO CARDS) ── */
+        /* ── SECTION 11: DASHBOARD (BENTO MATRIX) ── */
         #dashboard {
             border-top: 1px solid var(--border-subtle);
         }
@@ -948,7 +938,7 @@
         .bento-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
+            gap: 18px;
         }
 
         .bento-card {
@@ -975,7 +965,7 @@
             margin: 0;
         }
 
-        /* ── SECTION 12: ANALYTICS (DISTINCT: PROGRESS TRACK METRICS) ── */
+        /* ── SECTION 12: ANALYTICS (TELEMETRY PROGRESS TRACKS) ── */
         #analytics {
             border-top: 1px solid var(--border-subtle);
         }
@@ -1032,7 +1022,7 @@
             border-radius: 99px;
         }
 
-        /* ── SECTION 13: GAMIFICATION (DISTINCT: BADGE PILLS) ── */
+        /* ── SECTION 13: GAMIFICATION (TROPHY BADGE MATRIX) ── */
         #gamification {
             border-top: 1px solid var(--border-subtle);
         }
@@ -1203,14 +1193,14 @@
             margin: 0;
         }
 
-        /* ── SECTION 17: FUTURE ROADMAP (PHASE CARDS) ── */
+        /* ── SECTION 17: FUTURE ROADMAP ── */
         #roadmap {
             border-top: 1px solid var(--border-subtle);
         }
 
         .roadmap-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 18px;
         }
 
@@ -1222,21 +1212,20 @@
         }
 
         .phase-tag {
-            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
             font-size: 0.68rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            color: #030303;
-            background: var(--ochre-main);
-            padding: 2px 10px;
-            border-radius: 99px;
+            font-weight: 700;
+            color: var(--ochre-light);
+            background: rgba(196, 155, 63, 0.1);
+            padding: 3px 10px;
+            border-radius: var(--radius-full);
             margin-bottom: 12px;
+            display: inline-block;
         }
 
         .roadmap-card h3 {
             color: var(--text-primary);
-            font-size: 1.08rem;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .roadmap-card p {
@@ -1251,55 +1240,52 @@
         }
 
         .simulation-timeline {
-            max-width: 760px;
+            max-width: 880px;
             margin: 0 auto;
             border-left: 2px solid var(--border-default);
             padding-left: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
         }
 
         .sim-item {
             position: relative;
-            margin-bottom: 24px;
-            background: #0a0a0a;
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md);
-            padding: 18px 22px;
         }
 
         .sim-item::before {
             content: '';
             position: absolute;
-            top: 22px;
             left: -31px;
-            width: 10px;
-            height: 10px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             background: var(--ochre-main);
+            box-shadow: 0 0 10px var(--ochre-main);
         }
 
         .sim-time {
-            font-size: 0.72rem;
-            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
             color: var(--ochre-light);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
             margin-bottom: 4px;
-            display: inline-block;
+            display: block;
         }
 
         .sim-item h3 {
+            font-size: 1.05rem;
             color: var(--text-primary);
-            font-size: 1.02rem;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .sim-item p {
-            font-size: 0.86rem;
+            font-size: 0.88rem;
             color: var(--text-tertiary);
             margin: 0;
         }
 
-        /* ── SECTION 19: PERSONAS / USECASES ── */
+        /* ── SECTION 19: PERSONAS ── */
         #usecases {
             border-top: 1px solid var(--border-subtle);
         }
@@ -1320,7 +1306,7 @@
         .usecase-avatar {
             width: 40px;
             height: 40px;
-            border-radius: var(--radius-sm);
+            border-radius: 50%;
             background: rgba(196, 155, 63, 0.08);
             border: 1px solid var(--border-default);
             display: flex;
@@ -1333,7 +1319,6 @@
 
         .usecase-card h3 {
             color: var(--text-primary);
-            font-size: 1.08rem;
             margin-bottom: 6px;
         }
 
@@ -1345,7 +1330,7 @@
 
         /* ── SECTION 20: FAQ ACCORDION ── */
         #faq {
-            max-width: 800px;
+            max-width: 960px;
             border-top: 1px solid var(--border-subtle);
         }
 
@@ -1376,7 +1361,9 @@
             position: relative;
         }
 
-        #faq summary::-webkit-details-marker { display: none; }
+        #faq summary::-webkit-details-marker {
+            display: none;
+        }
 
         #faq summary::after {
             content: '+';
@@ -1425,7 +1412,7 @@
 
         .cta-banner p {
             color: var(--text-tertiary);
-            max-width: 500px;
+            max-width: 680px;
             margin: 0 auto 30px;
             font-size: 0.95rem;
         }
@@ -1439,7 +1426,7 @@
 
         /* ── SECTION 22: CONTACT FORM ── */
         #contact {
-            max-width: 600px;
+            max-width: 760px;
             margin: 0 auto;
         }
 
@@ -1450,64 +1437,57 @@
             padding: 34px 28px;
         }
 
-        #contact form {
+        .contact-form-box form {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 16px;
         }
 
-        #contact input,
-        #contact textarea {
+        .contact-form-box input,
+        .contact-form-box textarea {
             width: 100%;
-            padding: 14px 16px;
+            background: #040507;
             border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-sm);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.88rem;
+            border-radius: var(--radius-md);
+            padding: 12px 16px;
             color: var(--text-primary);
-            background: rgba(196, 155, 63, 0.03);
+            font-family: inherit;
+            font-size: 0.9rem;
             outline: none;
             transition: border-color var(--transition-fast);
         }
 
-        #contact input:focus,
-        #contact textarea:focus {
-            border-color: var(--border-default);
-            background: rgba(196, 155, 63, 0.06);
+        .contact-form-box input:focus,
+        .contact-form-box textarea:focus {
+            border-color: var(--border-strong);
         }
 
-        #contact input::placeholder,
-        #contact textarea::placeholder {
-            color: var(--text-muted);
-        }
-
-        #contact button {
+        .contact-form-box button {
             align-self: flex-start;
-            padding: 13px 30px;
             background: var(--ochre-main);
             color: #030303;
             border: none;
+            padding: 12px 28px;
             border-radius: var(--radius-full);
             font-weight: 750;
             font-size: 0.88rem;
             cursor: pointer;
-            transition: background var(--transition-fast);
+            transition: all var(--transition-fast);
         }
 
-        #contact button:hover {
+        .contact-form-box button:hover {
             background: var(--ochre-light);
+            transform: translateY(-2px);
         }
 
-        /* ── SECTION 23: FOOTER ── */
+        /* FOOTER */
         footer {
-            background: var(--bg-primary);
-            color: var(--text-muted);
-            padding: 56px 24px 26px;
-            margin-top: 30px;
+            background: #020202;
             border-top: 1px solid var(--border-subtle);
+            padding: 60px 24px 30px;
         }
 
-        footer > div:first-of-type {
+        footer>div:first-of-type {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 36px;
@@ -1552,37 +1532,100 @@
             margin: 0 auto 20px;
         }
 
-        footer > div:last-child {
+        footer>div:last-child {
             max-width: var(--max-width);
             margin: 0 auto;
             text-align: center;
         }
 
-        footer > div:last-child p {
+        footer>div:last-child p {
             font-size: 0.76rem;
             color: var(--text-muted);
         }
 
-        /* Responsive */
+        /* Responsive Overrides */
         @media (max-width: 1024px) {
-            .hero { grid-template-columns: 1fr; text-align: center; }
-            .hero-content { margin: 0 auto; }
-            .hero-buttons { justify-content: center; }
-            .gemini-box { grid-template-columns: 1fr; }
-            .bento-grid { grid-template-columns: 1fr 1fr; }
-            .arch-pipeline { grid-template-columns: repeat(2, 1fr); }
-            .about-layout { grid-template-columns: 1fr; }
-            footer > div:first-of-type { grid-template-columns: 1fr 1fr; }
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+                padding: 40px 24px 60px;
+            }
+
+            .hero-content {
+                margin: 0 auto;
+                align-items: center;
+                text-align: center;
+            }
+
+            .hero-content>p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .vcs-card {
+                margin: 0 auto;
+            }
+
+            .gemini-box {
+                grid-template-columns: 1fr;
+            }
+
+            .bento-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .arch-pipeline {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-layout {
+                grid-template-columns: 1fr;
+            }
+
+            footer>div:first-of-type {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         @media (max-width: 768px) {
-            header#home nav ul { display: none; }
-            section { padding: 55px 16px; }
-            .stats-bar { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-            .stat-item { border-right: none; }
-            .arch-pipeline { grid-template-columns: 1fr; }
-            .bento-grid { grid-template-columns: 1fr; }
-            footer > div:first-of-type { grid-template-columns: 1fr; }
+            header#home nav ul {
+                display: none;
+            }
+
+            section {
+                padding: 55px 16px;
+            }
+
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 14px;
+            }
+
+            .stat-item {
+                border-right: none;
+            }
+
+            .arch-pipeline {
+                grid-template-columns: 1fr;
+            }
+
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer>div:first-of-type {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -1679,66 +1722,60 @@
         </div>
     </div>
 
-    <!-- 4. ABOUT SECTION (EDITORIAL 2-COLUMN) -->
+    <!-- 4. ABOUT SECTION (EDITORIAL 2-COLUMN SPLIT - NO CARDS) -->
     <section id="about">
         <div class="about-layout">
             <div class="about-quote-box">
                 <h5>About VCS</h5>
                 <h3>"Traditional education provides theory, but industries demand real corporate experience. VCS bridges this gap."</h3>
-                <p style="font-size:0.8rem; color:var(--text-tertiary)">— Redefining Professional Learning</p>
+                <p style="font-size:0.8rem; color:var(--ochre-light)">— Redefining Professional Learning</p>
             </div>
-            <div>
-                <div class="about-card">
-                    <p>Traditional education provides theoretical knowledge, while industries expect practical experience. This gap often becomes the biggest challenge for students entering the professional world.</p>
-                </div>
-                <div class="about-card">
-                    <p>Virtual Company Simulator bridges this gap by recreating an intelligent corporate environment where every learner becomes an employee inside a fully functional virtual company.</p>
-                </div>
-                <div class="about-card">
-                    <p>Instead of watching tutorials, users actively participate in projects, attend meetings, solve workplace problems, communicate with colleagues, and receive AI-driven feedback.</p>
-                </div>
+            <div class="about-paragraphs">
+                <p><span class="gold-highlight">Theoretical knowledge alone</span> is no longer sufficient. Industries expect graduates to step into corporate environments and execute real project workflows from Day 1.</p>
+                <p><span class="gold-highlight">Virtual Company Simulator</span> bridges this experience gap by creating an intelligent virtual organization where every learner becomes an employee inside a fully functional company.</p>
+                <p>Instead of watching tutorials passively, users actively participate in projects, attend meetings, solve real business problems, and receive continuous AI mentor feedback.</p>
             </div>
         </div>
     </section>
 
-    <!-- 5. THE PROBLEM SECTION (TOP ACCENT STRIPES) -->
+    <!-- 5. THE PROBLEM SECTION (DIAGNOSTIC ALERT TILES) -->
     <section id="problem">
         <div>
             <h5>The Problem</h5>
             <h2>Why Students Struggle During Their First Job</h2>
-            <p>Fresh graduates often face challenges transitioning from classroom theory to corporate environments.</p>
+            <p>Fresh graduates face major friction transitioning from classroom theory to professional corporate environments.</p>
         </div>
         <div class="problem-grid">
             <div class="problem-card">
-                <span class="problem-number">01</span>
+                <span class="problem-number">ERR #01</span>
                 <h3>Lack of Industry Exposure</h3>
                 <p>Most students graduate without understanding how real companies operate on a daily basis.</p>
             </div>
             <div class="problem-card">
-                <span class="problem-number">02</span>
+                <span class="problem-number">ERR #02</span>
                 <h3>Limited Practical Experience</h3>
                 <p>Classroom assignments rarely replicate real business challenges, teamwork, or project deadlines.</p>
             </div>
             <div class="problem-card">
-                <span class="problem-number">03</span>
+                <span class="problem-number">ERR #03</span>
                 <h3>Communication Gap</h3>
                 <p>Many learners never experience formal meetings, reporting, or workplace communications before employment.</p>
             </div>
             <div class="problem-card">
-                <span class="problem-number">04</span>
+                <span class="problem-number">ERR #04</span>
                 <h3>Fear of Real Projects</h3>
                 <p>Fresh graduates lack confidence because they have never managed realistic collaborative workflows.</p>
             </div>
         </div>
     </section>
 
-    <!-- 6. OUR SOLUTION (SPOTLIGHT BOX) -->
+    <!-- 6. OUR SOLUTION (CONNECTED WORKPLACE FLOW) -->
     <section id="solution">
         <div class="solution-spotlight">
             <div style="text-align:center">
                 <h5>Our Solution</h5>
                 <h2>Learn By Working, Not By Watching</h2>
-                <p style="margin:8px auto 0; max-width:520px">Virtual Company Simulator replaces passive observation with active workplace participation and intelligent mentorship.</p>
+                <p style="margin:8px auto 0; max-width:580px">Virtual Company Simulator replaces passive observation with active workplace participation and intelligent mentorship.</p>
             </div>
             <div class="solution-pillars">
                 <div class="solution-pillar">
@@ -1763,7 +1800,7 @@
         </div>
     </section>
 
-    <!-- 7. OUR MISSION & VISION (2x2 QUAD) -->
+    <!-- 7. OUR MISSION & VISION (DUAL SPOTLIGHT) -->
     <section id="vision">
         <div>
             <h5>Our Mission</h5>
@@ -1794,7 +1831,7 @@
         </div>
     </section>
 
-    <!-- 8. WHY VCS (WIDE HORIZONTAL ROWS) -->
+    <!-- 8. WHY VCS (TIMELINE STREAM) -->
     <section id="why">
         <div>
             <h5>Why VCS</h5>
@@ -1825,7 +1862,7 @@
         </div>
     </section>
 
-    <!-- 9. AI POWERED MODULES (BENTO MATRIX) -->
+    <!-- 9. AI POWERED MODULES -->
     <section id="ai-modules">
         <div>
             <h5>AI Powered Modules</h5>
@@ -1878,7 +1915,7 @@
         </div>
     </section>
 
-    <!-- 10. GOOGLE GEMINI AI (TERMINAL BOX) -->
+    <!-- 10. GOOGLE GEMINI AI (CYBER TERMINAL) -->
     <section id="gemini">
         <div class="gemini-box">
             <div>
@@ -1902,7 +1939,7 @@
         </div>
     </section>
 
-    <!-- 11. EMPLOYEE DASHBOARD (BENTO GRID) -->
+    <!-- 11. EMPLOYEE DASHBOARD -->
     <section id="dashboard">
         <div>
             <h5>Employee Dashboard</h5>
@@ -1937,7 +1974,7 @@
         </div>
     </section>
 
-    <!-- 12. PERFORMANCE ANALYTICS (PROGRESS TRACKS) -->
+    <!-- 12. PERFORMANCE ANALYTICS -->
     <section id="analytics">
         <div>
             <h5>Performance Analytics</h5>
@@ -1950,7 +1987,9 @@
                     <span class="analytics-score">98%</span>
                 </div>
                 <p>Analyze productivity based on completed assignments and delivery speeds.</p>
-                <div class="progress-track"><div class="progress-fill" style="width: 98%"></div></div>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 98%"></div>
+                </div>
             </div>
             <div class="analytics-card">
                 <div class="analytics-top">
@@ -1958,7 +1997,9 @@
                     <span class="analytics-score">94%</span>
                 </div>
                 <p>Evaluate professional communication during meetings and reports.</p>
-                <div class="progress-track"><div class="progress-fill" style="width: 94%"></div></div>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 94%"></div>
+                </div>
             </div>
             <div class="analytics-card">
                 <div class="analytics-top">
@@ -1966,7 +2007,9 @@
                     <span class="analytics-score">92%</span>
                 </div>
                 <p>Measure initiative, problem solving, and team management capabilities.</p>
-                <div class="progress-track"><div class="progress-fill" style="width: 92%"></div></div>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 92%"></div>
+                </div>
             </div>
             <div class="analytics-card">
                 <div class="analytics-top">
@@ -1974,7 +2017,9 @@
                     <span class="analytics-score">96%</span>
                 </div>
                 <p>Assess coding, architecture, documentation, and debugging precision.</p>
-                <div class="progress-track"><div class="progress-fill" style="width: 96%"></div></div>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 96%"></div>
+                </div>
             </div>
             <div class="analytics-card">
                 <div class="analytics-top">
@@ -1982,7 +2027,9 @@
                     <span class="analytics-score">95%</span>
                 </div>
                 <p>Monitor continuous improvement and career skill expansion.</p>
-                <div class="progress-track"><div class="progress-fill" style="width: 95%"></div></div>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 95%"></div>
+                </div>
             </div>
             <div class="analytics-card">
                 <div class="analytics-top">
@@ -1990,12 +2037,14 @@
                     <span class="analytics-score">Top 5%</span>
                 </div>
                 <p>Compare performance with virtual employees across the simulator.</p>
-                <div class="progress-track"><div class="progress-fill" style="width: 97%"></div></div>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 97%"></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 13. GAMIFICATION (TROPHY CARDS) -->
+    <!-- 13. GAMIFICATION -->
     <section id="gamification">
         <div>
             <h5>Gamification</h5>
@@ -2025,7 +2074,7 @@
         </div>
     </section>
 
-    <!-- 14. TECHNOLOGY STACK MATRIX -->
+    <!-- 14. TECHNOLOGY STACK -->
     <section id="technology">
         <div>
             <h5>Technology Stack</h5>
@@ -2077,7 +2126,7 @@
         </div>
     </section>
 
-    <!-- 15. SYSTEM ARCHITECTURE (CONNECTED PIPELINE) -->
+    <!-- 15. SYSTEM ARCHITECTURE PIPELINE -->
     <section id="architecture">
         <div>
             <h5>System Architecture</h5>
@@ -2161,7 +2210,7 @@
         </div>
     </section>
 
-    <!-- 17. FUTURE ROADMAP (PHASE CARDS) -->
+    <!-- 17. FUTURE ROADMAP -->
     <section id="roadmap">
         <div>
             <h5>Future Roadmap</h5>
@@ -2420,35 +2469,12 @@
         }
         animateBloom();
 
-        const interactives = document.querySelectorAll('a, button, .vcs-card, .about-card, .problem-card, .solution-pillar, .vision-card, .why-card, .module-card, .bento-card, .analytics-card, .gamification-card, .tech-card, .arch-step, .roadmap-card, .usecase-card');
+        const interactives = document.querySelectorAll('a, button, .vcs-card, .problem-card, .solution-pillar, .vision-card, .why-card, .module-card, .bento-card, .analytics-card, .gamification-card, .tech-card, .arch-step, .roadmap-card, .usecase-card, .benefit-card');
         interactives.forEach(el => {
             el.style.willChange = 'transform';
             el.addEventListener('mouseenter', () => cursorBloom.classList.add('hovered'));
             el.addEventListener('mouseleave', () => cursorBloom.classList.remove('hovered'));
         });
-
-        // Full Page Dynamic Starfield Generator (Warm Golden Stars Across All Sections)
-        (function initGlobalStarfield() {
-            const starfield = document.createElement('div');
-            starfield.id = 'global-starfield';
-            document.body.appendChild(starfield);
-
-            const starCount = 140;
-            const colors = ['#ffffff', '#f5ebd2', '#e6c67c', '#c49b3f'];
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.className = 'star g-star';
-                const size = Math.random() * 2.5 + 1;
-                star.style.width = size + 'px';
-                star.style.height = size + 'px';
-                star.style.top = (Math.random() * 100) + '%';
-                star.style.left = (Math.random() * 100) + '%';
-                star.style.background = colors[Math.floor(Math.random() * colors.length)];
-                star.style.animationDuration = (Math.random() * 4 + 3) + 's';
-                star.style.animationDelay = (Math.random() * 5) + 's';
-                starfield.appendChild(star);
-            }
-        })();
     </script>
 </body>
 

@@ -82,7 +82,7 @@
             border-radius: 50%;
             pointer-events: none;
             z-index: 99999;
-            background: radial-gradient(circle at center, rgba(45, 90, 30, 0.08) 0%, rgba(20, 50, 15, 0.03) 45%, rgba(8, 20, 5, 0.008) 75%, transparent 100%);
+            background: radial-gradient(circle at center, rgba(45, 90, 30, 0.13) 0%, rgba(45, 90, 30, 0.04) 45%, rgba(45, 90, 30, 0.01) 75%, transparent 100%);
             filter: blur(80px);
             transform: translate(-50%, -50%);
             opacity: 0;
@@ -97,11 +97,11 @@
         #cursor-bloom.hovered {
             width: 900px;
             height: 900px;
-            background: radial-gradient(circle at center, rgba(65, 120, 40, 0.11) 0%, rgba(30, 70, 20, 0.045) 45%, rgba(10, 30, 8, 0.01) 75%, transparent 100%);
+            background: radial-gradient(circle at center, rgba(45, 90, 30, 0.19) 0%, rgba(45, 90, 30, 0.06) 45%, rgba(45, 90, 30, 0.018) 75%, transparent 100%);
         }
 
-        /* Full Page Background Starfield (Appears Across All Sections) */
-        #global-starfield {
+        /* Dynamic Organic Nature Particle Canvases (Background & Foreground Layers) */
+        #nature-bg-canvas {
             position: fixed;
             top: 0;
             left: 0;
@@ -112,20 +112,15 @@
             overflow: hidden;
         }
 
-        #global-starfield .g-star {
-            position: absolute;
-            background: #ffffff;
-            border-radius: 50%;
-            animation: gStarTwinkle 4s infinite cubic-bezier(0.4, 0, 0.2, 1) alternate;
+        #nature-fg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             pointer-events: none;
-            box-shadow: 0 0 6px rgba(220, 255, 210, 0.4);
-            will-change: transform, opacity;
-        }
-
-        @keyframes gStarTwinkle {
-            0% { opacity: 0.12; transform: scale(0.7); }
-            50% { opacity: 0.85; transform: scale(1.4); }
-            100% { opacity: 0.12; transform: scale(0.7); }
+            z-index: 99;
+            overflow: hidden;
         }
 
         *,
@@ -523,7 +518,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 1rem 3rem;
-            background: rgba(5, 10, 0, 0.86);
+            background: #03070000;
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
             border-bottom: 1px solid rgba(45, 90, 30, 0.22);
@@ -533,7 +528,7 @@
 
         #header.scrolled {
             padding: 0.7rem 3rem;
-            background: rgba(5, 10, 0, 0.95);
+            background: #03070076;
             border-bottom: 1px solid rgba(74, 133, 57, 0.32);
             box-shadow: 0 8px 45px rgba(0, 0, 0, 0.65);
         }
@@ -846,11 +841,12 @@
         }
 
         .hero-content h1 {
-            font-size: clamp(3.4rem, 6.2vw, 5.8rem);
-            line-height: 1.02;
+            font-size: clamp(2.2rem, 5.2vw, 4.8rem);
+            line-height: 1.1;
             font-weight: 900;
             margin-bottom: 0.35rem;
-            letter-spacing: -0.04em;
+            letter-spacing: -0.03em;
+            white-space: nowrap;
         }
 
         .hero-content h1 .gradient-text {
@@ -858,7 +854,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            display: block;
+            display: inline-block;
             filter: drop-shadow(0 0 18px rgba(92, 158, 71, 0.3));
         }
 
@@ -866,7 +862,7 @@
             -webkit-text-stroke: 1.3px rgba(163, 201, 148, 0.5);
             -webkit-text-fill-color: transparent;
             color: transparent;
-            display: block;
+            display: inline-block;
             letter-spacing: -0.03em;
             font-size: 0.85em;
             filter: drop-shadow(0 0 10px rgba(163, 201, 148, 0.25));
@@ -1772,25 +1768,163 @@
             border-bottom: 1px solid rgba(45, 90, 30, 0.18);
         }
 
-        .architecture-box {
-            max-width: 600px;
+        /* Modern Architecture Pipeline */
+        .arch-pipeline {
+            max-width: 680px;
             margin: 0 auto;
-            background: rgba(5, 10, 0, 0.84);
-            border: 2px solid var(--border-mid);
-            border-radius: var(--radius-soft);
-            padding: 2.2rem;
-            box-shadow: 0 12px 50px rgba(0, 0, 0, 0.65), inset 0 0 35px rgba(14, 35, 10, 0.14);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            padding: 1rem 0;
         }
 
-        .architecture-box pre {
+        .arch-node {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: rgba(10, 24, 6, 0.75);
+            border: 1px solid var(--border-mid);
+            border-radius: var(--radius-organic);
+            padding: 1.3rem 1.8rem;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .arch-node::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--sap-light);
+            transition: var(--transition-smooth);
+        }
+
+        .arch-node:hover {
+            transform: translateY(-4px) scale(1.015);
+            border-color: var(--golden);
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.65), 0 0 25px rgba(201, 164, 75, 0.2);
+            background: rgba(18, 45, 12, 0.88);
+        }
+
+        .arch-node:hover::before {
+            background: var(--golden);
+            box-shadow: 0 0 15px var(--golden);
+        }
+
+        .arch-node.highlight {
+            border-color: rgba(201, 164, 75, 0.5);
+            background: rgba(22, 52, 16, 0.85);
+        }
+
+        .arch-node.highlight::before {
+            background: var(--golden);
+        }
+
+        .arch-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
+            background: rgba(45, 90, 30, 0.25);
+            border: 1px solid var(--border-bright);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--sunbeam);
+            flex-shrink: 0;
+            transition: var(--transition-fast);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .arch-node:hover .arch-icon {
+            background: rgba(201, 164, 75, 0.2);
+            border-color: var(--golden);
+            color: #ffffff;
+            transform: scale(1.08);
+            box-shadow: 0 0 20px rgba(201, 164, 75, 0.4);
+        }
+
+        .arch-details {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .arch-tag {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--sage);
+            margin-bottom: 0.2rem;
+        }
+
+        .arch-details h3 {
+            font-size: 1.15rem;
+            color: var(--text-bright);
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .arch-details p {
+            font-size: 0.88rem;
             color: var(--mist-green);
-            font-family: var(--font-mono);
+            line-height: 1.4;
+        }
+
+        .arch-connector {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0.6rem 0;
+            color: var(--golden);
+            position: relative;
+        }
+
+        .arch-pulse {
+            width: 2px;
+            height: 22px;
+            background: linear-gradient(180deg, var(--border-bright) 0%, var(--golden) 50%, var(--border-bright) 100%);
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .arch-pulse::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            box-shadow: 0 0 8px #ffffff;
+            animation: flowDown 1.8s infinite linear;
+        }
+
+        @keyframes flowDown {
+            0% { top: -100%; }
+            100% { top: 100%; }
+        }
+
+        .arch-connector i {
             font-size: 0.9rem;
-            line-height: 1.8;
-            white-space: pre;
-            text-align: center;
+            margin-top: 0.2rem;
+            text-shadow: 0 0 10px rgba(201, 164, 75, 0.6);
+            animation: bounceSubtle 1.8s ease-in-out infinite;
+        }
+
+        @keyframes bounceSubtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(3px); }
         }
 
         /* Irrigation */
@@ -3031,8 +3165,7 @@
         <div class="hero-content">
             <span class="hero-badge">IoT &bull; Smart Agriculture &bull; Automation</span>
             <h1>
-                <span class="gradient-text">JeevanDhara</span>
-                <span class="stroke-text">365</span>
+                <span class="gradient-text">Jeevan Dhara 365</span>
             </h1>
             <p class="hero-tagline">Revolutionizing Agriculture Through Intelligent IoT</p>
             <p>
@@ -3515,25 +3648,76 @@
         <div class="section-heading"><span>SYSTEM ARCHITECTURE</span>
             <h2>Overall Project Architecture</h2>
         </div>
-        <div class="architecture-box">
-            <pre>
-        Environmental Sensors
-               │
-               ▼
-        ESP32 Controller
-               │
-       Data Processing
-               │
-        Wi-Fi Communication
-               │
-               ▼
-        ThingSpeak Cloud
-               │
-      Data Visualization
-               │
-               ▼
-      Farmer / Web Dashboard
-            </pre>
+        <div class="arch-pipeline">
+            <!-- Node 1: Environmental Sensors -->
+            <div class="arch-node">
+                <div class="arch-icon"><i class="fa-solid fa-microchip"></i></div>
+                <div class="arch-details">
+                    <span class="arch-tag">Data Collection</span>
+                    <h3>Environmental Sensors</h3>
+                    <p>Captures Temperature, Humidity, Soil Moisture, Rain & Motion parameters</p>
+                </div>
+            </div>
+
+            <div class="arch-connector">
+                <div class="arch-pulse"></div>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+
+            <!-- Node 2: ESP32 Controller -->
+            <div class="arch-node">
+                <div class="arch-icon"><i class="fa-solid fa-memory"></i></div>
+                <div class="arch-details">
+                    <span class="arch-tag">Controller & Logic</span>
+                    <h3>ESP32 Microcontroller</h3>
+                    <p>Runs MicroPython firmware for sensor reading & data processing</p>
+                </div>
+            </div>
+
+            <div class="arch-connector">
+                <div class="arch-pulse"></div>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+
+            <!-- Node 3: Wi-Fi Communication -->
+            <div class="arch-node">
+                <div class="arch-icon"><i class="fa-solid fa-wifi"></i></div>
+                <div class="arch-details">
+                    <span class="arch-tag">Wireless Transport</span>
+                    <h3>Wi-Fi Communication</h3>
+                    <p>Sends telemetry payloads securely over local network to cloud API</p>
+                </div>
+            </div>
+
+            <div class="arch-connector">
+                <div class="arch-pulse"></div>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+
+            <!-- Node 4: ThingSpeak Cloud -->
+            <div class="arch-node">
+                <div class="arch-icon"><i class="fa-solid fa-cloud"></i></div>
+                <div class="arch-details">
+                    <span class="arch-tag">Cloud Infrastructure</span>
+                    <h3>ThingSpeak Cloud</h3>
+                    <p>Real-time IoT data logging, historical storage & analytical processing</p>
+                </div>
+            </div>
+
+            <div class="arch-connector">
+                <div class="arch-pulse"></div>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+
+            <!-- Node 5: Web Dashboard -->
+            <div class="arch-node highlight">
+                <div class="arch-icon"><i class="fa-solid fa-desktop"></i></div>
+                <div class="arch-details">
+                    <span class="arch-tag">User Interface</span>
+                    <h3>Farmer / Web Dashboard</h3>
+                    <p>Displays live sensor feeds, interactive charts & intelligent irrigation alerts</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -4071,27 +4255,197 @@
             el.addEventListener('mouseleave', () => cursorBloom.classList.remove('hovered'));
         });
 
-        // Full Page Dynamic Starfield Generator (Forest/Lime Tints Across All Sections)
-        (function initGlobalStarfield() {
-            const starfield = document.createElement('div');
-            starfield.id = 'global-starfield';
-            document.body.appendChild(starfield);
+        // Dynamic Organic Falling Nature Particles Engine (Leaves, Petals & Flowers)
+        (function initNatureParticles() {
+            const bgCanvas = document.createElement('canvas');
+            bgCanvas.id = 'nature-bg-canvas';
+            document.body.appendChild(bgCanvas);
+            const bgCtx = bgCanvas.getContext('2d');
 
-            const starCount = 140;
-            const colors = ['#ffffff', '#d4f0d0', '#a8e0a0', '#80c878'];
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.className = 'star g-star';
-                const size = Math.random() * 2.5 + 1;
-                star.style.width = size + 'px';
-                star.style.height = size + 'px';
-                star.style.top = (Math.random() * 100) + '%';
-                star.style.left = (Math.random() * 100) + '%';
-                star.style.background = colors[Math.floor(Math.random() * colors.length)];
-                star.style.animationDuration = (Math.random() * 4 + 3) + 's';
-                star.style.animationDelay = (Math.random() * 5) + 's';
-                starfield.appendChild(star);
+            const fgCanvas = document.createElement('canvas');
+            fgCanvas.id = 'nature-fg-canvas';
+            document.body.appendChild(fgCanvas);
+            const fgCtx = fgCanvas.getContext('2d');
+
+            let width, height;
+
+            function resize() {
+                width = bgCanvas.width = fgCanvas.width = window.innerWidth;
+                height = bgCanvas.height = fgCanvas.height = window.innerHeight;
             }
+            window.addEventListener('resize', resize);
+            resize();
+
+            const leafColors = [
+                'rgba(92, 158, 71, 0.75)',   // sap-light
+                'rgba(125, 181, 104, 0.7)',  // sage
+                'rgba(61, 114, 48, 0.8)',   // sap-green
+                'rgba(163, 201, 148, 0.65)', // mist-green
+                'rgba(184, 148, 78, 0.65)',  // gold-muted
+                'rgba(39, 110, 64, 0.75)'    // moss
+            ];
+
+            const petalColors = [
+                'rgba(248, 245, 235, 0.8)',  // jasmine white
+                'rgba(255, 228, 235, 0.75)', // soft blossom pink
+                'rgba(219, 184, 88, 0.75)',  // golden petal
+                'rgba(163, 201, 148, 0.7)',  // mist green petal
+                'rgba(255, 242, 210, 0.8)'   // soft cream
+            ];
+
+            const flowerColors = [
+                { main: 'rgba(255, 250, 242, 0.85)', center: '#c9a44b' },
+                { main: 'rgba(240, 222, 180, 0.8)',  center: '#5c9e47' },
+                { main: 'rgba(255, 232, 238, 0.85)', center: '#dbb858' },
+                { main: 'rgba(215, 238, 205, 0.8)',  center: '#c9a44b' }
+            ];
+
+            class NatureParticle {
+                constructor(type = null, isForeground = false) {
+                    this.isForeground = isForeground;
+                    this.type = type || ['leaf', 'petal', 'flower'][Math.floor(Math.random() * 3)];
+                    this.reset(true);
+                }
+
+                reset(initial = false) {
+                    this.x = Math.random() * width;
+                    this.y = initial ? Math.random() * height : -40 - Math.random() * 60;
+                    this.size = this.type === 'flower' ? Math.random() * 6 + 7 : Math.random() * 8 + 7;
+                    this.opacity = this.isForeground ? Math.random() * 0.35 + 0.55 : Math.random() * 0.4 + 0.25;
+
+                    if (this.type === 'leaf') {
+                        this.color = leafColors[Math.floor(Math.random() * leafColors.length)];
+                    } else if (this.type === 'petal') {
+                        this.color = petalColors[Math.floor(Math.random() * petalColors.length)];
+                    } else {
+                        const fl = flowerColors[Math.floor(Math.random() * flowerColors.length)];
+                        this.color = fl.main;
+                        this.centerColor = fl.center;
+                    }
+
+                    this.speedY = Math.random() * 0.32 + 0.2; // Slow, tranquil fall
+                    this.speedX = (Math.random() - 0.5) * 0.15;
+                    this.swayAngle = Math.random() * Math.PI * 2;
+                    this.swaySpeed = Math.random() * 0.012 + 0.005;
+                    this.swayAmplitude = Math.random() * 0.8 + 0.4;
+                    this.rotation = Math.random() * Math.PI * 2;
+                    this.rotationSpeed = (Math.random() - 0.5) * 0.009;
+                    this.flipAngle = Math.random() * Math.PI * 2;
+                    this.flipSpeed = Math.random() * 0.014 + 0.006;
+                }
+
+                update() {
+                    this.swayAngle += this.swaySpeed;
+                    this.x += Math.sin(this.swayAngle) * this.swayAmplitude + this.speedX;
+                    this.y += this.speedY;
+                    this.rotation += this.rotationSpeed;
+                    this.flipAngle += this.flipSpeed;
+
+                    if (this.y > height + 40 || this.x < -50 || this.x > width + 50) {
+                        this.reset();
+                    }
+                }
+
+                draw(ctx) {
+                    ctx.save();
+                    ctx.translate(this.x, this.y);
+                    ctx.rotate(this.rotation);
+                    const scaleX = Math.cos(this.flipAngle);
+                    ctx.scale(scaleX, 1);
+
+                    if (this.type === 'leaf') {
+                        ctx.globalAlpha = this.opacity;
+                        ctx.fillStyle = this.color;
+                        ctx.beginPath();
+                        const sz = this.size;
+                        ctx.moveTo(0, -sz);
+                        ctx.bezierCurveTo(sz * 0.65, -sz * 0.35, sz * 0.65, sz * 0.35, 0, sz);
+                        ctx.bezierCurveTo(-sz * 0.65, sz * 0.35, -sz * 0.65, -sz * 0.35, 0, -sz);
+                        ctx.fill();
+
+                        ctx.strokeStyle = 'rgba(255, 255, 255, 0.35)';
+                        ctx.lineWidth = 0.9;
+                        ctx.beginPath();
+                        ctx.moveTo(0, -sz * 1.05);
+                        ctx.lineTo(0, sz * 0.85);
+                        ctx.stroke();
+
+                    } else if (this.type === 'petal') {
+                        ctx.globalAlpha = this.opacity;
+                        ctx.fillStyle = this.color;
+                        ctx.beginPath();
+                        const sz = this.size;
+                        ctx.moveTo(0, sz);
+                        ctx.bezierCurveTo(sz * 0.9, sz * 0.2, sz * 0.8, -sz * 0.8, 0, -sz);
+                        ctx.bezierCurveTo(-sz * 0.8, -sz * 0.8, -sz * 0.9, sz * 0.2, 0, sz);
+                        ctx.fill();
+
+                        ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+                        ctx.lineWidth = 0.7;
+                        ctx.beginPath();
+                        ctx.moveTo(0, sz * 0.7);
+                        ctx.lineTo(0, -sz * 0.4);
+                        ctx.stroke();
+
+                    } else if (this.type === 'flower') {
+                        ctx.globalAlpha = this.opacity;
+                        const sz = this.size;
+                        const petalsCount = 5;
+                        const petalRadius = sz * 0.55;
+
+                        for (let i = 0; i < petalsCount; i++) {
+                            const angle = (i * 2 * Math.PI) / petalsCount;
+                            ctx.save();
+                            ctx.rotate(angle);
+                            ctx.translate(0, -petalRadius * 0.75);
+                            ctx.fillStyle = this.color;
+                            ctx.beginPath();
+                            ctx.arc(0, 0, petalRadius, 0, Math.PI * 2);
+                            ctx.fill();
+                            ctx.restore();
+                        }
+
+                        ctx.fillStyle = this.centerColor || '#dbb858';
+                        ctx.beginPath();
+                        ctx.arc(0, 0, sz * 0.32, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+
+                    ctx.restore();
+                }
+            }
+
+            // Background Particles (~30 particles falling behind UI elements)
+            const bgCount = Math.min(Math.floor(window.innerWidth / 40), 30);
+            const bgParticles = [];
+            for (let i = 0; i < bgCount; i++) {
+                bgParticles.push(new NatureParticle(null, false));
+            }
+
+            // Foreground Particles (EXACTLY 3 particles: 1 leaf, 1 petal, 1 flower falling on top of UI)
+            const fgParticles = [
+                new NatureParticle('leaf', true),
+                new NatureParticle('petal', true),
+                new NatureParticle('flower', true)
+            ];
+
+            function animate() {
+                bgCtx.clearRect(0, 0, width, height);
+                fgCtx.clearRect(0, 0, width, height);
+
+                bgParticles.forEach(p => {
+                    p.update();
+                    p.draw(bgCtx);
+                });
+
+                fgParticles.forEach(p => {
+                    p.update();
+                    p.draw(fgCtx);
+                });
+
+                requestAnimationFrame(animate);
+            }
+            animate();
         })();
     </script>
 </body>
