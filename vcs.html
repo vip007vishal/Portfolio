@@ -74,6 +74,44 @@
             -moz-osx-font-smoothing: grayscale;
             text-rendering: optimizeLegibility;
             background-color: var(--bg-deep);
+            scrollbar-width: thin;
+            scrollbar-color: #c49b3f #080a0f;
+        }
+
+        /* Custom Main Scroll View Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #080a0f;
+            border-left: 1px solid rgba(196, 155, 63, 0.08);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #c49b3f 0%, #8b6b23 100%);
+            border-radius: 10px;
+            box-shadow: inset 0 0 4px rgba(255, 215, 0, 0.3), 0 0 8px rgba(196, 155, 63, 0.5);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #f3d082 0%, #c49b3f 100%);
+            box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.5), 0 0 14px rgba(243, 208, 130, 0.8);
+        }
+
+        /* Reading Scroll Progress View Indicator */
+        #scroll-progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3.5px;
+            width: 0%;
+            background: linear-gradient(90deg, #8b6b23, #c49b3f, #f3d082, #e5be6b);
+            box-shadow: 0 0 12px rgba(196, 155, 63, 0.9), 0 0 6px rgba(243, 208, 130, 0.9);
+            z-index: 100000;
+            transition: width 0.08s ease-out;
+            pointer-events: none;
         }
 
         body {
@@ -112,33 +150,7 @@
             pointer-events: none;
         }
 
-        /* Dynamic Pointer Cursor Dark Bloom Effect */
-        #cursor-bloom {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 700px;
-            height: 700px;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 99999;
-            background: radial-gradient(circle at center, rgba(196, 155, 63, 0.09) 0%, rgba(196, 155, 63, 0.03) 45%, rgba(196, 155, 63, 0.008) 75%, transparent 100%);
-            filter: blur(80px);
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), width 0.6s cubic-bezier(0.16, 1, 0.3, 1), height 0.6s cubic-bezier(0.16, 1, 0.3, 1), background 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform, opacity;
-        }
 
-        #cursor-bloom.active {
-            opacity: 1;
-        }
-
-        #cursor-bloom.hovered {
-            width: 900px;
-            height: 900px;
-            background: radial-gradient(circle at center, rgba(196, 155, 63, 0.13) 0%, rgba(196, 155, 63, 0.05) 45%, rgba(196, 155, 63, 0.015) 75%, transparent 100%);
-        }
 
         h1,
         h2,
@@ -1633,6 +1645,7 @@
 </head>
 
 <body>
+    <div id="scroll-progress-bar"></div>
     <!-- 1. HEADER / NAV -->
     <header id="home">
         <nav>
@@ -2442,40 +2455,17 @@
         </div>
     </footer>
 
+
     <script>
-        // Pointer Cursor Dark Bloom Effect
-        const cursorBloom = document.createElement('div');
-        cursorBloom.id = 'cursor-bloom';
-        document.body.appendChild(cursorBloom);
-
-        let mouseX = -500, mouseY = -500;
-        let bloomX = -500, bloomY = -500;
-
-        window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            if (!cursorBloom.classList.contains('active')) {
-                cursorBloom.classList.add('active');
+        // Scroll Progress Bar Controller
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const progressBar = document.getElementById('scroll-progress-bar');
+            if (progressBar) {
+                progressBar.style.width = scrolled + '%';
             }
-        });
-
-        document.addEventListener('mouseleave', () => {
-            cursorBloom.classList.remove('active');
-        });
-
-        function animateBloom() {
-            bloomX += (mouseX - bloomX) * 0.065;
-            bloomY += (mouseY - bloomY) * 0.065;
-            cursorBloom.style.transform = `translate3d(${bloomX}px, ${bloomY}px, 0) translate(-50%, -50%)`;
-            requestAnimationFrame(animateBloom);
-        }
-        animateBloom();
-
-        const interactives = document.querySelectorAll('a, button, .vcs-card, .problem-card, .solution-pillar, .vision-card, .why-card, .module-card, .bento-card, .analytics-card, .gamification-card, .tech-card, .arch-step, .roadmap-card, .usecase-card, .benefit-card');
-        interactives.forEach(el => {
-            el.style.willChange = 'transform';
-            el.addEventListener('mouseenter', () => cursorBloom.classList.add('hovered'));
-            el.addEventListener('mouseleave', () => cursorBloom.classList.remove('hovered'));
         });
     </script>
 </body>

@@ -134,6 +134,44 @@
         html {
             scroll-behavior: smooth;
             font-size: 16px;
+            scrollbar-width: thin;
+            scrollbar-color: #10b981 #040d08;
+        }
+
+        /* Custom Main Scroll View Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #040d08;
+            border-left: 1px solid rgba(16, 185, 129, 0.08);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #059669 0%, #10b981 100%);
+            border-radius: 10px;
+            box-shadow: inset 0 0 4px rgba(52, 211, 153, 0.3), 0 0 8px rgba(16, 185, 129, 0.5);
+            border: 1px solid rgba(52, 211, 153, 0.25);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #34d399 0%, #059669 100%);
+            box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.5), 0 0 14px rgba(52, 211, 153, 0.8);
+        }
+
+        /* Reading Scroll Progress View Indicator */
+        #scroll-progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3.5px;
+            width: 0%;
+            background: linear-gradient(90deg, #059669, #10b981, #34d399, #a7f3d0);
+            box-shadow: 0 0 12px rgba(16, 185, 129, 0.9), 0 0 6px rgba(52, 211, 153, 0.9);
+            z-index: 100000;
+            transition: width 0.08s ease-out;
+            pointer-events: none;
         }
 
         body {
@@ -3117,6 +3155,7 @@
 </head>
 
 <body>
+    <div id="scroll-progress-bar"></div>
 
     <!-- SEAMLESS BREATHING FOG & MIST BACKGROUND LAYER (#080d00 Base) -->
     <div class="page-fog-bg" id="page-fog-bg" aria-hidden="true">
@@ -4447,6 +4486,17 @@
             }
             animate();
         })();
+
+        // Scroll Progress Bar Controller
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const progressBar = document.getElementById('scroll-progress-bar');
+            if (progressBar) {
+                progressBar.style.width = scrolled + '%';
+            }
+        });
     </script>
 </body>
 
