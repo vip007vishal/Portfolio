@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vishal</title>
 
     <!-- Font Awesome -->
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <style>
-        /* ===============================
-           CSS RESET & VARIABLES
-           =============================== */
         *,
         *::before,
         *::after {
@@ -72,33 +71,30 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            cursor: default;
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
         }
+
         ::-webkit-scrollbar-track {
             background: var(--bg-primary);
         }
+
         ::-webkit-scrollbar-thumb {
             background: var(--accent);
             border-radius: 10px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: var(--accent-light);
         }
 
-        /* Selection */
         ::selection {
             background: var(--accent);
             color: #fff;
         }
 
-        /* ===============================
-           PRELOADER
-           =============================== */
         #preloader {
             position: fixed;
             inset: 0;
@@ -109,11 +105,13 @@
             justify-content: center;
             transition: opacity 0.5s ease, visibility 0.5s ease;
         }
+
         #preloader.hidden {
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
         }
+
         .loader-ring {
             width: 50px;
             height: 50px;
@@ -122,15 +120,13 @@
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
         }
+
         @keyframes spin {
             to {
                 transform: rotate(360deg);
             }
         }
 
-        /* ===============================
-           PARTICLES CANVAS
-           =============================== */
         #particles-canvas {
             position: absolute;
             inset: 0;
@@ -138,9 +134,6 @@
             z-index: 0;
         }
 
-        /* ===============================
-           NAVBAR
-           =============================== */
         header {
             position: fixed;
             top: 0;
@@ -150,6 +143,7 @@
             transition: var(--transition-smooth);
             padding: 0 2rem;
         }
+
         header.scrolled {
             background: rgba(10, 10, 15, 0.85);
             backdrop-filter: blur(20px);
@@ -157,6 +151,7 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
             border-bottom: 1px solid var(--border);
         }
+
         .navbar {
             display: flex;
             align-items: center;
@@ -166,9 +161,11 @@
             padding: 1rem 0;
             transition: padding var(--transition-smooth);
         }
+
         header.scrolled .navbar {
             padding: 0.7rem 0;
         }
+
         .logo {
             font-family: var(--font-space);
             font-size: 1.7rem;
@@ -183,16 +180,19 @@
             position: relative;
             z-index: 1001;
         }
+
         .logo:hover {
             transform: scale(1.05);
             filter: brightness(1.2);
         }
+
         .nav-links {
             display: flex;
             list-style: none;
             gap: 0.5rem;
             align-items: center;
         }
+
         .nav-links a {
             text-decoration: none;
             color: var(--text-secondary);
@@ -204,15 +204,18 @@
             position: relative;
             letter-spacing: 0.3px;
         }
+
         .nav-links a:hover,
         .nav-links a.active {
             color: #fff;
             background: rgba(108, 92, 231, 0.15);
         }
+
         .nav-links a.active {
             color: var(--accent-light);
             font-weight: 600;
         }
+
         .menu-btn {
             display: none;
             font-size: 1.5rem;
@@ -223,14 +226,12 @@
             padding: 0.4rem;
             border-radius: 8px;
         }
+
         .menu-btn:hover {
             color: var(--accent-light);
             background: rgba(255, 255, 255, 0.05);
         }
 
-        /* ===============================
-           HERO SECTION
-           =============================== */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -243,6 +244,7 @@
                 radial-gradient(ellipse at 80% 70%, rgba(253, 121, 168, 0.05) 0%, transparent 50%),
                 var(--bg-primary);
         }
+
         .hero::after {
             content: '';
             position: absolute;
@@ -254,6 +256,7 @@
             z-index: 1;
             pointer-events: none;
         }
+
         .hero-text {
             text-align: center;
             max-width: 750px;
@@ -261,6 +264,7 @@
             z-index: 2;
             animation: fadeInUp 0.8s ease-out;
         }
+
         .hero-badge {
             display: inline-block;
             padding: 0.4rem 1.2rem;
@@ -274,6 +278,7 @@
             letter-spacing: 1px;
             text-transform: uppercase;
         }
+
         .hero-text h1 {
             font-family: var(--font-space);
             font-size: clamp(2.8rem, 7vw, 5rem);
@@ -282,6 +287,7 @@
             margin-bottom: 0.5rem;
             letter-spacing: -1px;
         }
+
         .hero-text h1 .highlight {
             background: var(--gradient-hero);
             -webkit-background-clip: text;
@@ -290,6 +296,7 @@
             position: relative;
             display: inline-block;
         }
+
         .hero-text h1 .highlight::after {
             content: '';
             position: absolute;
@@ -301,6 +308,7 @@
             border-radius: 2px;
             opacity: 0.5;
         }
+
         .hero-text .typing-wrapper {
             font-family: var(--font-space);
             font-size: clamp(1.2rem, 3vw, 1.6rem);
@@ -313,6 +321,7 @@
             justify-content: center;
             gap: 4px;
         }
+
         .typing-cursor {
             display: inline-block;
             width: 3px;
@@ -323,15 +332,19 @@
             margin-left: 2px;
             border-radius: 2px;
         }
+
         @keyframes blink {
+
             0%,
             100% {
                 opacity: 1;
             }
+
             50% {
                 opacity: 0;
             }
         }
+
         .hero-text p {
             color: var(--text-muted);
             font-size: 1.05rem;
@@ -339,12 +352,14 @@
             margin: 0 auto 2rem;
             line-height: 1.8;
         }
+
         .hero-buttons {
             display: flex;
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
         }
+
         .btn {
             display: inline-flex;
             align-items: center;
@@ -362,32 +377,36 @@
             overflow: hidden;
             font-family: var(--font-poppins);
         }
+
         .btn.primary {
             background: var(--gradient-1);
             color: #fff;
             box-shadow: 0 8px 30px rgba(108, 92, 231, 0.35);
         }
+
         .btn.primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 14px 40px rgba(108, 92, 231, 0.5);
             filter: brightness(1.1);
         }
+
         .btn.secondary {
             background: transparent;
             color: #fff;
             border: 2px solid var(--border-light);
         }
+
         .btn.secondary:hover {
             border-color: var(--accent);
             background: rgba(108, 92, 231, 0.08);
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(108, 92, 231, 0.2);
         }
+
         .btn i {
             font-size: 0.9rem;
         }
 
-        /* Hero floating shapes */
         .hero-shape {
             position: absolute;
             border-radius: 50%;
@@ -397,6 +416,7 @@
             pointer-events: none;
             animation: floatShape 12s ease-in-out infinite;
         }
+
         .hero-shape.shape-1 {
             width: 350px;
             height: 350px;
@@ -405,6 +425,7 @@
             right: -80px;
             animation-delay: 0s;
         }
+
         .hero-shape.shape-2 {
             width: 250px;
             height: 250px;
@@ -413,6 +434,7 @@
             left: -80px;
             animation-delay: -4s;
         }
+
         .hero-shape.shape-3 {
             width: 180px;
             height: 180px;
@@ -421,29 +443,32 @@
             left: 60%;
             animation-delay: -8s;
         }
+
         @keyframes floatShape {
+
             0%,
             100% {
                 transform: translate(0, 0) scale(1);
             }
+
             25% {
                 transform: translate(40px, -50px) scale(1.15);
             }
+
             50% {
                 transform: translate(-20px, -20px) scale(0.9);
             }
+
             75% {
                 transform: translate(-30px, 40px) scale(1.1);
             }
         }
 
-        /* ===============================
-           SECTION STYLES
-           =============================== */
         section {
             padding: 6rem 2rem;
             position: relative;
         }
+
         .section-title {
             font-family: var(--font-space);
             font-size: clamp(2rem, 5vw, 2.8rem);
@@ -453,6 +478,7 @@
             letter-spacing: -0.5px;
             position: relative;
         }
+
         .section-title::after {
             content: '';
             display: block;
@@ -462,6 +488,7 @@
             border-radius: 2px;
             margin: 0.8rem auto 0;
         }
+
         .section-subtitle {
             text-align: center;
             color: var(--text-muted);
@@ -470,17 +497,16 @@
             font-size: 0.95rem;
         }
 
-        /* ===============================
-           ABOUT SECTION
-           =============================== */
         #about {
             background: var(--bg-secondary);
         }
+
         .about-box {
             max-width: 1400px;
             margin: 0 auto;
             text-align: center;
         }
+
         .about-box>p {
             color: var(--text-secondary);
             font-size: 1.1rem;
@@ -488,11 +514,13 @@
             margin: 0 auto 3rem;
             line-height: 1.9;
         }
+
         .about-info {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1.5rem;
         }
+
         .info-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -502,6 +530,7 @@
             position: relative;
             overflow: hidden;
         }
+
         .info-card::before {
             content: '';
             position: absolute;
@@ -514,37 +543,40 @@
             transform-origin: left;
             transition: transform 0.4s ease;
         }
+
         .info-card:hover::before {
             transform: scaleX(1);
         }
+
         .info-card:hover {
             background: var(--bg-card-hover);
             border-color: var(--border-light);
             transform: translateY(-6px);
             box-shadow: var(--shadow-md);
         }
+
         .info-card .card-icon {
             font-size: 2rem;
             margin-bottom: 0.8rem;
             display: block;
         }
+
         .info-card h3 {
             font-family: var(--font-space);
             font-size: 1.1rem;
             margin-bottom: 0.4rem;
             color: #fff;
         }
+
         .info-card p {
             color: var(--text-muted);
             font-size: 0.9rem;
         }
 
-        /* ===============================
-           SKILLS SECTION
-           =============================== */
         #skills {
             background: var(--bg-primary);
         }
+
         .skills-grid {
             display: flex;
             flex-wrap: wrap;
@@ -553,6 +585,7 @@
             max-width: 1200px;
             margin: 0 auto;
         }
+
         .skill {
             padding: 0.7rem 1.5rem;
             background: var(--bg-card);
@@ -567,6 +600,7 @@
             overflow: hidden;
             letter-spacing: 0.3px;
         }
+
         .skill::after {
             content: '';
             position: absolute;
@@ -577,29 +611,27 @@
             border-radius: 50px;
             z-index: -1;
         }
+
         .skill:hover {
             color: #fff;
             border-color: transparent;
             transform: translateY(-4px);
             box-shadow: 0 10px 30px rgba(108, 92, 231, 0.3);
         }
+
         .skill:hover::after {
             opacity: 1;
         }
 
-        /* ===============================
-           PROJECTS SECTION
-           =============================== */
-        #projects {
-            background: var(--bg-secondary);
-        }
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.8rem;
             max-width: 1400px;
             margin: 0 auto;
+            width: 100%;
         }
+
         .project-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -613,10 +645,12 @@
             flex-direction: column;
             gap: 0.8rem;
         }
+
         .project-card .project-icon {
             font-size: 2.2rem;
             margin-bottom: 0.3rem;
         }
+
         .project-card::after {
             content: '';
             position: absolute;
@@ -626,32 +660,38 @@
             transition: opacity 0.4s ease;
             pointer-events: none;
         }
+
         .project-card:hover {
             border-color: rgba(108, 92, 231, 0.4);
             transform: translateY(-8px);
             box-shadow: var(--shadow-lg), 0 0 0 1px rgba(108, 92, 231, 0.2) inset;
         }
+
         .project-card:hover::after {
             opacity: 1;
         }
+
         .project-card h3 {
             font-family: var(--font-space);
             font-size: 1.25rem;
             color: #fff;
             letter-spacing: -0.3px;
         }
+
         .project-card p {
             color: var(--text-muted);
             font-size: 0.9rem;
             line-height: 1.6;
             flex-grow: 1;
         }
+
         .project-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
             margin-top: 0.5rem;
         }
+
         .project-tags span {
             padding: 0.3rem 0.8rem;
             background: rgba(108, 92, 231, 0.1);
@@ -661,6 +701,7 @@
             color: var(--accent-light);
             letter-spacing: 0.3px;
         }
+
         .project-link {
             display: inline-flex;
             align-items: center;
@@ -672,17 +713,16 @@
             margin-top: 0.4rem;
             transition: gap var(--transition-fast);
         }
+
         .project-link:hover {
             gap: 0.7rem;
         }
 
-        /* ===============================
-           CONTACT SECTION
-           =============================== */
         #contact {
             background: var(--bg-primary);
             position: relative;
         }
+
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
@@ -690,6 +730,7 @@
             flex-direction: column;
             gap: 1.2rem;
         }
+
         .contact-form input,
         .contact-form textarea {
             width: 100%;
@@ -704,21 +745,25 @@
             outline: none;
             resize: vertical;
         }
+
         .contact-form input:focus,
         .contact-form textarea:focus {
             border-color: var(--accent);
             box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.1);
             background: var(--bg-card-hover);
         }
+
         .contact-form input::placeholder,
         .contact-form textarea::placeholder {
             color: var(--text-muted);
             font-size: 0.9rem;
         }
+
         .contact-form .btn {
             align-self: flex-start;
             margin-top: 0.5rem;
         }
+
         .form-status {
             text-align: center;
             font-weight: 500;
@@ -727,16 +772,15 @@
             font-size: 0.9rem;
             transition: var(--transition-fast);
         }
+
         .form-status.success {
             color: #00cec9;
         }
+
         .form-status.error {
             color: #fd79a8;
         }
 
-        /* ===============================
-           FOOTER
-           =============================== */
         footer {
             background: var(--bg-secondary);
             text-align: center;
@@ -747,15 +791,18 @@
             align-items: center;
             gap: 1rem;
         }
+
         footer p {
             color: var(--text-muted);
             font-size: 0.9rem;
             letter-spacing: 0.3px;
         }
+
         .socials {
             display: flex;
             gap: 1rem;
         }
+
         .socials a {
             display: flex;
             align-items: center;
@@ -770,6 +817,7 @@
             transition: var(--transition-bounce);
             border: 1px solid var(--border);
         }
+
         .socials a:hover {
             background: var(--accent);
             color: #fff;
@@ -778,9 +826,6 @@
             box-shadow: 0 8px 25px rgba(108, 92, 231, 0.4);
         }
 
-        /* ===============================
-           BACK TO TOP BUTTON
-           =============================== */
         #back-to-top {
             position: fixed;
             bottom: 30px;
@@ -803,61 +848,380 @@
             align-items: center;
             justify-content: center;
         }
+
         #back-to-top.visible {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
+
         #back-to-top:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(108, 92, 231, 0.6);
             background: var(--accent-light);
         }
 
-        /* ===============================
-           ANIMATIONS
-           =============================== */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
         }
+
         .reveal {
             opacity: 0;
             transform: translateY(40px);
             transition: opacity 0.7s ease, transform 0.7s ease;
         }
+
         .reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
+
         .reveal-delay-1 {
             transition-delay: 0.1s;
         }
+
         .reveal-delay-2 {
             transition-delay: 0.2s;
         }
+
         .reveal-delay-3 {
             transition-delay: 0.3s;
         }
+
         .reveal-delay-4 {
             transition-delay: 0.4s;
         }
+
         .reveal-delay-5 {
             transition-delay: 0.5s;
+        }
+
+        /* ===============================
+           PROJECTS SECTION — IMMERSIVE SOLAR SYSTEM
+           =============================== */
+        #projects {
+            background: #000103;
+            position: relative;
+            min-height: 145vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4rem 2rem 3rem 2rem;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        #projects::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 95% 65% at 50% 50%, rgba(25, 20, 60, 0.10) 0%, rgba(3, 4, 10, 0.95) 55%, rgba(0, 1, 3, 1) 95%),
+                radial-gradient(ellipse 55% 45% at 75% 25%, rgba(6, 182, 212, 0.05) 0%, transparent 70%),
+                radial-gradient(ellipse 55% 45% at 25% 75%, rgba(236, 72, 153, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Text overlays — smooth fade transitions for scroll-aware visibility */
+        .opening-header {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            pointer-events: auto;
+            opacity: 1;
+            transform: none;
+            transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+        }
+
+        .opening-header.overlay-hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-18px);
+        }
+
+        .opening-badge {
+            font-family: var(--font-space);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            color: var(--accent-light);
+            text-transform: uppercase;
+            background: rgba(108, 92, 231, 0.22);
+            border: 1px solid rgba(162, 155, 254, 0.45);
+            padding: 6px 24px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 0 30px rgba(108, 92, 231, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        .opening-title {
+            font-family: var(--font-space);
+            font-size: clamp(2.8rem, 7.5vw, 5.5rem);
+            font-weight: 900;
+            letter-spacing: 0.35em;
+            text-indent: 0.35em;
+            color: #ffffff;
+            text-transform: uppercase;
+            margin-bottom: 0.2rem;
+            text-shadow: 0 0 50px rgba(108, 92, 231, 0.65);
+        }
+
+        #projects-opening-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+
+        /* Bottom Banner & Mode Controls — also fade on immersion */
+        .projects-bottom-bar {
+            position: relative;
+            z-index: 5;
+            text-align: center;
+            transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+        }
+
+        .projects-bottom-bar.overlay-hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(18px);
+        }
+
+        .explore-banner {
+            margin-bottom: 0.8rem;
+            text-align: center;
+            transition: opacity 0.35s ease-out;
+        }
+
+        .explore-prompt {
+            font-family: var(--font-space);
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.32em;
+            color: var(--accent-light);
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            animation: exploreGlow 2.5s infinite ease-in-out;
+        }
+
+        .explore-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--accent-light);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--accent-light);
+        }
+
+        .explore-sub {
+            font-size: 0.76rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            letter-spacing: 0.08em;
+            text-align: center;
+        }
+
+        @keyframes exploreGlow {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.04);
+            }
+        }
+
+        .projects-mode-controls {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            transition: opacity 0.7s ease;
+        }
+
+        .mode-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-family: var(--font-space);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+            white-space: nowrap;
+        }
+
+        .mode-btn:hover,
+        .mode-btn.active {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent-light);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .projects-grid-hidden {
+            display: none !important;
+        }
+
+        #projects.grid-mode {
+            min-height: auto;
+            padding: 5rem 2rem 3rem;
+            background: var(--bg-secondary);
+        }
+
+        #projects.grid-mode #projects-opening-canvas,
+        #projects.grid-mode #node-cursor-hud {
+            display: none;
+        }
+
+        #projects.grid-mode .explore-banner {
+            display: none;
+        }
+
+        #projects.grid-mode::before {
+            display: none;
+        }
+
+        #projects.grid-mode .opening-header,
+        #projects.grid-mode .projects-bottom-bar {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            transform: none !important;
+        }
+
+        /* HUD Panel */
+        #node-cursor-hud {
+            position: absolute;
+            z-index: 25;
+            background: rgba(10, 12, 24, 0.94);
+            border: 1px solid var(--accent-light);
+            border-radius: var(--radius-md);
+            padding: 18px 22px;
+            width: 310px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(108, 92, 231, 0.5);
+            backdrop-filter: blur(18px);
+            pointer-events: auto;
+            opacity: 0;
+            transform: translateY(12px) scale(0.95);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        #node-cursor-hud.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .hud-top {
+            font-family: var(--font-space);
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--accent-light);
+            letter-spacing: 0.15em;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hud-close-btn {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: color 0.2s;
+            padding: 2px 6px;
+        }
+
+        .hud-close-btn:hover {
+            color: #ffffff;
+        }
+
+        .hud-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hud-description {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+
+        .hud-pill-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+
+        .hud-pill-tags span {
+            font-size: 0.68rem;
+            background: rgba(108, 92, 231, 0.2);
+            border: 1px solid rgba(162, 155, 254, 0.35);
+            color: var(--accent-light);
+            padding: 3px 9px;
+            border-radius: 4px;
+        }
+
+        .hud-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #ffffff;
+            background: var(--accent);
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+            width: 100%;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+        }
+
+        .hud-cta-btn:hover {
+            background: var(--accent-light);
+            color: #000000;
+            transform: translateY(-2px);
         }
 
         /* ===============================
@@ -867,6 +1231,7 @@
             .menu-btn {
                 display: block;
             }
+
             .nav-links {
                 position: fixed;
                 top: 0;
@@ -884,27 +1249,34 @@
                 border-left: 1px solid var(--border);
                 z-index: 1000;
             }
+
             .nav-links.active {
                 right: 0;
             }
+
             .nav-links a {
                 font-size: 1.1rem;
                 padding: 0.7rem 1rem;
                 display: block;
                 border-radius: 10px;
             }
+
             .hero-text h1 {
                 font-size: 2.4rem;
             }
+
             section {
                 padding: 4rem 1.2rem;
             }
+
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+
             .about-info {
                 grid-template-columns: 1fr 1fr;
             }
+
             #back-to-top {
                 bottom: 20px;
                 right: 20px;
@@ -912,45 +1284,266 @@
                 height: 40px;
                 font-size: 1rem;
             }
+
+            .opening-title {
+                letter-spacing: 0.2em !important;
+                text-indent: 0.2em !important;
+                font-size: clamp(2rem, 8vw, 3.5rem) !important;
+            }
+
+            #node-cursor-hud {
+                width: 240px !important;
+                padding: 12px 15px !important;
+            }
+
+            .projects-mode-controls {
+                flex-direction: column;
+                gap: 8px !important;
+            }
+
+            .mode-btn {
+                font-size: 0.72rem !important;
+                padding: 7px 15px !important;
+            }
         }
+
         @media (max-width: 480px) {
             .about-info {
                 grid-template-columns: 1fr;
             }
+
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
             }
+
             .hero-buttons .btn {
                 width: 100%;
                 justify-content: center;
             }
+
             .navbar {
                 padding: 0.8rem 0;
             }
+
             .logo {
                 font-size: 1.4rem;
             }
+
+            .opening-title {
+                letter-spacing: 0.12em !important;
+                text-indent: 0.12em !important;
+                font-size: 1.9rem !important;
+            }
+
+            #node-cursor-hud {
+                width: 200px !important;
+                padding: 10px 12px !important;
+                left: 10px !important;
+            }
+        }
+
+        /* ===============================
+           SPACE SHUTTLE SCI-FI CURSOR
+           =============================== */
+        @media (pointer: fine) {
+            *, *::before, *::after,
+            html, body, a, button, input, textarea, select, label, canvas, svg, iframe, img, span, div, p, h1, h2, h3, h4, h5, h6,
+            .btn, .mode-btn, .filter-btn, .hud-close-btn, .hud-cta-btn, .social-icon, #back-to-top, [role="button"] {
+                cursor: none !important;
+            }
+            *:hover, *:active, *:focus, *:visited {
+                cursor: none !important;
+            }
+        }
+
+        #space-cursor-shuttle {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 26px;
+            height: 26px;
+            pointer-events: none;
+            z-index: 99999;
+            transform: translate(-50%, -50%) rotate(0deg);
+            filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.9)) drop-shadow(0 0 16px rgba(168, 85, 247, 0.6));
+            transition: transform 0.08s cubic-bezier(0.1, 1, 0.1, 1), filter 0.2s;
+        }
+
+        #space-cursor-shuttle svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        #space-cursor-ring {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 44px;
+            height: 44px;
+            border: 1.5px dashed rgba(6, 182, 212, 0.75);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99998;
+            transform: translate(-50%, -50%);
+            transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                height 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.25s,
+                background-color 0.25s,
+                box-shadow 0.25s;
+            box-shadow: 0 0 18px rgba(6, 182, 212, 0.35), inset 0 0 12px rgba(168, 85, 247, 0.25);
+            animation: spaceCursorRotate 10s linear infinite;
+        }
+
+        @keyframes spaceCursorRotate {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        /* Reticle Ticks */
+        .ring-tick {
+            position: absolute;
+            background: rgba(6, 182, 212, 0.9);
+            pointer-events: none;
+            transition: background-color 0.2s;
+        }
+
+        .tick-top {
+            top: -6px;
+            left: 50%;
+            width: 2px;
+            height: 6px;
+            transform: translateX(-50%);
+        }
+
+        .tick-bottom {
+            bottom: -6px;
+            left: 50%;
+            width: 2px;
+            height: 6px;
+            transform: translateX(-50%);
+        }
+
+        .tick-left {
+            left: -6px;
+            top: 50%;
+            width: 6px;
+            height: 2px;
+            transform: translateY(-50%);
+        }
+
+        .tick-right {
+            right: -6px;
+            top: 50%;
+            width: 6px;
+            height: 2px;
+            transform: translateY(-50%);
+        }
+
+        /* Sci-Fi Target Lock Brackets */
+        .lock-corner {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 1.5px solid transparent;
+            opacity: 0;
+            transition: opacity 0.25s, border-color 0.25s, transform 0.25s;
+        }
+
+        .corner-tl {
+            top: -10px;
+            left: -10px;
+            border-top-color: #fbbf24;
+            border-left-color: #fbbf24;
+        }
+
+        .corner-tr {
+            top: -10px;
+            right: -10px;
+            border-top-color: #fbbf24;
+            border-right-color: #fbbf24;
+        }
+
+        .corner-bl {
+            bottom: -10px;
+            left: -10px;
+            border-bottom-color: #fbbf24;
+            border-left-color: #fbbf24;
+        }
+
+        .corner-br {
+            bottom: -10px;
+            right: -10px;
+            border-bottom-color: #fbbf24;
+            border-right-color: #fbbf24;
+        }
+
+        /* Hover / Target Lock State (Links, Buttons & Planet Nodes) */
+        body.cursor-hover #space-cursor-shuttle,
+        body.cursor-hover-planet #space-cursor-shuttle {
+            filter: drop-shadow(0 0 14px rgba(251, 191, 36, 0.95)) drop-shadow(0 0 28px rgba(245, 158, 11, 0.85));
+        }
+
+        body.cursor-hover #space-cursor-ring,
+        body.cursor-hover-planet #space-cursor-ring {
+            width: 60px;
+            height: 60px;
+            border: 1.5px solid rgba(251, 191, 36, 0.9);
+            background-color: rgba(251, 191, 36, 0.08);
+            box-shadow: 0 0 32px rgba(251, 191, 36, 0.55), inset 0 0 22px rgba(251, 191, 36, 0.3);
+            animation-duration: 3.5s;
+        }
+
+        body.cursor-hover .lock-corner,
+        body.cursor-hover-planet .lock-corner {
+            opacity: 1;
+            transform: scale(1.15);
+        }
+
+        body.cursor-hover .ring-tick,
+        body.cursor-hover-planet .ring-tick {
+            background: rgba(251, 191, 36, 0.95);
+        }
+
+        /* Mouse Down Click Pulse */
+        body.cursor-active #space-cursor-ring {
+            width: 30px;
+            height: 30px;
+            border-color: #ec4899;
+            box-shadow: 0 0 35px rgba(236, 72, 153, 0.95);
+        }
+
+        #space-cursor-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 99997;
         }
     </style>
 </head>
+
 <body>
 
-    <!-- ================= PRELOADER ================= -->
     <div id="preloader">
         <div class="loader-ring"></div>
     </div>
 
-    <!-- ================= BACK TO TOP ================= -->
     <button id="back-to-top" title="Back to top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- ================= NAVBAR ================= -->
     <header>
         <nav class="navbar">
             <h2 class="logo">Vishal.</h2>
-
             <ul class="nav-links">
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -958,42 +1551,31 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-
             <div class="menu-btn">
                 <i class="fas fa-bars"></i>
             </div>
         </nav>
     </header>
 
-    <!-- ================= HERO ================= -->
     <section id="home" class="hero">
-        <!-- Floating shapes -->
         <div class="hero-shape shape-1"></div>
         <div class="hero-shape shape-2"></div>
         <div class="hero-shape shape-3"></div>
-
-        <!-- Particles -->
         <canvas id="particles-canvas"></canvas>
-
         <div class="hero-text">
             <span class="hero-badge">🚀 Welcome to my portfolio</span>
-
             <h1>Hello, I'm <span class="highlight">Vishal</span></h1>
-
             <div class="typing-wrapper">
                 <span id="typing-text"></span><span class="typing-cursor"></span>
             </div>
-
             <p>
                 Passionate about Full Stack Development, Artificial Intelligence,
                 and building modern web applications that solve real-world problems.
             </p>
-
             <div class="hero-buttons">
                 <a href="#projects" class="btn primary">
                     <i class="fas fa-code"></i> View Projects
                 </a>
-
                 <a href="#contact" class="btn secondary">
                     <i class="fas fa-paper-plane"></i> Contact Me
                 </a>
@@ -1001,31 +1583,26 @@
         </div>
     </section>
 
-    <!-- ================= ABOUT ================= -->
     <section id="about">
         <h2 class="section-title reveal">About Me</h2>
         <p class="section-subtitle reveal reveal-delay-1">Get to know a little about my background</p>
-
         <div class="about-box">
             <p class="reveal reveal-delay-1">
                 I'm currently pursuing my B.E. in Computer Science and Engineering.
                 I enjoy creating web applications, exploring AI technologies,
                 and continuously improving my development skills.
             </p>
-
             <div class="about-info">
                 <div class="info-card reveal reveal-delay-2">
                     <span class="card-icon">🎓</span>
                     <h3>Education</h3>
                     <p>B.E. Computer Science and Engineering</p>
                 </div>
-
                 <div class="info-card reveal reveal-delay-3">
                     <span class="card-icon">💼</span>
                     <h3>Internship</h3>
                     <p>Web Development Intern</p>
                 </div>
-
                 <div class="info-card reveal reveal-delay-4">
                     <span class="card-icon">📍</span>
                     <h3>Location</h3>
@@ -1035,11 +1612,9 @@
         </div>
     </section>
 
-    <!-- ================= SKILLS ================= -->
     <section id="skills">
         <h2 class="section-title reveal">Skills</h2>
         <p class="section-subtitle reveal reveal-delay-1">Technologies I work with</p>
-
         <div class="skills-grid">
             <div class="skill reveal reveal-delay-1">HTML</div>
             <div class="skill reveal reveal-delay-1">CSS</div>
@@ -1053,79 +1628,108 @@
         </div>
     </section>
 
-    <!-- ================= PROJECTS ================= -->
+    <!-- ================= PROJECTS — IMMERSIVE SOLAR SYSTEM ================= -->
     <section id="projects">
-        <h2 class="section-title reveal">Projects</h2>
-        <p class="section-subtitle reveal reveal-delay-1">Some of my recent work</p>
+        <div class="opening-header">
+            <!--<span class="opening-badge">01 — The Opening</span>-->
+            <h2 class="opening-title">PROJECTS</h2>
+        </div>
 
-        <div class="projects-grid">
+        <canvas id="projects-opening-canvas"></canvas>
+
+        <div id="node-cursor-hud">
+            <div class="hud-top">
+                <span id="hud-id-text">NODE 01</span>
+                <span class="hud-close-btn" onclick="unpinHudCard(event)" title="Close Panel"><i
+                        class="fas fa-times"></i></span>
+            </div>
+            <div class="hud-name">
+                <span id="hud-icon-text">📋</span>
+                <span id="hud-title-text">Smart Exam Planner</span>
+            </div>
+            <div class="hud-description" id="hud-desc-text">AI-powered seating management platform.</div>
+            <div class="hud-pill-tags" id="hud-tags-text"><span>AI</span><span>Python</span></div>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="hud-cta-btn" id="hud-link-text">
+                Know More <i class="fas fa-external-link-alt"></i>
+            </a>
+        </div>
+
+        <div class="projects-bottom-bar">
+            <div class="explore-banner">
+                <div class="explore-prompt">
+                    <span class="explore-dot"></span>
+                    MOVE TO EXPLORE
+                    <span class="explore-dot"></span>
+                </div>
+                <div class="explore-sub">The cursor becomes the navigation mechanism. Click any planet to inspect.</div>
+            </div>
+            <div class="projects-mode-controls">
+                <button class="mode-btn active" id="mode-matrix-btn" onclick="toggleProjectsDisplay('matrix')">
+                    <i class="fas fa-circle-nodes"></i> Immersive Matrix
+                </button>
+                <button class="mode-btn" id="mode-grid-btn" onclick="toggleProjectsDisplay('grid')">
+                    <i class="fas fa-table-cells"></i> Classic Cards Grid
+                </button>
+            </div>
+        </div>
+
+        <div class="projects-grid projects-grid-hidden" id="projects-cards-grid"
+            style="position:relative; z-index:5; width:100%; margin-top:2rem;">
             <div class="project-card reveal reveal-delay-1">
                 <span class="project-icon">📋</span>
                 <h3>Smart Exam Planner</h3>
                 <p>AI-powered exam seating management platform with intelligent allocation algorithms.</p>
-                <div class="project-tags">
-                    <span>AI</span><span>Python</span><span>Web</span>
-                </div>
-                <a href="https://vip007vishal.github.io/SEP_web/" target="_blank" rel="noopener noreferrer" class="project-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                <div class="project-tags"><span>AI</span><span>Python</span><span>Web</span></div>
+                <a href="https://vip007vishal.github.io/SEP_web/" target="_blank" rel="noopener noreferrer"
+                    class="project-link">Know More <i class="fas fa-arrow-right"></i></a>
             </div>
-
             <div class="project-card reveal reveal-delay-2">
                 <span class="project-icon">🏢</span>
                 <h3>Virtual Company Simulator</h3>
                 <p>Simulation platform for recruitment and interview practice with real-time feedback.</p>
-                <div class="project-tags">
-                    <span>React</span><span>Node.js</span><span>AI</span>
-                </div>
-                <a href="https://vip007vishal.github.io/VCS_web/" target="_blank" rel="noopener noreferrer" class="project-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                <div class="project-tags"><span>React</span><span>Node.js</span><span>AI</span></div>
+                <a href="https://vip007vishal.github.io/VCS_web/" target="_blank" rel="noopener noreferrer"
+                    class="project-link">Know More <i class="fas fa-arrow-right"></i></a>
             </div>
-
             <div class="project-card reveal reveal-delay-3">
                 <span class="project-icon">📊</span>
                 <h3>Recruitment Management System</h3>
                 <p>Applicant tracking system built using PHP & MySQL with dashboard analytics.</p>
-                <div class="project-tags">
-                    <span>PHP</span><span>MySQL</span><span>Bootstrap</span>
-                </div>
-                <a href="https://vip007vishal.github.io/CRM_web/" target="_blank" rel="noopener noreferrer" class="project-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                <div class="project-tags"><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
+                <a href="https://vip007vishal.github.io/CRM_web/" target="_blank" rel="noopener noreferrer"
+                    class="project-link">Know More <i class="fas fa-arrow-right"></i></a>
             </div>
-
             <div class="project-card reveal reveal-delay-4">
                 <span class="project-icon">🌾</span>
                 <h3>Jeevan Dhara 365</h3>
                 <p>IoT-based smart agriculture monitoring system for real-time crop insights.</p>
-                <div class="project-tags">
-                    <span>IoT</span><span>Sensors</span><span>Dashboard</span>
-                </div>
-                <a href="https://vip007vishal.github.io/JD365_web/" target="_blank" rel="noopener noreferrer" class="project-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                <div class="project-tags"><span>IoT</span><span>Sensors</span><span>Dashboard</span></div>
+                <a href="https://vip007vishal.github.io/JD365_web/" target="_blank" rel="noopener noreferrer"
+                    class="project-link">Know More <i class="fas fa-arrow-right"></i></a>
             </div>
-
             <div class="project-card reveal reveal-delay-5">
                 <span class="project-icon">🚗</span>
                 <h3>3D BMW Website</h3>
                 <p>Interactive 3D landing page with immersive animations and sleek design.</p>
-                <div class="project-tags">
-                    <span>Three.js</span><span>GSAP</span><span>WebGL</span>
-                </div>
-                <a href="https://vip007vishal.github.io/BMW_web/index.html" target="_blank" rel="noopener noreferrer" class="project-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                <div class="project-tags"><span>Three.js</span><span>GSAP</span><span>WebGL</span></div>
+                <a href="https://vip007vishal.github.io/BMW_web/index.html" target="_blank" rel="noopener noreferrer"
+                    class="project-link">Know More <i class="fas fa-arrow-right"></i></a>
             </div>
-
             <div class="project-card reveal reveal-delay-1">
                 <span class="project-icon">✨</span>
                 <h3>Seven's Studios</h3>
-                <p>Modern portfolio website designed to represent developer identity, showcase Computer Science projects, skills, and client work.</p>
-                <div class="project-tags">
-                    <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
-                </div>
-                <a href="https://vip007vishal.github.io/seven-s-studios/" target="_blank" rel="noopener noreferrer" class="project-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                <p>Modern portfolio website designed to represent developer identity, showcase Computer Science
+                    projects, skills, and client work.</p>
+                <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
+                <a href="https://vip007vishal.github.io/seven-s-studios/" target="_blank" rel="noopener noreferrer"
+                    class="project-link">Know More <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
 
-    <!-- ================= CONTACT ================= -->
     <section id="contact">
         <h2 class="section-title reveal">Contact Me</h2>
         <p class="section-subtitle reveal reveal-delay-1">Let's build something amazing together</p>
-
         <form class="contact-form reveal reveal-delay-2" id="contactForm">
             <input type="text" placeholder="Your Name" required>
             <input type="email" placeholder="Your Email" required>
@@ -1138,7 +1742,6 @@
         </form>
     </section>
 
-    <!-- ================= FOOTER ================= -->
     <footer>
         <p>© 2026 Vishal. All Rights Reserved.</p>
         <div class="socials">
@@ -1155,23 +1758,21 @@
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
             preloader.classList.add('hidden');
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 500);
+            setTimeout(() => { preloader.style.display = 'none'; }, 500);
         });
 
         // ===============================
-        // PARTICLES CANVAS
+        // PARTICLES CANVAS (HERO)
         // ===============================
-        const canvas = document.getElementById('particles-canvas');
-        const ctx = canvas.getContext('2d');
+        const particlesCanvas = document.getElementById('particles-canvas');
+        const particlesCtx = particlesCanvas.getContext('2d');
         let particles = [];
         let animationId;
 
-        function resizeCanvas() {
+        function resizeParticlesCanvas() {
             const hero = document.querySelector('.hero');
-            canvas.width = hero.offsetWidth;
-            canvas.height = hero.offsetHeight;
+            particlesCanvas.width = hero.offsetWidth;
+            particlesCanvas.height = hero.offsetHeight;
         }
 
         class Particle {
@@ -1179,8 +1780,8 @@
                 this.reset();
             }
             reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
+                this.x = Math.random() * particlesCanvas.width;
+                this.y = Math.random() * particlesCanvas.height;
                 this.size = Math.random() * 2 + 0.5;
                 this.speedX = (Math.random() - 0.5) * 0.6;
                 this.speedY = (Math.random() - 0.5) * 0.6;
@@ -1191,50 +1792,42 @@
                 this.x += this.speedX;
                 this.y += this.speedY;
                 this.opacity += this.opacitySpeed;
-                if (this.opacity <= 0.05 || this.opacity >= 0.6) {
-                    this.opacitySpeed *= -1;
-                }
-                if (
-                    this.x < -10 || this.x > canvas.width + 10 ||
-                    this.y < -10 || this.y > canvas.height + 10
-                ) {
+                if (this.opacity <= 0.05 || this.opacity >= 0.6) this.opacitySpeed *= -1;
+                if (this.x < -10 || this.x > particlesCanvas.width + 10 || this.y < -10 || this.y > particlesCanvas.height + 10) {
                     this.reset();
                 }
             }
             draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(162, 155, 254, ${this.opacity})`;
-                ctx.fill();
+                particlesCtx.beginPath();
+                particlesCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                particlesCtx.fillStyle = `rgba(162, 155, 254, ${this.opacity})`;
+                particlesCtx.fill();
             }
         }
 
         function initParticles(count = 70) {
             particles = [];
-            for (let i = 0; i < count; i++) {
-                particles.push(new Particle());
-            }
+            for (let i = 0; i < count; i++) particles.push(new Particle());
         }
 
         function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particlesCtx.clearRect(0, 0, particlesCanvas.width, particlesCanvas.height);
             particles.forEach(p => {
                 p.update();
                 p.draw();
             });
-            // Draw connection lines
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
                     if (dist < 100) {
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(162, 155, 254, ${0.06 * (1 - dist / 100)})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.stroke();
+                        particlesCtx.beginPath();
+                        particlesCtx.moveTo(particles[i].x, particles[i].y);
+                        particlesCtx.lineTo(particles[j].x, particles[j].y);
+                        particlesCtx.strokeStyle = `rgba(162, 155, 254, ${0.06 * (1 - dist / 100)})`;
+                        particlesCtx.lineWidth = 0.5;
+                        particlesCtx.stroke();
                     }
                 }
             }
@@ -1242,12 +1835,11 @@
         }
 
         function setupParticles() {
-            resizeCanvas();
+            resizeParticlesCanvas();
             initParticles();
             if (animationId) cancelAnimationFrame(animationId);
             animateParticles();
         }
-
         window.addEventListener('resize', setupParticles);
         setupParticles();
 
@@ -1255,17 +1847,13 @@
         // TYPING EFFECT
         // ===============================
         const typingElement = document.getElementById('typing-text');
-        const phrases = [
-            'Computer Science Student',
-            'Full Stack Developer',
-            'AI Enthusiast',
-            'Problem Solver',
-            'Tech Explorer',
+        const phrases = ['Computer Science Student', 'Full Stack Developer', 'AI Enthusiast', 'Problem Solver',
+            'Tech Explorer'
         ];
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typingSpeed = 80;
+        let phraseIndex = 0,
+            charIndex = 0,
+            isDeleting = false,
+            typingSpeed = 80;
 
         function typeEffect() {
             const currentPhrase = phrases[phraseIndex];
@@ -1296,56 +1884,33 @@
         const menuBtn = document.querySelector('.menu-btn');
         const navLinks = document.querySelector('.nav-links');
         const navLinksAnchors = document.querySelectorAll('.nav-links a');
-
         menuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             const icon = menuBtn.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-xmark');
-            } else {
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            }
+            icon.classList.toggle('fa-bars', !navLinks.classList.contains('active'));
+            icon.classList.toggle('fa-xmark', navLinks.classList.contains('active'));
         });
-
         navLinksAnchors.forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
-                const icon = menuBtn.querySelector('i');
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
+                menuBtn.querySelector('i').classList.replace('fa-xmark', 'fa-bars');
             });
         });
-
-        // Close menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (!navLinks.contains(e.target) && !menuBtn.contains(e.target) && navLinks.classList
-                .contains('active')) {
+            if (!navLinks.contains(e.target) && !menuBtn.contains(e.target) && navLinks.classList.contains(
+                'active')) {
                 navLinks.classList.remove('active');
-                const icon = menuBtn.querySelector('i');
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
+                menuBtn.querySelector('i').classList.replace('fa-xmark', 'fa-bars');
             }
         });
 
         // ===============================
-        // HEADER SCROLL EFFECT
+        // HEADER SCROLL EFFECT & ACTIVE NAV
         // ===============================
         const header = document.querySelector('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // ===============================
-        // ACTIVE NAV LINK ON SCROLL
-        // ===============================
         const sections = document.querySelectorAll('section[id]');
-        function updateActiveNav() {
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
             let scrollY = window.scrollY + 100;
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
@@ -1357,21 +1922,16 @@
                     if (activeLink) activeLink.classList.add('active');
                 }
             });
-        }
-        window.addEventListener('scroll', updateActiveNav);
+        });
 
         // ===============================
-        // SCROLL REVEAL ANIMATION
+        // SCROLL REVEAL
         // ===============================
         const revealElements = document.querySelectorAll('.reveal');
         function revealOnScroll() {
             const windowHeight = window.innerHeight;
             revealElements.forEach(el => {
-                const elementTop = el.getBoundingClientRect().top;
-                const revealPoint = 100;
-                if (elementTop < windowHeight - revealPoint) {
-                    el.classList.add('visible');
-                }
+                if (el.getBoundingClientRect().top < windowHeight - 100) el.classList.add('visible');
             });
         }
         window.addEventListener('scroll', revealOnScroll);
@@ -1379,69 +1939,51 @@
         revealOnScroll();
 
         // ===============================
-        // BACK TO TOP BUTTON
+        // BACK TO TOP
         // ===============================
         const backToTopBtn = document.getElementById('back-to-top');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
+            backToTopBtn.classList.toggle('visible', window.scrollY > 500);
         });
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
         // ===============================
-        // CONTACT FORM HANDLING
+        // CONTACT FORM
         // ===============================
         const contactForm = document.getElementById('contactForm');
         const formStatus = document.getElementById('formStatus');
-
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-
-            // Simple validation feedback
             const inputs = contactForm.querySelectorAll('input, textarea');
             let allFilled = true;
-            inputs.forEach(input => {
-                if (!input.value.trim()) allFilled = false;
-            });
-
+            inputs.forEach(input => { if (!input.value.trim()) allFilled = false; });
             if (!allFilled) {
                 formStatus.textContent = '⚠️ Please fill in all fields.';
                 formStatus.className = 'form-status error';
                 return;
             }
-
-            // Simulate sending
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalHTML = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
             formStatus.textContent = '';
             formStatus.className = 'form-status';
-
             setTimeout(() => {
                 formStatus.textContent = '✅ Message sent successfully! I\'ll get back to you soon.';
                 formStatus.className = 'form-status success';
                 submitBtn.innerHTML = originalHTML;
                 submitBtn.disabled = false;
                 contactForm.reset();
-
                 setTimeout(() => {
                     formStatus.textContent = '';
                     formStatus.className = 'form-status';
                 }, 4000);
             }, 1500);
         });
-        
-        const footerText = document.querySelector('footer p');
-        footerText.innerHTML = `© ${new Date().getFullYear()} Vishal. All Rights Reserved.`;
 
+        document.querySelector('footer p').innerHTML = `© ${new Date().getFullYear()} Vishal. All Rights Reserved.`;
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
                 const target = document.querySelector(targetId);
@@ -1453,10 +1995,1166 @@
         });
 
         console.log('%c🚀 Vishal\'s Portfolio Enhanced! %cReady to explore.',
-            'font-size: 1.2rem; font-weight: bold; color: #a29bfe;',
-            'color: #a0a0b8;');
-        console.log('%c💡 Try hovering over the skill tags and project cards!',
-            'color: #00cec9; font-style: italic;');
+            'font-size: 1.2rem; font-weight: bold; color: #a29bfe;', 'color: #a0a0b8;');
+    </script>
+
+    <!-- ===============================
+     IMMERSIVE SOLAR SYSTEM ENGINE
+     =============================== -->
+    <script>
+        let currentProjectsMode = 'matrix';
+        let pinnedNode = null;
+        function unpinHudCard(e) {
+            if (e) e.stopPropagation();
+            pinnedNode = null;
+            const hud = document.getElementById('node-cursor-hud');
+            if (hud) hud.classList.remove('active');
+        }
+
+        function toggleProjectsDisplay(mode) {
+            const canvas = document.getElementById('projects-opening-canvas');
+            const hud = document.getElementById('node-cursor-hud');
+            const grid = document.getElementById('projects-cards-grid');
+            const btnMatrix = document.getElementById('mode-matrix-btn');
+            const btnGrid = document.getElementById('mode-grid-btn');
+            const section = document.getElementById('projects');
+            const openingHeader = document.querySelector('.opening-header');
+            const bottomBar = document.querySelector('.projects-bottom-bar');
+            const exploreBanner = document.querySelector('.explore-banner');
+
+            currentProjectsMode = mode;
+
+            if (mode === 'grid') {
+                section.classList.add('grid-mode');
+                grid.classList.remove('projects-grid-hidden');
+                canvas.style.display = 'none';
+                hud.style.display = 'none';
+                hud.classList.remove('active');
+                btnMatrix.classList.remove('active');
+                btnGrid.classList.add('active');
+                if (exploreBanner) exploreBanner.style.display = 'none';
+                if (openingHeader) {
+                    openingHeader.classList.remove('overlay-hidden');
+                    openingHeader.style.opacity = '1';
+                    openingHeader.style.pointerEvents = 'auto';
+                }
+                if (bottomBar) {
+                    bottomBar.classList.remove('overlay-hidden');
+                    bottomBar.style.opacity = '1';
+                    bottomBar.style.pointerEvents = 'auto';
+                }
+                setTimeout(() => {
+                    grid.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+                }, 100);
+                grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                section.classList.remove('grid-mode');
+                grid.classList.add('projects-grid-hidden');
+                canvas.style.display = 'block';
+                hud.style.display = 'block';
+                btnMatrix.classList.add('active');
+                btnGrid.classList.remove('active');
+                if (exploreBanner) exploreBanner.style.display = '';
+                updateOverlayVisibility();
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        const projectsSection = document.getElementById('projects');
+        const openingHeader = document.querySelector('.opening-header');
+        const bottomBar = document.querySelector('.projects-bottom-bar');
+
+        function updateOverlayVisibility() {
+            if (currentProjectsMode !== 'matrix') return;
+            if (!projectsSection) return;
+
+            const rect = projectsSection.getBoundingClientRect();
+            const vh = window.innerHeight;
+            const isFullCenteredView = Math.abs(rect.top) <= vh * 0.45 || (rect.top <= 120 && rect.bottom >= vh - 120);
+
+            if (isFullCenteredView) {
+                if (openingHeader) openingHeader.classList.add('overlay-hidden');
+                if (bottomBar) bottomBar.classList.add('overlay-hidden');
+            } else {
+                if (openingHeader) openingHeader.classList.remove('overlay-hidden');
+                if (bottomBar) bottomBar.classList.remove('overlay-hidden');
+            }
+        }
+
+        window.addEventListener('scroll', updateOverlayVisibility);
+        window.addEventListener('resize', updateOverlayVisibility);
+        document.addEventListener('DOMContentLoaded', updateOverlayVisibility);
+        updateOverlayVisibility();
+
+        (function initGrandSolarSystemEngine() {
+            const canvas = document.getElementById('projects-opening-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const hud = document.getElementById('node-cursor-hud');
+            const section = document.getElementById('projects');
+            let nodes = null;
+
+            let width = 1200,
+                height = 800;
+            let effectiveH = 800,
+                offsetY = 0;
+
+            function updateNodeBasePositions() {
+                effectiveH = Math.min(height, Math.max(window.innerHeight || 800, 750));
+                offsetY = (height - effectiveH) / 2;
+                if (nodes && nodes.length) {
+                    nodes.forEach(n => {
+                        n.baseX = n.rx * width;
+                        n.baseY = offsetY + n.ry * effectiveH;
+                    });
+                }
+            }
+
+            function resize() {
+                width = Math.max(section.clientWidth || 0, window.innerWidth || 1200);
+                height = Math.max(section.clientHeight || 0, window.innerHeight || 800, 750);
+                canvas.width = width;
+                canvas.height = height;
+                updateNodeBasePositions();
+            }
+
+            let mouseX = -1000,
+                mouseY = -1000;
+            section.addEventListener('mousemove', (e) => {
+                if (currentProjectsMode !== 'matrix') return;
+                const rect = section.getBoundingClientRect();
+                mouseX = e.clientX - rect.left;
+                mouseY = e.clientY - rect.top;
+            });
+            section.addEventListener('mouseleave', () => {
+                mouseX = -1000;
+                mouseY = -1000;
+                if (!pinnedNode && hud) hud.classList.remove('active');
+            });
+
+            // Click listener for pinning planet HUD cards & outside unpinning
+            document.addEventListener('click', (e) => {
+                if (currentProjectsMode !== 'matrix') return;
+                
+                const hud = document.getElementById('node-cursor-hud');
+                
+                // If clicked inside the HUD card itself, keep pinned
+                if (hud && hud.contains(e.target)) return;
+
+                // Check if click was on a planet canvas node
+                const rect = canvas.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const clickY = e.clientY - rect.top;
+                
+                let clickedPlanet = null;
+                if (nodes && (e.target === canvas || section.contains(e.target))) {
+                    nodes.forEach(n => {
+                        const dist = Math.hypot(clickX - n.x, clickY - n.y);
+                        if (dist <= n.currentRadius + 22) {
+                            clickedPlanet = n;
+                        }
+                    });
+                }
+
+                if (clickedPlanet) {
+                    // Clicked a planet -> PIN IT! Card stays stuck until X or outside click!
+                    pinnedNode = clickedPlanet;
+                } else if (pinnedNode) {
+                    // Clicked outside card and outside planets -> UNPIN & CLOSE!
+                    pinnedNode = null;
+                    if (hud) hud.classList.remove('active');
+                }
+            });
+
+            const rawNodes = [{
+                id: '01',
+                rx: 0.32,
+                ry: 0.80,
+                type: 'mercury',
+                name: 'MERCURY',
+                title: 'Smart Exam Planner',
+                icon: '📋',
+                desc: 'AI-powered exam seating management & allocation platform.',
+                tags: ['AI', 'Python', 'Web'],
+                url: 'https://vip007vishal.github.io/SEP_web/',
+                baseR: 18,
+                color1: '#b0b8c8',
+                color2: '#3a3f4a',
+                ringColor: 'transparent',
+                hasRing: false,
+                hasMoon: false
+            }, {
+                id: '02',
+                rx: 0.18,
+                ry: 0.65,
+                type: 'venus',
+                name: 'VENUS',
+                title: 'Virtual Company Simulator',
+                icon: '🏢',
+                desc: 'Simulation platform for recruitment practice with real-time feedback.',
+                tags: ['React', 'Node.js', 'AI'],
+                url: 'https://vip007vishal.github.io/VCS_web/',
+                baseR: 24,
+                color1: '#f5deb3',
+                color2: '#c4a35a',
+                ringColor: 'transparent',
+                hasRing: false,
+                hasMoon: false
+            }, {
+                id: '04',
+                rx: 0.24,
+                ry: 0.38,
+                type: 'earth',
+                name: 'EARTH',
+                title: 'Jeevan Dhara 365',
+                icon: '🌾',
+                desc: 'IoT-based smart agriculture monitoring system for real-time crop insights.',
+                tags: ['IoT', 'Sensors', 'Dashboard'],
+                url: 'https://vip007vishal.github.io/JD365_web/',
+                baseR: 28,
+                color1: '#4da6ff',
+                color2: '#003d80',
+                ringColor: 'transparent',
+                hasRing: false,
+                hasMoon: true,
+                moonDist: 38,
+                moonR: 5
+            }, {
+                id: '07',
+                rx: 0.50,
+                ry: 0.22,
+                type: 'mars',
+                name: 'MARS',
+                title: 'Recruitment Management System',
+                icon: '📊',
+                desc: 'Applicant tracking system built using PHP & MySQL with dashboard analytics.',
+                tags: ['PHP', 'MySQL', 'Bootstrap'],
+                url: 'https://vip007vishal.github.io/CRM_web/',
+                baseR: 22,
+                color1: '#e07050',
+                color2: '#6b2a1a',
+                ringColor: 'rgba(224,112,80,0.35)',
+                hasRing: false,
+                hasMoon: true,
+                moonDist: 34,
+                moonR: 3
+            }, {
+                id: '◉',
+                rx: 0.50,
+                ry: 0.54,
+                type: 'sun',
+                name: 'THE SUN',
+                isCore: true,
+                title: 'Seven\'s Core Engine',
+                icon: '◉',
+                desc: 'Central interactive matrix unifying computer science projects.',
+                tags: ['Core', 'Matrix'],
+                url: 'https://github.com/vip007vishal',
+                baseR: 60,
+                color1: '#ffac40',
+                color2: '#e89520',
+                ringColor: 'rgba(255,200,60,0.7)',
+                hasRing: true,
+                hasMoon: false
+            }, {
+                id: '05',
+                rx: 0.68,
+                ry: 0.80,
+                type: 'jupiter',
+                name: 'JUPITER',
+                title: '3D BMW Website',
+                icon: '🚗',
+                desc: 'Interactive 3D landing page with immersive GSAP animations.',
+                tags: ['Three.js', 'GSAP', 'WebGL'],
+                url: 'https://vip007vishal.github.io/BMW_web/index.html',
+                baseR: 36,
+                color1: '#e8cfa0',
+                color2: '#8b5a2b',
+                ringColor: 'transparent',
+                hasRing: false,
+                hasMoon: true,
+                moonDist: 48,
+                moonR: 4
+            }, {
+                id: '06',
+                rx: 0.83,
+                ry: 0.65,
+                type: 'saturn',
+                name: 'SATURN',
+                title: 'Seven\'s Studios',
+                icon: '✨',
+                desc: 'Modern developer portfolio representing identity & client work.',
+                tags: ['HTML5', 'CSS3', 'JS'],
+                url: 'https://vip007vishal.github.io/seven-s-studios/',
+                baseR: 30,
+                color1: '#f5e6c8',
+                color2: '#b8963e',
+                ringColor: 'rgba(245,230,200,0.85)',
+                hasRing: true,
+                hasMoon: false
+            }, {
+                id: '09',
+                rx: 0.76,
+                ry: 0.38,
+                type: 'neptune',
+                name: 'NEPTUNE',
+                title: 'Cybernetic Shader Lab',
+                icon: '⚙️',
+                desc: 'Custom procedural canvas shader & particle interaction engine.',
+                tags: ['Canvas', 'WebGL', 'Shaders'],
+                url: 'https://vip007vishal.github.io/BMW_web/index.html',
+                baseR: 26,
+                color1: '#5b9bd5',
+                color2: '#1a3a5c',
+                ringColor: 'rgba(91,155,213,0.55)',
+                hasRing: true,
+                hasMoon: false
+            }];
+
+            nodes = rawNodes.map((n, i) => ({
+                ...n,
+                x: n.rx * width,
+                y: offsetY + n.ry * effectiveH,
+                baseX: n.rx * width,
+                baseY: offsetY + n.ry * effectiveH,
+                phase: i * 0.75,
+                currentRadius: n.baseR,
+                hoverProgress: 0,
+                rotationAngle: i * 0.4,
+                moonAngle: i * 1.2,
+                flareAngle: Math.random() * Math.PI * 2,
+                sunspotPhase: Math.random() * Math.PI * 2
+            }));
+
+            window.addEventListener('resize', resize);
+            resize();
+
+            // Deep space starfield
+            let stars = [];
+            const starColors = ['#ffffff', '#e0f2fe', '#bae6fd', '#fef08a', '#f3e8ff', '#ec4899', '#a5f3fc',
+                '#fde68a'];
+            for (let i = 0; i < 500; i++) {
+                stars.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    r: Math.random() * 1.8 + 0.2,
+                    baseAlpha: Math.random() * 0.6 + 0.1,
+                    twinkleSpeed: Math.random() * 2.5 + 0.4,
+                    twinklePhase: Math.random() * Math.PI * 2,
+                    color: starColors[Math.floor(Math.random() * starColors.length)]
+                });
+            }
+
+            // Asteroid belt
+            let asteroids = [];
+            for (let i = 0; i < 140; i++) {
+                asteroids.push({
+                    angle: (i / 140) * Math.PI * 2 + Math.random() * 0.3,
+                    rx: Math.random() * 0.34 + 0.26,
+                    ry: Math.random() * 0.30 + 0.26,
+                    r: Math.random() * 2.4 + 0.6,
+                    speed: (Math.random() * 0.0006 + 0.00015) * (Math.random() > 0.5 ? 1 : -1),
+                    color: `rgba(180,190,200,${Math.random() * 0.45 + 0.2})`
+                });
+            }
+
+            // Comets
+            let comets = [];
+
+            function spawnComet() {
+                comets.push({
+                    x: Math.random() * width * 0.7,
+                    y: -20,
+                    vx: Math.random() * 5 + 3,
+                    vy: Math.random() * 4 + 2,
+                    len: Math.random() * 90 + 50,
+                    alpha: 1
+                });
+            }
+
+            // ===============================
+            // PHOTOREALISTIC PLANET RENDERER
+            // ===============================
+            function drawRealisticPlanet(n, r, isHovered, t) {
+                ctx.save();
+                ctx.beginPath();
+                ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+                ctx.clip();
+
+                // --- 3D Sphere Base Gradient ---
+                const lightX = n.x - r * 0.38;
+                const lightY = n.y - r * 0.42;
+                const sphereGrad = ctx.createRadialGradient(lightX, lightY, r * 0.04, n.x + r * 0.3, n.y + r * 0.3, r *
+                    1.3);
+                sphereGrad.addColorStop(0, '#ffffff');
+                sphereGrad.addColorStop(0.12, n.color1);
+                sphereGrad.addColorStop(0.65, n.color2);
+                sphereGrad.addColorStop(1, '#010308');
+                ctx.fillStyle = sphereGrad;
+                ctx.fill();
+
+                // --- Surface Details per Planet Type ---
+                ctx.save();
+                ctx.translate(n.x, n.y);
+                const rot = n.rotationAngle;
+
+                if (n.type === 'sun') {
+                    // === THE SUN: Granular photosphere, corona, flares ===
+                    // Granulation
+                    ctx.fillStyle = 'rgba(255,255,220,0.5)';
+                    for (let g = 0; g < 30; g++) {
+                        const gx = (Math.sin(g * 2.7 + t * 0.3) * r * 0.7);
+                        const gy = (Math.cos(g * 3.1 + t * 0.25) * r * 0.7);
+                        const gr = r * (0.06 + Math.sin(g * 1.4) * 0.04);
+                        ctx.beginPath();
+                        ctx.arc(gx, gy, gr, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                    // Sunspots
+                    ctx.fillStyle = 'rgba(80,20,0,0.7)';
+                    for (let s = 0; s < 5; s++) {
+                        const sx = Math.cos(n.sunspotPhase + s * 1.3) * r * 0.55;
+                        const sy = Math.sin(n.sunspotPhase + s * 1.7) * r * 0.45;
+                        const sr = r * (0.04 + s * 0.012);
+                        ctx.beginPath();
+                        ctx.arc(sx, sy, sr, 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.fillStyle = 'rgba(40,10,0,0.85)';
+                        ctx.beginPath();
+                        ctx.arc(sx, sy, sr * 0.6, 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.fillStyle = 'rgba(80,20,0,0.7)';
+                    }
+                    // Solar flare arcs
+                    ctx.strokeStyle = 'rgba(255,180,30,0.7)';
+                    ctx.lineWidth = 2.5;
+                    for (let f = 0; f < 3; f++) {
+                        const fa = n.flareAngle + f * 2.1 + t * 0.15;
+                        ctx.beginPath();
+                        ctx.arc(0, 0, r * (0.9 + f * 0.08), fa, fa + 0.7);
+                        ctx.stroke();
+                    }
+                } else if (n.type === 'mercury') {
+                    // === MERCURY: Heavily cratered grey surface ===
+                    ctx.fillStyle = 'rgba(60,65,75,0.5)';
+                    ctx.fillRect(-r, -r, r * 2, r * 2);
+                    for (let c = 0; c < 22; c++) {
+                        const cx = (Math.sin(c * 2.9) * r * 0.75);
+                        const cy = (Math.cos(c * 3.3) * r * 0.75);
+                        const cr = r * (0.04 + Math.random() * 0.08);
+                        ctx.fillStyle = 'rgba(40,44,52,0.7)';
+                        ctx.beginPath();
+                        ctx.arc(cx, cy, cr, 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.strokeStyle = 'rgba(180,185,195,0.5)';
+                        ctx.lineWidth = 0.8;
+                        ctx.stroke();
+                        // Ray systems from larger craters
+                        if (cr > r * 0.06) {
+                            ctx.strokeStyle = 'rgba(200,205,215,0.3)';
+                            ctx.lineWidth = 0.5;
+                            for (let ray = 0; ray < 6; ray++) {
+                                const ra = ray * 1.05;
+                                ctx.beginPath();
+                                ctx.moveTo(cx, cy);
+                                ctx.lineTo(cx + Math.cos(ra) * cr * 3, cy + Math.sin(ra) * cr * 3);
+                                ctx.stroke();
+                            }
+                        }
+                    }
+                } else if (n.type === 'venus') {
+                    // === VENUS: Swirling sulfuric cloud bands ===
+                    for (let b = 0; b < 10; b++) {
+                        const by = -r + b * r * 0.2;
+                        ctx.fillStyle = `rgba(240,220,180,${0.25 + b * 0.03})`;
+                        ctx.beginPath();
+                        ctx.ellipse(0, by, r * 1.05, r * 0.12, 0.05 * b, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                    ctx.fillStyle = 'rgba(255,240,210,0.2)';
+                    ctx.beginPath();
+                    ctx.ellipse(0, -r * 0.2, r * 0.9, r * 0.2, 0.1, 0, Math.PI * 2);
+                    ctx.fill();
+                } else if (n.type === 'earth') {
+                    // === EARTH: Blue oceans, green continents, white clouds ===
+                    // Oceans
+                    ctx.fillStyle = 'rgba(30,120,220,0.8)';
+                    ctx.fillRect(-r, -r, r * 2, r * 2);
+                    // Continents
+                    ctx.fillStyle = 'rgba(60,160,60,0.7)';
+                    ctx.beginPath();
+                    ctx.ellipse(-r * 0.15, -r * 0.2, r * 0.5, r * 0.35, 0.4, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.beginPath();
+                    ctx.ellipse(r * 0.25, r * 0.1, r * 0.4, r * 0.3, -0.25, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.fillStyle = 'rgba(80,140,50,0.6)';
+                    ctx.beginPath();
+                    ctx.ellipse(r * 0.2, -r * 0.3, r * 0.35, r * 0.25, 0.15, 0, Math.PI * 2);
+                    ctx.fill();
+                    // Polar ice caps
+                    ctx.fillStyle = 'rgba(255,255,255,0.8)';
+                    ctx.beginPath();
+                    ctx.ellipse(0, -r * 0.75, r * 0.5, r * 0.14, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.beginPath();
+                    ctx.ellipse(0, r * 0.75, r * 0.45, r * 0.16, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                    // Clouds
+                    ctx.fillStyle = 'rgba(255,255,255,0.45)';
+                    for (let cl = 0; cl < 8; cl++) {
+                        const clx = Math.sin(cl * 1.8 + t * 0.02) * r * 0.6;
+                        const cly = Math.cos(cl * 2.2 + t * 0.03) * r * 0.5;
+                        ctx.beginPath();
+                        ctx.ellipse(clx, cly, r * 0.25, r * 0.08, cl * 0.5, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                } else if (n.type === 'mars') {
+                    // === MARS: Rusty red with dark highlands & polar caps ===
+                    ctx.fillStyle = 'rgba(200,90,40,0.7)';
+                    ctx.fillRect(-r, -r, r * 2, r * 2);
+                    // Darker highland regions
+                    ctx.fillStyle = 'rgba(140,50,20,0.5)';
+                    ctx.beginPath();
+                    ctx.ellipse(r * 0.1, -r * 0.3, r * 0.5, r * 0.35, 0.3, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.beginPath();
+                    ctx.ellipse(-r * 0.3, r * 0.2, r * 0.4, r * 0.3, -0.4, 0, Math.PI * 2);
+                    ctx.fill();
+                    // Polar CO2 caps
+                    ctx.fillStyle = 'rgba(255,250,240,0.85)';
+                    ctx.beginPath();
+                    ctx.ellipse(0, -r * 0.7, r * 0.4, r * 0.16, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.beginPath();
+                    ctx.ellipse(0, r * 0.7, r * 0.38, r * 0.15, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                    // Valles Marineris canyon hint
+                    ctx.strokeStyle = 'rgba(60,20,8,0.55)';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.moveTo(-r * 0.5, r * 0.1);
+                    ctx.quadraticCurveTo(0, r * 0.2, r * 0.5, r * 0.05);
+                    ctx.stroke();
+                } else if (n.type === 'jupiter') {
+                    // === JUPITER: Banded gas giant with Great Red Spot ===
+                    const bandColors = ['#e8cfa0', '#d4a96a', '#c4945a', '#e0c080', '#b88040', '#d8b870',
+                        '#c09050', '#e5d0a5', '#ba7a3a', '#dcc090'
+                    ];
+                    for (let b = 0; b < 10; b++) {
+                        const by = -r + b * r * 0.2 + Math.sin(b * 1.5 + t * 0.01) * r * 0.04;
+                        ctx.fillStyle = bandColors[b];
+                        ctx.beginPath();
+                        ctx.ellipse(0, by, r * 1.02, r * 0.13, 0, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                    // Turbulent edges
+                    for (let b = 0; b < 9; b++) {
+                        const by = -r + (b + 0.5) * r * 0.2;
+                        ctx.strokeStyle = 'rgba(180,120,60,0.4)';
+                        ctx.lineWidth = 1.5;
+                        ctx.beginPath();
+                        ctx.ellipse(0, by, r * 1.01, r * 0.04, 0, 0, Math.PI * 2);
+                        ctx.stroke();
+                    }
+                    // Great Red Spot
+                    const grsX = r * 0.3;
+                    const grsY = r * 0.2;
+                    const grsGrad = ctx.createRadialGradient(grsX, grsY, r * 0.02, grsX, grsY, r * 0.18);
+                    grsGrad.addColorStop(0, '#e85040');
+                    grsGrad.addColorStop(0.5, '#d03028');
+                    grsGrad.addColorStop(1, 'rgba(200,100,60,0)');
+                    ctx.fillStyle = grsGrad;
+                    ctx.beginPath();
+                    ctx.ellipse(grsX, grsY, r * 0.18, r * 0.1, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                } else if (n.type === 'saturn') {
+                    // === SATURN: Golden bands ===
+                    const sBandColors = ['#f5e6c8', '#e8d5a8', '#f0ddb8', '#dcc898', '#f2e0c0', '#e0cc98'];
+                    for (let b = 0; b < 6; b++) {
+                        const by = -r + b * r * 0.33;
+                        ctx.fillStyle = sBandColors[b];
+                        ctx.beginPath();
+                        ctx.ellipse(0, by, r * 1.01, r * 0.18, 0, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                } else if (n.type === 'neptune') {
+                    // === NEPTUNE: Deep azure with bright cloud streaks ===
+                    ctx.fillStyle = 'rgba(50,100,180,0.7)';
+                    ctx.fillRect(-r, -r, r * 2, r * 2);
+                    for (let b = 0; b < 6; b++) {
+                        const by = -r + b * r * 0.33;
+                        ctx.fillStyle = `rgba(40,80,160,${0.3 + b * 0.06})`;
+                        ctx.beginPath();
+                        ctx.ellipse(0, by, r * 1.02, r * 0.16, 0.05, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                    // Bright methane cloud streaks
+                    ctx.fillStyle = 'rgba(180,210,255,0.5)';
+                    ctx.beginPath();
+                    ctx.ellipse(r * 0.1, -r * 0.2, r * 0.5, r * 0.06, 0.1, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.beginPath();
+                    ctx.ellipse(-r * 0.2, r * 0.3, r * 0.4, r * 0.05, -0.08, 0, Math.PI * 2);
+                    ctx.fill();
+                    // Great Dark Spot
+                    ctx.fillStyle = 'rgba(10,25,55,0.75)';
+                    ctx.beginPath();
+                    ctx.ellipse(-r * 0.25, r * 0.1, r * 0.2, r * 0.1, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                ctx.restore(); // end translate
+
+                // --- Night-side shadow terminus (all planets except sun) ---
+                if (!n.isCore) {
+                    const shadowGrad = ctx.createRadialGradient(n.x + r * 0.5, n.y + r * 0.5, r * 0.18, n.x, n.y, r * 1.2);
+                    shadowGrad.addColorStop(0, 'rgba(2,4,10,0.94)');
+                    shadowGrad.addColorStop(0.7, 'rgba(2,4,10,0.3)');
+                    shadowGrad.addColorStop(1, 'transparent');
+                    ctx.fillStyle = shadowGrad;
+                    ctx.fill();
+                }
+
+                // --- Specular highlight ---
+                const specGrad = ctx.createRadialGradient(n.x - r * 0.3, n.y - r * 0.35, r * 0.02, n.x - r * 0.15, n.y - r *
+                    0.2, r * 0.5);
+                specGrad.addColorStop(0, 'rgba(255,255,255,0.55)');
+                specGrad.addColorStop(0.5, 'rgba(255,255,255,0.1)');
+                specGrad.addColorStop(1, 'transparent');
+                ctx.fillStyle = specGrad;
+                ctx.fill();
+
+                ctx.restore(); // end clip
+
+                // --- Atmosphere rim glow ---
+                const auraR = r + (n.isCore ? 30 : 18) + n.hoverProgress * 25;
+                const auraGrad = ctx.createRadialGradient(n.x, n.y, r * 0.88, n.x, n.y, auraR);
+                auraGrad.addColorStop(0, n.color1 + 'dd');
+                auraGrad.addColorStop(0.5, n.color1 + '40');
+                auraGrad.addColorStop(1, 'transparent');
+                ctx.beginPath();
+                ctx.arc(n.x, n.y, auraR, 0, Math.PI * 2);
+                ctx.fillStyle = auraGrad;
+                ctx.fill();
+
+                // --- Outer stroke ---
+                ctx.beginPath();
+                ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+                ctx.strokeStyle = isHovered ? '#ffffff' : n.color1;
+                ctx.lineWidth = isHovered ? 3.2 : 1.6;
+                ctx.stroke();
+            }
+
+            // ===============================
+            // RING RENDERER (Saturn, Neptune, Sun corona ring)
+            // ===============================
+            function drawRings(n, r) {
+                ctx.save();
+                ctx.translate(n.x, n.y);
+                const ringTilt = n.type === 'saturn' ? -0.45 : n.type === 'neptune' ? -0.3 : -0.15;
+                ctx.rotate(ringTilt);
+
+                if (n.type === 'saturn') {
+                    // Multi-layered realistic rings
+                    const ringDefs = [
+                        { outerR: r * 2.7, innerR: r * 2.45, color: 'rgba(220,200,160,0.7)', lw: 6 },
+                        { outerR: r * 2.4, innerR: r * 2.2, color: 'rgba(240,225,190,0.85)', lw: 7 },
+                        { outerR: r * 2.15, innerR: r * 1.9, color: 'rgba(200,180,140,0.5)', lw: 3 },
+                        { outerR: r * 1.85, innerR: r * 1.55, color: 'rgba(230,210,170,0.75)', lw: 6 },
+                        { outerR: r * 1.5, innerR: r * 1.35, color: 'rgba(180,160,120,0.4)', lw: 2 },
+                    ];
+                    ringDefs.forEach(rd => {
+                        ctx.beginPath();
+                        ctx.ellipse(0, 0, rd.outerR, rd.outerR * 0.28, 0, 0, Math.PI * 2);
+                        ctx.ellipse(0, 0, rd.innerR, rd.innerR * 0.28, 0, 0, Math.PI * 2);
+                        ctx.strokeStyle = rd.color;
+                        ctx.lineWidth = rd.lw;
+                        ctx.stroke();
+                    });
+                } else if (n.type === 'neptune') {
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, r * 2.2, r * 0.35, 0, 0, Math.PI * 2);
+                    ctx.strokeStyle = n.ringColor;
+                    ctx.lineWidth = 4;
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, r * 1.8, r * 0.28, 0, 0, Math.PI * 2);
+                    ctx.strokeStyle = 'rgba(91,155,213,0.35)';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                } else if (n.isCore) {
+                    // Sun corona ring
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, r * 1.7, r * 0.3, 0, 0, Math.PI * 2);
+                    ctx.strokeStyle = n.ringColor;
+                    ctx.lineWidth = 5;
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, r * 2.0, r * 0.35, 0, 0, Math.PI * 2);
+                    ctx.strokeStyle = 'rgba(255,180,30,0.35)';
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
+                }
+                ctx.restore();
+            }
+
+            // ===============================
+            // MAIN ANIMATION LOOP
+            // ===============================
+            let t = 0;
+
+            function loop() {
+                if (currentProjectsMode !== 'matrix') {
+                    requestAnimationFrame(loop);
+                    return;
+                }
+                ctx.clearRect(0, 0, width, height);
+                t += 0.016;
+
+                if (Math.random() < 0.008 && comets.length < 3) spawnComet();
+
+                // --- Milky Way Nebula Dust ---
+                const sunNode = nodes.find(n => n.isCore);
+                const sunX = sunNode ? sunNode.x : width * 0.5;
+                const sunY = sunNode ? sunNode.y : offsetY + effectiveH * 0.54;
+
+                ctx.save();
+                const neb1 = ctx.createRadialGradient(sunX, sunY, 80, sunX, sunY, width * 0.7);
+                neb1.addColorStop(0, 'rgba(251,191,36,0.08)');
+                neb1.addColorStop(0.3, 'rgba(124,58,237,0.07)');
+                neb1.addColorStop(0.6, 'rgba(6,182,212,0.03)');
+                neb1.addColorStop(1, 'transparent');
+                ctx.fillStyle = neb1;
+                ctx.fillRect(0, 0, width, height);
+                const neb2 = ctx.createRadialGradient(width * 0.75, height * 0.35, 50, width * 0.75, height * 0.35, width *
+                    0.4);
+                neb2.addColorStop(0, 'rgba(236,72,153,0.05)');
+                neb2.addColorStop(0.6, 'rgba(139,92,246,0.02)');
+                neb2.addColorStop(1, 'transparent');
+                ctx.fillStyle = neb2;
+                ctx.fillRect(0, 0, width, height);
+                ctx.restore();
+
+                // --- Orbital Rings ---
+                const orbitRadii = [width * 0.2, width * 0.28, width * 0.35, width * 0.42];
+                orbitRadii.forEach((or, idx) => {
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.ellipse(sunX, sunY, or, or * 0.55, -0.04, 0, Math.PI * 2);
+                    ctx.strokeStyle = `rgba(162,155,254,${0.12 - idx * 0.02})`;
+                    ctx.lineWidth = 1.2;
+                    ctx.setLineDash([5, 7]);
+                    ctx.stroke();
+                    ctx.restore();
+                });
+
+                // --- Stars ---
+                stars.forEach(s => {
+                    const alpha = Math.max(0.08, Math.min(0.9, s.baseAlpha + Math.sin(t * s.twinkleSpeed + s
+                        .twinklePhase) * 0.4));
+                    ctx.beginPath();
+                    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                    ctx.fillStyle = s.color;
+                    ctx.globalAlpha = alpha;
+                    ctx.fill();
+                });
+                ctx.globalAlpha = 1.0;
+
+                // --- Asteroid Belt ---
+                asteroids.forEach(a => {
+                    a.angle += a.speed;
+                    const ax = sunX + Math.cos(a.angle) * (width * a.rx);
+                    const ay = sunY + Math.sin(a.angle) * (effectiveH * a.ry * 0.6);
+                    ctx.beginPath();
+                    ctx.arc(ax, ay, a.r, 0, Math.PI * 2);
+                    ctx.fillStyle = a.color;
+                    ctx.fill();
+                });
+
+                // --- Comets ---
+                for (let i = comets.length - 1; i >= 0; i--) {
+                    const c = comets[i];
+                    c.x += c.vx;
+                    c.y += c.vy;
+                    c.alpha -= 0.007;
+                    if (c.alpha <= 0 || c.x > width + 60 || c.y > height + 60) { comets.splice(i, 1); continue; }
+                    const tailGrad = ctx.createLinearGradient(c.x, c.y, c.x - c.vx * 10, c.y - c.vy * 10);
+                    tailGrad.addColorStop(0, `rgba(255,255,255,${c.alpha})`);
+                    tailGrad.addColorStop(0.4, `rgba(162,155,254,${c.alpha * 0.6})`);
+                    tailGrad.addColorStop(1, 'transparent');
+                    ctx.beginPath();
+                    ctx.moveTo(c.x, c.y);
+                    ctx.lineTo(c.x - c.vx * 10, c.y - c.vy * 10);
+                    ctx.strokeStyle = tailGrad;
+                    ctx.lineWidth = 2.8;
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.arc(c.x, c.y, 3.5, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255,255,255,${c.alpha})`;
+                    ctx.fill();
+                }
+
+                // --- Update Node Positions ---
+                nodes.forEach(n => {
+                    n.baseX = n.rx * width;
+                    n.baseY = offsetY + n.ry * effectiveH;
+                    const driftX = Math.sin(t + n.phase) * 10;
+                    const driftY = Math.cos(t * 0.85 + n.phase) * 8;
+                    let targetX = n.baseX + driftX;
+                    let targetY = n.baseY + driftY;
+                    const dx = mouseX - n.x;
+                    const dy = mouseY - n.y;
+                    const dist = Math.hypot(dx, dy);
+                    if (dist < 220) {
+                        const pull = (220 - dist) / 220;
+                        targetX += dx * pull * 0.28;
+                        targetY += dy * pull * 0.28;
+                    }
+                    n.x += (targetX - n.x) * 0.1;
+                    n.y += (targetY - n.y) * 0.1;
+                    n.rotationAngle += 0.004;
+                    n.moonAngle += 0.018;
+                    n.flareAngle += 0.01;
+                    n.sunspotPhase += 0.003;
+                });
+
+                // --- Hover Detection ---
+                hoverNode = null;
+                let minDist = 9999;
+                nodes.forEach(n => {
+                    const dist = Math.hypot(mouseX - n.x, mouseY - n.y);
+                    if (dist < n.currentRadius + 20 && dist < minDist) {
+                        minDist = dist;
+                        hoverNode = n;
+                    }
+                });
+                if (hoverNode || pinnedNode) {
+                    document.body.classList.add('cursor-hover-planet');
+                } else {
+                    document.body.classList.remove('cursor-hover-planet');
+                }
+
+                // --- Constellation Laser Lines ---
+                for (let i = 0; i < nodes.length; i++) {
+                    for (let j = i + 1; j < nodes.length; j++) {
+                        const n1 = nodes[i],
+                            n2 = nodes[j];
+                        const d = Math.hypot(n1.x - n2.x, n1.y - n2.y);
+                        if (d < 280) {
+                            ctx.beginPath();
+                            ctx.moveTo(n1.x, n1.y);
+                            ctx.lineTo(n2.x, n2.y);
+                            ctx.strokeStyle = `rgba(162,155,254,${(1 - d / 280) * 0.22})`;
+                            ctx.lineWidth = 1.3;
+                            ctx.stroke();
+                        }
+                    }
+                }
+
+                // --- Cursor Laser Beams ---
+                if (mouseX > 0 && mouseY > 0) {
+                    nodes.forEach(n => {
+                        const d = Math.hypot(mouseX - n.x, mouseY - n.y);
+                        if (d < 220) {
+                            ctx.beginPath();
+                            ctx.moveTo(n.x, n.y);
+                            ctx.lineTo(mouseX, mouseY);
+                            ctx.strokeStyle = `rgba(162,155,254,${(1 - d / 220) * 0.6})`;
+                            ctx.lineWidth = 1.6;
+                            ctx.setLineDash([3, 3]);
+                            ctx.stroke();
+                            ctx.setLineDash([]);
+                        }
+                    });
+                }
+
+                // --- DRAW PLANETS ---
+                nodes.forEach(n => {
+                    const isHovered = (n === hoverNode || n === pinnedNode);
+                    n.hoverProgress += ((isHovered ? 1 : 0) - n.hoverProgress) * 0.16;
+                    const targetRadius = n.baseR + n.hoverProgress * 20;
+                    n.currentRadius += (targetRadius - n.currentRadius) * 0.18;
+                    const r = n.currentRadius;
+
+                    // Draw rings (behind planet)
+                    if (n.hasRing) drawRings(n, r);
+
+                    // Draw moon
+                    if (n.hasMoon) {
+                        const mx = n.x + Math.cos(n.moonAngle) * (r + n.moonDist);
+                        const my = n.y + Math.sin(n.moonAngle) * (r * 0.4 + n.moonDist * 0.4);
+                        ctx.beginPath();
+                        ctx.arc(mx, my, n.moonR, 0, Math.PI * 2);
+                        const moonGrad = ctx.createRadialGradient(mx - n.moonR * 0.3, my - n.moonR * 0.3, n.moonR *
+                            0.05, mx, my, n.moonR);
+                        moonGrad.addColorStop(0, '#ffffff');
+                        moonGrad.addColorStop(0.5, '#c8cdd4');
+                        moonGrad.addColorStop(1, '#3a3f48');
+                        ctx.fillStyle = moonGrad;
+                        ctx.fill();
+                        ctx.strokeStyle = 'rgba(255,255,255,0.5)';
+                        ctx.lineWidth = 0.8;
+                        ctx.stroke();
+                    }
+
+                    // Draw photorealistic planet
+                    drawRealisticPlanet(n, r, isHovered, t);
+
+                    // Node ID label on planet
+                    ctx.font = `bold ${isHovered ? '14px' : '12px'} "Space Grotesk", sans-serif`;
+                    ctx.fillStyle = '#ffffff';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(n.id, n.x, n.y);
+
+                    // Holographic badge below planet
+                    const labelY = n.y + r + 12;
+                    const labelText = `${n.icon} ${n.name} • ${n.title}`;
+                    ctx.font = `600 ${isHovered ? '12px' : '10px'} "Space Grotesk", sans-serif`;
+                    const labelW = ctx.measureText(labelText).width + 14;
+                    ctx.fillStyle = isHovered ? 'rgba(108,92,231,0.95)' : 'rgba(10,14,30,0.85)';
+                    ctx.strokeStyle = isHovered ? '#ffffff' : 'rgba(162,155,254,0.5)';
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    const badgeH = 20;
+                    if (ctx.roundRect) {
+                        ctx.roundRect(n.x - labelW / 2, labelY, labelW, badgeH, 10);
+                    } else {
+                        ctx.rect(n.x - labelW / 2, labelY, labelW, badgeH);
+                    }
+                    ctx.fill();
+                    ctx.stroke();
+                    ctx.fillStyle = isHovered ? '#ffffff' : 'rgba(224,231,255,0.95)';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(labelText, n.x, labelY + badgeH / 2);
+                });
+
+                // --- HUD Panel ---
+                const displayNode = pinnedNode || hoverNode;
+                if (displayNode) {
+                    document.getElementById('hud-id-text').textContent =
+                        `NODE ${displayNode.id} • ${displayNode.name} ${pinnedNode === displayNode ? '• PINNED' : ''}`;
+                    document.getElementById('hud-icon-text').textContent = displayNode.icon;
+                    document.getElementById('hud-title-text').textContent = displayNode.title;
+                    document.getElementById('hud-desc-text').textContent = displayNode.desc;
+                    document.getElementById('hud-link-text').href = displayNode.url;
+                    document.getElementById('hud-tags-text').innerHTML = displayNode.tags.map(t =>
+                        `<span>${t}</span>`).join('');
+                    const hudW = hud.offsetWidth || 310;
+                    const hudH = hud.offsetHeight || 200;
+                    const cardX = Math.min(Math.max(displayNode.x - hudW / 2, 15), width - hudW - 15);
+                    let cardY;
+                    if (displayNode.y > height * 0.55) {
+                        cardY = Math.max(10, displayNode.y - hudH - displayNode.currentRadius - 20);
+                    } else {
+                        cardY = Math.min(height - hudH - 10, displayNode.y + displayNode.currentRadius + 38);
+                    }
+                    hud.style.left = `${cardX}px`;
+                    hud.style.top = `${cardY}px`;
+                    hud.classList.add('active');
+                } else {
+                    hud.classList.remove('active');
+                }
+
+                requestAnimationFrame(loop);
+            }
+            loop();
+        })();
+    </script>
+
+    <!-- Space Shuttle Custom Cursor Elements -->
+    <div id="space-cursor-shuttle">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L15.5 8.5L19.5 13.5L17.5 18L12 16L6.5 18L4.5 13.5L8.5 8.5L12 2Z" fill="url(#shuttleGrad)"
+                stroke="#38bdf8" stroke-width="1.3" stroke-linejoin="round" />
+            <circle cx="12" cy="9.5" r="2.2" fill="#06b6d4" />
+            <path d="M10 16.5L12 21L14 16.5" stroke="#fbbf24" stroke-width="1.6" stroke-linecap="round" />
+            <defs>
+                <linearGradient id="shuttleGrad" x1="12" y1="2" x2="12" y2="18" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#38bdf8" />
+                    <stop offset="0.6" stop-color="#0284c7" />
+                    <stop offset="1" stop-color="#0f172a" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+    <div id="space-cursor-ring">
+        <div class="ring-tick tick-top"></div>
+        <div class="ring-tick tick-bottom"></div>
+        <div class="ring-tick tick-left"></div>
+        <div class="ring-tick tick-right"></div>
+        <!-- Sci-Fi Target Lock Corners -->
+        <div class="lock-corner corner-tl"></div>
+        <div class="lock-corner corner-tr"></div>
+        <div class="lock-corner corner-bl"></div>
+        <div class="lock-corner corner-br"></div>
+    </div>
+    <canvas id="space-cursor-canvas"></canvas>
+
+    <script>
+        // ===============================
+        // SPACE SHUTTLE REAL FIRE & GOLDEN SPARK ENGINE
+        // ===============================
+        (function initSpaceCursorEngine() {
+            const shuttle = document.getElementById('space-cursor-shuttle');
+            const ring = document.getElementById('space-cursor-ring');
+            const canvas = document.getElementById('space-cursor-canvas');
+            if (!shuttle || !ring || !canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            let mouseX = -100, mouseY = -100;
+            let lastMouseX = -100, lastMouseY = -100;
+            let ringX = -100, ringY = -100;
+            let currentAngle = 0;
+            let particles = [];
+            const fireColors = ['#fbbf24', '#f59e0b', '#d97706', '#ffaa00', '#ff5500', '#ffe600', '#ffffff', '#38bdf8'];
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                shuttle.style.left = `${mouseX}px`;
+                shuttle.style.top = `${mouseY}px`;
+
+                const dx = mouseX - lastMouseX;
+                const dy = mouseY - lastMouseY;
+                const dist = Math.hypot(dx, dy);
+
+                if (dist > 1.5) {
+                    const targetAngle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+                    let diff = (targetAngle - currentAngle) % 360;
+                    if (diff < -180) diff += 360;
+                    if (diff > 180) diff -= 360;
+                    currentAngle += diff * 0.35;
+                }
+                lastMouseX = mouseX;
+                lastMouseY = mouseY;
+
+                // Spawn plasma thruster flames & golden fire sparks on move
+                const count = Math.min(Math.floor(dist * 0.35) + 1, 4);
+                for (let k = 0; k < count; k++) {
+                    const rad = (currentAngle - 90) * (Math.PI / 180);
+                    const exhaustX = mouseX - Math.cos(rad) * 12 + (Math.random() - 0.5) * 6;
+                    const exhaustY = mouseY - Math.sin(rad) * 12 + (Math.random() - 0.5) * 6;
+                    const randType = Math.random();
+
+                    particles.push({
+                        x: exhaustX,
+                        y: exhaustY,
+                        vx: -Math.cos(rad) * (Math.random() * 2.5 + 0.8) + (Math.random() - 0.5) * 1.5,
+                        vy: -Math.sin(rad) * (Math.random() * 2.5 + 0.8) + (Math.random() - 0.5) * 1.5 - 0.3,
+                        size: Math.random() * 3.5 + 1.2,
+                        color: fireColors[Math.floor(Math.random() * fireColors.length)],
+                        alpha: 1,
+                        decay: Math.random() * 0.04 + 0.02,
+                        isFireSpark: randType < 0.5,
+                        isStar: randType >= 0.5 && randType < 0.75
+                    });
+                }
+            });
+
+            window.addEventListener('mousedown', () => {
+                document.body.classList.add('cursor-active');
+            });
+            window.addEventListener('mouseup', () => {
+                document.body.classList.remove('cursor-active');
+            });
+
+            const interactiveSelector = 'a, button, input, textarea, select, .interactive-node, .nav-links a, .filter-btn, .mode-btn, .project-card, .btn-primary, .social-icon, .hud-close-btn, .hud-cta-btn';
+
+            document.addEventListener('mouseover', (e) => {
+                if (e.target.closest(interactiveSelector)) {
+                    document.body.classList.add('cursor-hover');
+                }
+            });
+            document.addEventListener('mouseout', (e) => {
+                if (e.target.closest(interactiveSelector)) {
+                    document.body.classList.remove('cursor-hover');
+                }
+            });
+
+            function drawStarSpark(x, y, r, color, alpha) {
+                ctx.save();
+                ctx.globalAlpha = alpha;
+                ctx.fillStyle = color;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = color;
+                ctx.beginPath();
+                ctx.moveTo(x, y - r * 1.6);
+                ctx.quadraticCurveTo(x, y, x + r * 1.6, y);
+                ctx.quadraticCurveTo(x, y, x, y + r * 1.6);
+                ctx.quadraticCurveTo(x, y, x - r * 1.6, y);
+                ctx.quadraticCurveTo(x, y, x, y - r * 1.6);
+                ctx.fill();
+                ctx.restore();
+            }
+
+            function drawFireSpark(x, y, r, color, alpha) {
+                ctx.save();
+                ctx.globalAlpha = alpha;
+                ctx.fillStyle = color;
+                ctx.shadowBlur = 12;
+                ctx.shadowColor = color;
+                ctx.beginPath();
+                ctx.moveTo(x, y - r * 1.4);
+                ctx.lineTo(x + r * 0.7, y);
+                ctx.lineTo(x, y + r * 1.4);
+                ctx.lineTo(x - r * 0.7, y);
+                ctx.closePath();
+                ctx.fill();
+                ctx.restore();
+            }
+
+            function render() {
+                shuttle.style.transform = `translate(-50%, -50%) rotate(${currentAngle}deg)`;
+
+                ringX += (mouseX - ringX) * 0.18;
+                ringY += (mouseY - ringY) * 0.18;
+                ring.style.left = `${ringX}px`;
+                ring.style.top = `${ringY}px`;
+
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = particles.length - 1; i >= 0; i--) {
+                    const p = particles[i];
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.alpha -= p.decay;
+
+                    if (p.alpha <= 0) {
+                        particles.splice(i, 1);
+                        continue;
+                    }
+
+                    if (p.isStar) {
+                        drawStarSpark(p.x, p.y, p.size, p.color, p.alpha);
+                    } else if (p.isFireSpark) {
+                        drawFireSpark(p.x, p.y, p.size, p.color, p.alpha);
+                    } else {
+                        ctx.save();
+                        ctx.globalAlpha = p.alpha;
+                        ctx.fillStyle = p.color;
+                        ctx.shadowBlur = 8;
+                        ctx.shadowColor = p.color;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.restore();
+                    }
+                }
+
+                requestAnimationFrame(render);
+            }
+            render();
+        })();
     </script>
 </body>
+
 </html>
